@@ -22,29 +22,41 @@ WMC.prototype.prepareData = function() {
     }
 };
 
+WMC.prototype.getElementsNumber = function () {
+    return Math.floor(Math.random() * (this.rules.elementsMaxNumber - this.rules.elementsMinNumber + 1) + this.rules.elementsMinNumber);
+};
+
 WMC.prototype.get = function () {
-    var maxElement = 4; // TODO include in rules
+    var elementsMaxNumber = this.getElementsNumber();
     var result = [];
     var elements = Object.keys(this.data);
-    var previous;
     var i;
 
-    for (i = 0; i < maxElement; i++) {
+    for (i = 0; i < elementsMaxNumber; i++) {
         var current = null;
         var acceptable = false;
 
-        if(previous) {
+        if(result.length > 0) {
+            var previous = result[result.length - 1];
             if(!previous['chain']) {
                 //the previous element cannot have children, bail out
                 break;
+            } else {
+                var r = Math.random();
+                for(var key in previous['chain']) {
+                    r = r - previous['chain'][key];
+
+                    if(r < 0) {
+                        current = this.data[key];
+                        break;
+                    }
+                }
             }
         }
 
         if(current === null) {
-            var element = this.data[elements[Math.floor(Math.random() * elements.length)]];
+            current = this.data[elements[Math.floor(Math.random() * elements.length)]];
         }
-
-
 
         acceptable = true; //TODO validation rule here
 
@@ -53,8 +65,7 @@ WMC.prototype.get = function () {
             continue;
         }
 
-        result.push(element);
-        previous = element;
+        result.push(current);
     }
 
     return result;
@@ -63,31 +74,33 @@ WMC.prototype.get = function () {
 var data = {
     a: {
         chain: {
-            d : 1,
-            b: 10,
-            c: 3
+            d : 0.05,
+            b: 0.9,
+            c: 0.05
         }
     },
     b: {
         chain: {
-            a: 10,
-            c: 5
+            a: 0.1,
+            c: 0.9
         }
     },
     c: {
         chain: {
-            a: 1
+            d: 1
         }
     },
     d : null
 };
 
 var rules = {
-
+    elementsMinNumber : 2,
+    elementsMaxNumber : 5
 };
 
 var mc = new WMC(rules, data);
 
 for (var i = 0; i < 10; i++) {
+    //console.log(mc.get());
     console.log(mc.get().reduce(function(p, v) { return p + v.value; }, ''));
 }
