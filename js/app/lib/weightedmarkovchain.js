@@ -1,61 +1,81 @@
+"use strict";
+
 var WMC = function (rules, data) {
     this.rules = rules;
     this.data = data;
     this.prepareData();
+    this.prepareDataKeys();
 };
 
 WMC.prototype.rules = null;
 WMC.prototype.data = null;
+WMC.prototype.dataKeys = null;
 
-WMC.prototype.prepareData = function() {
+WMC.prototype.prepareData = function () {
     var element,
         key;
 
-    for(key in this.data) {
+    for (key in this.data) {
         element = this.data[key];
 
-        if(typeof element !== 'object' || !element) {
-            this.data[key] = { value : key };
-        } else if (!element.hasOwnProperty('value')) {
+        if (typeof element !== 'object' || !element) {
+            element = {
+                value: (element === null ? key : element)
+            };
+
+            this.data[key] = element;
+        }
+
+        if (!element.hasOwnProperty('value')) {
             element.value = key;
         }
     }
 };
 
-WMC.prototype.getElementsNumber = function () {
-    return Math.floor(Math.random() * (this.rules.elementsMaxNumber - this.rules.elementsMinNumber + 1) + this.rules.elementsMinNumber);
+WMC.prototype.prepareDataKeys = function () {
+    this.dataKeys = Object.keys(this.data);
 };
 
-WMC.prototype.get = function () {
-    var elementsMaxNumber = this.getElementsNumber();
-    var result = [];
-    var elements = Object.keys(this.data);
-    var i;
+WMC.prototype.getElementsNumber = function () {
+    return Math.floor(
+        Math.random() * (this.rules.elementsMaxNumber - this.rules.elementsMinNumber + 1)
+        + this.rules.elementsMinNumber
+    );
+};
 
-    for (i = 0; i < elementsMaxNumber; i++) {
-        var current = null;
-        var acceptable = false;
+WMC.prototype.next = function (previousValues) {
+    if (previousValues && previousValues.length > 0) {
+        var previous = previousValues[previousValues.length - 1];
+        if (previous.hasOwnProperty('chain')) {
+            var r = Math.random();
+            for (var key in previous.chain) {
+                r = r - previous.chain[key];
 
-        if(result.length > 0) {
-            var previous = result[result.length - 1];
-            if(!previous['chain']) {
-                //the previous element cannot have children, bail out
-                break;
-            } else {
-                var r = Math.random();
-                for(var key in previous['chain']) {
-                    r = r - previous['chain'][key];
-
-                    if(r < 0) {
-                        current = this.data[key];
-                        break;
-                    }
+                if (r < 0) {
+                    return this.data[key];
                 }
             }
         }
 
-        if(current === null) {
-            current = this.data[elements[Math.floor(Math.random() * elements.length)]];
+        return null;
+    } else {
+        var elements = this.dataKeys;
+        return this.data[elements[Math.floor(Math.random() * elements.length)]];
+    }
+};
+
+WMC.prototype.get = function () {
+    var elementsMaxNumber = this.getElementsNumber(),
+        result = [],
+        i;
+
+    for (i = 0; i < elementsMaxNumber; i++) {
+        var current = this.next(result),
+            acceptable = false;
+
+        if (current === null) {
+            // reached a dead end
+            break;
         }
 
         acceptable = true; //TODO validation rule here
@@ -74,7 +94,7 @@ WMC.prototype.get = function () {
 var data = {
     a: {
         chain: {
-            d : 0.05,
+            d: 0.05,
             b: 0.9,
             c: 0.05
         }
@@ -90,17 +110,26 @@ var data = {
             d: 1
         }
     },
-    d : null
+    d: {
+        chain : {
+            a : 0.5
+        }
+    }
 };
 
 var rules = {
-    elementsMinNumber : 2,
-    elementsMaxNumber : 5
+    elementsMinNumber: 5,
+    elementsMaxNumber: 5
 };
 
 var mc = new WMC(rules, data);
 
 for (var i = 0; i < 10; i++) {
-    //console.log(mc.get());
-    console.log(mc.get().reduce(function(p, v) { return p + v.value; }, ''));
+    /* */
+    console.log(mc.get());
+    /*/
+    console.log(mc.get().reduce(function (p, v) {
+        return p + v.value;
+    }, ''));
+    /* */
 }
