@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var jsFiles = [
     './gulpfile.js',
-    './js/app/*'
+    './js/app/**'
 ];
 
 gulp.task('verify', function (callback) {
