@@ -1,0 +1,37 @@
+/* Palette : http://paletton.com/#uid=73f1m0k9chi5OIC90oG7-77dB3Q */
+
+section {
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+    font-family:"Roboto", sans-serif;
+}
+
+section.intro {
+    background-color:#C5C28D;
+    color:#1F1E12;
+    z-index:10;
+}
+
+section.names {
+    background-color:#A3C8C4;
+    color:#1B2322;
+    z-index:9;
+}
+
+section.music {
+    background-color:#C5A58D;
+    color:#1F1712;
+    z-index:8;
+}
+
+section > div {
+    background:red;
+    margin:7%;
+    padding:2% 3% 3% 3%;
+    background-color:rgba(255,255,255,0.25);
+    border-radius:8px;
+}
+
+section a {
+    color: #746284;
+}
+
