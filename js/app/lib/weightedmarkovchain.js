@@ -177,14 +177,14 @@ var data = {
 };
 
 var rules = {
-    elementsMinNumber: 1,
+    elementsMinNumber: 2,
     elementsMaxNumber: 4,
     elementsPositionRules: true
 };
 
 var mc = new WMC(rules, require('./wmc-japanese-feminine-firstnames'));
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 20; i++) {
     /* /
     console.log(mc.get());
     /*/
