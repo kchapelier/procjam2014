@@ -78,9 +78,14 @@ WMC.prototype.get = function () {
             break;
         }
 
-        acceptable = true; //TODO validation rule here
+        if(this.rules.elementsPositionRules) {
+            //TODO do validation here
+        } else {
+            acceptable = true;
+        }
 
         if (!acceptable) {
+            // retry
             i--;
             continue;
         }
@@ -88,7 +93,9 @@ WMC.prototype.get = function () {
         result.push(current);
     }
 
-    return result;
+    return result.map(function(e) {
+        return e.value;
+    });
 };
 
 var data = {
@@ -119,17 +126,16 @@ var data = {
 
 var rules = {
     elementsMinNumber: 5,
-    elementsMaxNumber: 5
+    elementsMaxNumber: 5,
+    elementsPositionRules: false
 };
 
 var mc = new WMC(rules, data);
 
 for (var i = 0; i < 10; i++) {
-    /* */
+    /* /
     console.log(mc.get());
     /*/
-    console.log(mc.get().reduce(function (p, v) {
-        return p + v.value;
-    }, ''));
+    console.log(mc.get().join(' '));
     /* */
 }
