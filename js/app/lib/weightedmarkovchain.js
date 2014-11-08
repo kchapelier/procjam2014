@@ -1,15 +1,47 @@
 "use strict";
 
-var WMC = function (rules, data) {
+var WMC = function (rules, data, unsafe) {
     this.rules = rules;
     this.data = data;
     this.prepareData();
     this.prepareDataKeys();
+    if (!unsafe) {
+        this.checkData();
+    }
 };
 
 WMC.prototype.rules = null;
 WMC.prototype.data = null;
 WMC.prototype.dataKeys = null;
+
+WMC.prototype.checkData = function () {
+    var soleChildren = [],
+        self = this,
+        item, children, key;
+
+    for (key in this.data) {
+        item = this.data[key];
+        if (item.hasOwnProperty('chain')) {
+            children = Object.keys(item.chain);
+
+            if (children.length === 1 && soleChildren.indexOf(children[0]) === -1) {
+                soleChildren.push(children[0]);
+            }
+        }
+    }
+
+    soleChildren.forEach(function (item) {
+        var element = self.data[item];
+
+        if (!element.acceptableAsMiddle) {
+            throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsMiddle');
+        }
+
+        if (!element.acceptableAsLast) {
+            throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsLast');
+        }
+    });
+};
 
 WMC.prototype.prepareData = function () {
     var element,
@@ -28,6 +60,18 @@ WMC.prototype.prepareData = function () {
 
         if (!element.hasOwnProperty('value')) {
             element.value = key;
+        }
+
+        if (!element.hasOwnProperty('acceptableAsFirst')) {
+            element.acceptableAsFirst = true;
+        }
+
+        if (!element.hasOwnProperty('acceptableAsLast')) {
+            element.acceptableAsLast = true;
+        }
+
+        if (!element.hasOwnProperty('acceptableAsMiddle')) {
+            element.acceptableAsMiddle = true;
         }
     }
 };
@@ -78,8 +122,14 @@ WMC.prototype.get = function () {
             break;
         }
 
-        if(this.rules.elementsPositionRules) {
-            //TODO do validation here
+        if (this.rules.elementsPositionRules) {
+            if (i === 0) {
+                acceptable = current.acceptableAsFirst;
+            } else if (i === elementsMaxNumber - 1) {
+                acceptable = current.acceptableAsLast;
+            } else {
+                acceptable = current.acceptableAsMiddle;
+            }
         } else {
             acceptable = true;
         }
@@ -93,7 +143,7 @@ WMC.prototype.get = function () {
         result.push(current);
     }
 
-    return result.map(function(e) {
+    return result.map(function (e) {
         return e.value;
     });
 };
@@ -114,12 +164,14 @@ var data = {
     },
     c: {
         chain: {
-            d: 1
+            d: 0.999
         }
     },
     d: {
-        chain : {
-            a : 0.5
+        acceptableAsFirst: false,
+        acceptableAsMiddle: true,
+        chain: {
+            a: 0.5
         }
     }
 };
@@ -127,7 +179,7 @@ var data = {
 var rules = {
     elementsMinNumber: 5,
     elementsMaxNumber: 5,
-    elementsPositionRules: false
+    elementsPositionRules: true
 };
 
 var mc = new WMC(rules, data);
