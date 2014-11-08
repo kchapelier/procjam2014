@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/vendors/jquery.onepage-scroll.css" />
+        <link rel="stylesheet" href="css/app/style.css" />
+    </head>
+    <body>
+        <div class="main">
+            <section>
+                <h1>Lets do something !</h1>
+                <a class="next" href="#">Yes, let's do it !</a>
+            </section>
+            <section><h1>So... what are you going to do exactly ?</h1></section>
+        </div>
+        <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
+        <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
+        <script>
+            $(function() {
+                $('.main').onepage_scroll({
+                    sectionContainer: "section",
+                    easing: "ease",
+                    animationTime: 700,
+                    pagination: true,
+                    updateURL: false,
+                    loop: false,
+                    keyboard: true,
+                    direction: "vertical"
+                });
+
+                $('.next').on('click', function(e) {
+                    e.preventDefault();
+                    $('.main').moveDown();
+                });
+            });
+        </script>
+    </body>
+</html>
