@@ -1,0 +1,396 @@
+# Used to generate the markov chain
+
+a i
+a i ko
+a i mi
+a i ri
+a ka ne
+a ka ri
+a ke mi
+a ki
+a ki e
+a ki ko
+a ki na
+a ma ne
+a mi
+a n zu
+a o i
+a sa ko
+a sa mi
+a su ka
+a su mi
+a su na
+a tsu ko
+a tsu mi
+a ya
+a ya ka
+a ya ko
+a ya me
+a ya na
+a ya ne
+a ya no
+a yu
+a yu ka
+a yu mi
+a zu mi
+a zu sa
+chi e
+chi e ko
+chi e mi
+chi ha ru
+chi ho
+chi ka
+chi na mi
+chi na tsu
+chi sa to
+chi ya ko
+chi yo
+chi yo ko
+chi zu ru
+e i ko
+e i mi
+e mi
+e mi ko
+e mi ri
+e ri
+e ri ka
+e ri ko
+e tsu ko
+fu ji ko
+fu ku mi
+fu mi e
+fu mi ka
+fu mi ko
+fu sa ko
+fu yu ko
+ha na
+ha na e
+ha na ko
+ha ru hi
+ha ru ko
+ha ru na
+ha ru yo
+ha tsu e
+hi de ko
+hi de mi
+hi me ko
+hi ro e
+hi ro ko
+hi ro yo
+hi sa e
+hi sa ko
+hi sa ya
+hi sa yo
+i chi ko
+i ku e
+i ku mi
+i tsu ko
+i tsu mi
+ji tsu ko
+ju n ko
+ka e de
+ka gu ya
+ka ho
+ka na
+ka na e
+ka na ko
+ka n na
+ka ori
+ka rin
+ka su mi
+ka tsu ko
+ka yo ko
+ka zu e
+ka zu ko
+ka zu sa
+ka zu yo
+ke i ki
+ke i ko
+ki ko
+ki ku e
+ki ku ko
+ki mi ko
+ki yo ko
+ko ha ru
+ko no mi
+ko to mi
+ko to ri
+ko zu e
+ku mi
+ku mi ko
+ku ni ko
+ku re na i
+kyo ko
+ma a ya
+ma chi
+ma chi ko
+ma do ka
+ma ho
+ma i
+ma i ko
+ma ki
+ma ki ko
+ma mi
+ma mi ko
+ma na
+ma na mi
+ma o
+ma ri
+ma ri e
+ma ri ko
+ma ri na
+ma sa e
+ma sa ko
+ma tsu ko
+ma ya ko
+ma yu
+ma yu ko
+ma yu mi
+ma yu ra
+me gu
+me gu mi
+me i
+me i ko
+me i sa
+mi chi ko
+mi e
+mi e ko
+mi ho
+mi i ko
+mi ka
+mi ka ko
+mi ki
+mi ki ko
+mi ku
+mi ku ru
+mi mo ri
+mi na
+mi na e
+mi na ko
+mi ne ko
+mi no ri
+mi sa
+mi sa ki
+mi sa ko
+mi sa to
+mi tsu ko
+mi tsu yo
+mi u
+mi wa
+mi wa ko
+mi ya bi
+mi ya ko
+mi yo ko
+mi yu
+mi yu ki
+mi yu mi
+mi yu u
+mi zu ho
+mi zu ki
+mi zu ko
+mo e
+mo mo
+mo mo e
+mo mo ka
+mo mo ko
+mo to ko
+mu tsu ko
+mu tsu mi
+na ga ko
+na na
+na na ko
+na na mi
+na na se
+na o
+na o ko
+na ru mi
+na tsu e
+na tsu ko
+na tsu me
+na tsu mi
+no a
+no bu ko
+no do ka
+no ri ko
+no ri yo
+no zo mi
+o mi
+o to ha
+o to me
+ra n
+re i ka
+re i ko
+re na
+ri e
+ri e ko
+ri ho
+ri ka
+ri na
+ri tsu ko
+ru mi
+ru mi ko
+ru na
+ru ri
+ru ri ko
+ryo u ka
+ryo ko
+sa chi e
+sa chi ko
+sa da ko
+sa e ko
+sa ki
+sa ki e
+sa ki ko
+sa ku ra
+sa ku ra ko
+sa na e
+sa o ri
+sa to ko
+sa to mi
+sa wa ko
+sa ya
+sa ya ka
+sa ya ko
+sa yo ko
+sa yu mi
+sa yu ri
+se i ko
+se tsu ko
+shi ge ko
+shi ho
+shi i na
+shi ma ko
+shi na ko
+shi no
+shi o ri
+shi zu e
+shi zu ko
+sho ko
+shu ko
+su mi ka
+su mi ko
+su mi re
+su zu e
+su zu ko
+ta e ko
+ta ka ko
+ta ke ko
+ta ma o
+ta mi ko
+ta tsu ko
+te i ko
+te ru ko
+te ru mi
+to ki ko
+to ku ko
+to mi ko
+to mo ka
+to mo ko
+to mo yo
+to shi ko
+to yo ko
+tsu ne ko
+u me ko
+wa ka ko
+ya e ko
+ya su e
+ya su ko
+ya yoi
+yo u
+yo ko
+yo shi ko
+yo shi no
+yu i
+yu ka
+yu ka ri
+yu ki e
+yu ki ko
+yu ki na
+yu u ko
+yu me ko
+yu mi
+yu mi ka
+yu mi ko
+yu ri
+yu ri e
+yu ri ka
+yu ri ko
+yu ri na
+
+a ki mi
+a ki ra
+a n ri
+a yu mu
+chi a ki
+chi hi ro
+chi to se
+ha ji me
+ha ru
+ha ru e
+ha ru ka
+ha ru mi
+ha tsu
+ha ya te
+hi ka ru
+hi na ta
+hi ro mi
+hi ro mu
+hi to mi
+ho ta ru
+i o ri
+i tsu ki
+i zu mi
+ju n
+ka na me
+ka o ru
+ka to
+ka tsu mi
+ka yo
+ka zu
+ka zu mi
+kei
+ku ni e
+ku ru mi
+kyo
+ma ko
+ma ko to
+ma sa mi
+ma su mi
+mi chi ru
+mi chi yo
+mi do ri
+mi ko to
+mi na mi
+mi ra i
+mi sa o
+mi tsu ki
+mi tsu ru
+na gi sa
+na o mi
+na tsu ki
+re i
+re n
+ri ku
+ri n
+ri sa
+ryo u
+sa ka e
+sa tsu ki
+se tsu na
+shi ge ri
+shi no bu
+shi on
+shi zu ka
+so ra
+su ba ru
+ta ma ki
+te ru
+to mo
+to mo e
+to mo mi
+tsu ba sa
+tsu ka sa
+yo shi ka
+yo shi mi
+yu u
+yu ki
