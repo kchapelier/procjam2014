@@ -4,7 +4,12 @@ var japaneseMasculineFirstnames = (function () {
     var rules = {
         elementsMinNumber: 2,
         elementsMaxNumber: 4,
-        elementsPositionRules: true
+        elementsPositionRules: true,
+        postProcess : function(values) {
+            var name = values.join('');
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            return name;
+        }
     };
 
     /* jscs: disable */

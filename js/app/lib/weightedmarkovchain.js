@@ -90,6 +90,18 @@ var WMC = (function () {
         );
     };
 
+    WMC.prototype.postProcess = function(elements) {
+        var values = elements.map(function (e) {
+            return e.value;
+        });
+
+        if(typeof this.rules.postProcess === 'function') {
+            values = this.rules.postProcess(values);
+        }
+
+        return values;
+    };
+
     WMC.prototype.next = function (previousValues) {
         if (previousValues && previousValues.length > 0) {
             var previous = previousValues[previousValues.length - 1];
@@ -146,9 +158,7 @@ var WMC = (function () {
             result.push(current);
         }
 
-        return result.map(function (e) {
-            return e.value;
-        });
+        return this.postProcess(result);
     };
 
     return WMC;

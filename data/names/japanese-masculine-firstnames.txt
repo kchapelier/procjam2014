@@ -1,4 +1,4 @@
-# Used to gene ra te the markov chain
+# Used to generate the markov chain
 
 a ki fu mi
 a ki hi ko
