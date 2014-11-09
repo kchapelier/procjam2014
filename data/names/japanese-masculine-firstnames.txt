@@ -1,0 +1,1122 @@
+# Used to gene ra te the markov chain
+
+a ki fu mi
+a ki hi ko
+a ki hi ro
+a ki hi sa
+a ki hi to
+a ki ma sa
+a ki mi tsu
+a ki no bu
+a ki no ri
+a ki o
+a ki sa da
+a ki shi ge
+a ki to
+a ki to shi
+a ki tsu gu
+a ki yo shi
+a ki yu ki
+a ra ta
+a ri hi ro
+a ri na ga
+a ri to mo
+a sa o
+a to mu
+a tsu hi ko
+a tsu hi ro
+a tsu o
+a tsu shi
+a tsu to
+a tsu ya
+a zu ma
+ba n ri
+bu n ji
+bu n ta
+chi ka ra
+chi ka yo shi
+chou e i
+cho ki
+chu u i chi
+da i
+da i chi
+da i go
+da i ki
+da i ro ku
+da i shin
+da i su ke
+da i zou
+ei i chi
+ei i chi ro
+ei ji
+ei ji rou
+ei ki chi
+ei no su ke
+ei shu n
+ei su ke
+ei zou
+e tsu ji
+fu ji o
+fu mi a ki
+fu mi hi ko
+fu mi hi ro
+fu mi o
+fu mi to
+fu mi ya
+fu sa no su ke
+fu sa za ne
+fu to shi
+fu yu ki
+ga ku
+ga ku to
+ge n i chi
+ge n i chi rou
+ge n ji ro
+ge n ta
+ge n ta rou
+ge n zo
+gi i chi
+gi n
+go i chi
+go ro
+ha chi rou
+ha ka ru
+ha ru a ki
+ha ru chi ka
+ha ru hi ko
+ha ru hi ro
+ha ru hi sa
+ha ru ki
+ha ru no bu
+ha ru o
+ha ru ta ka
+ha ru to
+ha ru yo shi
+ha tsu o
+ha ya na ri
+ha ya to
+he i ha chi rou
+he i su ke
+hi de a ki
+hi de ha ru
+hi de hi ko
+hi de hi to
+hi de ji
+hi de ka zu
+hi de ki
+hi de ma sa
+hi de mi
+hi de mi tsu
+hi de no bu
+hi de no ri
+hi de o
+hi de shi
+hi de ta ka
+hi de to
+hi de to shi
+hi de tsu gu
+hi de yo
+hi de yo shi
+hi de yu ki
+hi ro
+hi ro a ki
+hi ro fu mi
+hi ro hi de
+hi ro hi sa
+hi ro ji
+hi ro ka tsu
+hi ro ka zu
+hi ro ki
+hi ro ku ni
+hi ro ma sa
+hi ro mi chi
+hi ro mi tsu
+hi ro mo ri
+hi ro na ri
+hi ro no bu
+hi ro no ri
+hi ro shi
+hi ro shi ge
+hi ro ta ka
+hi ro ta mi
+hi ro to
+hi ro to ki
+hi ro to mo
+hi ro to shi
+hi ro tsu gu
+hi ro ya
+hi ro ya su
+hi ro yo shi
+hi ro yu ki
+hi sa hi to
+hi sa mi tsu
+hi sa mo to
+hi sa no bu
+hi sa no ri
+hi sa o
+hi sa shi
+hi sa ta ka
+hi sa te ru
+hi sa to
+hi sa ya
+hi sa ya su
+hi sa yo shi
+hi sa yu ki
+hi to shi
+ho ku to
+ho zu mi
+i chi ei
+i chi rou
+i e hi sa
+i e ma sa
+i e mo n
+i e sa da
+i k ko
+i ku o
+i ku rou
+i p pei
+i sa mi
+i sa mu
+i sa o
+i s sei
+i ta ru
+i wa o
+ji i chi rou
+ji n
+ji n i chi
+ji n pa chi
+ji ro
+jou i chi rou
+jou ji
+jou ki chi
+jou ta rou
+ju u bei
+ju u ki chi
+ju n i chi
+ju n i chi rou
+ju n ji
+ju n ki
+ju n pei
+ju n ya
+ju n zou
+ju u shi rou
+ju u ta rou
+ju u zou
+ka ge mo ri
+ka ge ta ka
+ka i ji
+ka i to
+ka ki chi
+ka ku
+ka ku ji
+ka mu i
+ka ne hi ra
+ka ne hi ro
+ka ne ma tsu
+ka ne mo to
+ka ne su ke
+ka ne ta ke
+ka ne to
+ka ne tsu gu
+ka ne yo shi
+ka n i chi
+ka n ku ro
+ka n su ke
+ka tsu a ki
+ka tsu e i
+ka tsu hi ko
+ka tsu hi ro
+ka tsu hi sa
+ka tsu hi to
+ka tsu ji
+ka tsu ki
+ka tsu ki yo
+ka tsu ma sa
+ka tsu na ga
+ka tsu na ri
+ka tsu no ri
+ka tsu no su ke
+ka tsu o
+ka tsu shi
+ka tsu su ke
+ka tsu ta rou
+ka tsu te ru
+ka tsu to mo
+ka tsu to shi
+ka tsu ya
+ka tsu yo shi
+ka tsu yu ki
+ka zu a ki
+ka zu ha ru
+ka zu hi ko
+ka zu hi ro
+ka zu hi sa
+ka zu hi to
+ka zu ki
+ka zu ma
+ka zu ma sa
+ka zu na ri
+ka zu no ri
+ka zu o
+ka zu o ki
+ka zu rou
+ka zu shi
+ka zu shi ge
+ka zu ta ka
+ka zu to
+ka zu to ki
+ka zu to shi
+ka zu ya
+ka zu yo shi
+ka zu yu ki
+ke i go
+ke i i chi
+ke i i chi rou
+ke i ji
+ke i ji rou
+ke i juu
+ke i ki
+ke i no su ke
+ke i shi
+ke i su ke
+ke i ta
+ke i zou
+ke n
+ke n i chi
+ke n go
+ke n i chi rou
+ke n ji
+ke n ji rou
+ke n ki
+ke n ki chi
+ke n sa ku
+ke n shin
+ke n su ke
+ke n ta
+ke n ta ro
+ke n to
+ke n yu u
+ke n zo
+ke sa o
+ki ha chi
+ki ha chi rou
+ki he i
+ki i chi rou
+ki ku o
+ki mi o
+ki mi ya
+ki n i chi
+ki n i chi rou
+ki n ji
+ki n ji rou
+ki n ta ro
+ki n ya
+ki sa bu rou
+ki shou
+ki yo a ki
+ki yo fu mi
+ki yo hi de
+ki yo hi ko
+ki yo hi ro
+ki yo ji
+ki yo ka zu
+ki yo mo to
+ki yo na ri
+ki yo no ri
+ki yo shi
+ki yo su e
+ki yo ta ka
+ki yo ta ke
+ki yo yu ki
+ko go rou
+kou he i
+kou i chi
+kou i chi rou
+ko ji
+ko ji ro
+ko ki
+kou ki chi
+kou no su ke
+kou sa ku
+kou sei
+kou shi rou
+ko so n
+kou su ke
+ko ta ro
+kou ta
+ko ya
+kou zou
+ku ma ta rou
+ku ni a ki
+ku ni hi ko
+ku ni hi ro
+ku ni hi sa
+ku ni mi tsu
+ku ni o
+ku ni ta ke
+ku ni yu ki
+ku ra no su ke
+ku su o
+kyou he i
+kyou i chi
+kyou ji
+kyou su ke
+kyu ki chi
+ma hi ro
+ma ki o
+ma mo ru
+ma na bu
+man ji rou
+man ta rou
+ma re o
+ma sa a ki
+ma sa bu mi
+ma sa chi ka
+ma sa fu mi
+ma sa ha ru
+ma sa hi de
+ma sa hi ko
+ma sa hi ro
+ma sa hi sa
+ma sa hi to
+ma sa i chi
+ma sa ie
+ma sa ji
+ma sa ka ge
+ma sa ka tsu
+ma sa ka zu
+ma sa ki
+ma sa ku ni
+ma sa mi chi
+ma sa mi tsu
+ma sa mo ri
+ma sa mu ne
+ma sa mu ra
+ma sa na o
+ma sa no bu
+ma sa no ri
+ma sa o
+ma sa o mi
+ma sa ru
+ma sa shi
+ma sa shi ge
+ma sa ta ka
+ma sa ta ke
+ma sa ta ne
+ma sa te ru
+ma sa to
+ma sa to mo
+ma sa to shi
+ma sa tsu gu
+ma sa ya
+ma sa yo shi
+ma sa yu ki
+ma sa zu mi
+ma su o
+ma su zou
+ma ta be i
+ma tsu chi
+ma tsu ki
+ma tsu o
+ma tsu shi ge
+mi chi a ki
+mi chi ha ru
+mi chi hi ko
+mi chi hi ro
+mi chi hi sa
+mi chi no ri
+mi chi o
+mi chi rou
+mi chi ta ka
+mi chi ta rou
+mi chi ya
+mi chi yo shi
+mi ki o
+mi ku ni
+mi ne i chi
+mi ne o
+mi no ru
+mi tsu a ki
+mi tsu gi
+mi tsu gu
+mi tsu ha ru
+mi tsu hi ko
+mi tsu hi ra
+mi tsu hi ro
+mi tsu hi sa
+mi tsu ma sa
+mi tsu no bu
+mi tsu no ri
+mi tsu o
+mi tsu o mi
+mi tsu su ke
+mi tsu ta ka
+mi tsu te ru
+mi tsu to shi
+mi tsu ya su
+mi tsu yo
+mi tsu yo shi
+mi tsu yu ki
+mo chi a ki
+mo ki chi
+mo ri
+mo ri hi ko
+mo ri hi ro
+mo ri ka zu
+mo ri ma sa
+mo ri o
+mo ri ta ka
+mo su ke
+mo to a ki
+mo to ha ru
+mo to hi ko
+mo to hi ro
+mo to i chi
+mo to ji rou
+mo to ki
+mo to mu
+mo to no bu
+mo to shi
+mo to shi ge
+mo to su ke
+mo to ta da
+mo to tsu gu
+mo to ya su
+mo to yu ki
+mo to za ne
+mu ku ro
+mu ne hi ro
+mu ne mo ri
+mu ne no bu
+mu ne no ri
+mu ne o
+mu ne shi ge
+mu ne ta ka
+mu ne to ki
+mu ne to shi
+mu ra shi ge
+mu tsu o
+na ga ha ru
+na ga hi de
+na ga ma sa
+na ga mi chi
+na ga na o
+na ga no ri
+na ga to ki
+na ga to mo
+na mi o
+na n ki chi
+na o fu mi
+na o hi ko
+na o hi ro
+na o hi sa
+na o hi to
+na o ji
+na o ka tsu
+na o ki
+na o ma sa
+na o mi chi
+na o mo ri
+na o shi
+na o ta ka
+na o ta ke
+na o to
+na o ya
+na o yu ki
+na o zu mi
+na ri a ki
+na ri a ki ra
+na ri ta ka
+na ri ya su
+na ri yu ki
+na ru hi sa
+na ru hi to
+no bo ru
+no bu a ki
+no bu a tsu
+no bu ha ru
+no bu hi ko
+no bu hi ro
+no bu hi sa
+no bu hi to
+no bu ka tsu
+no bu ka zu
+no bu ma sa
+no bu mi tsu
+no bu mo to
+no bu na o
+no bu na ri
+no bu o
+no bu sa da
+no bu su ke
+no bu ta ka
+no bu te ru
+no bu to ki
+no bu to mo
+no bu to shi
+no bu tsu na
+no bu ya su
+no bu yo shi
+no bu yu ki
+no ri a ki
+no ri fu mi
+no ri fu sa
+no ri hi ko
+no ri hi ro
+no ri hi to
+no ri ka zu
+no ri ma sa
+no ri o
+no ri ya su
+no ri yo shi
+no ri yu ki
+no zo mu
+o ki mo to
+o ki tsu gu
+o sa mu
+o to hi ko
+ra i zo
+re i i chi
+re i ji
+re i zou
+re n ta rou
+ri i chi
+ri ki chi
+ri ki ya
+ri n shou
+ro ku rou
+ryou he i
+ryou i chi
+ryou ji
+ryou ma
+ryou se i
+ryou su ke
+ryou ta
+ryou ta rou
+ryou zou
+ryu
+ryu u he i
+ryu u i chi
+ryu u ji
+ryu u ki
+ryu u no su ke
+ryu u sa ku
+ryu u sei
+ryu u su ke
+ryu u ta
+ryu u ta rou
+ryu u ya
+ryu u zou
+sa bu rou
+sa chi o
+sa da a ki
+sa da ha ru
+sa da hi ko
+sa da o
+sa da to shi
+sa da yo shi
+sa da za ne
+sa i i chi
+sa ki chi
+sa to na ri
+sa to ru
+sa to shi
+sa tsu o
+se i gen
+se i go
+se i hou
+se i i chi
+se i i chi rou
+se i ji
+se i ji n
+se i ji rou
+se i ki chi
+se i shi
+se i shi rou
+se i zou
+se n ki chi
+shi chi rou
+shi ge a ki
+shi ge fu mi
+shi ge ha ru
+shi ge hi ro
+shi ge hi sa
+shi ge ka zu
+shi ge ki
+shi ge ma sa
+shi ge ma tsu
+shi ge mi
+shi ge mi tsu
+shi ge na ga
+shi ge no bu
+shi ge no ri
+shi ge o
+shi ge ru
+shi ge ta da
+shi ge ta ka
+shi ge to
+shi ge to shi
+shi ge ya su
+shi ge yo shi
+shi ge yu ki
+shi kou
+shi n
+shi n go
+shi n i chi
+shi n i chi rou
+shi n ji
+shi n ji rou
+shi n jou
+shi n ki chi
+shi n pei
+shi n su ke
+shi n ta
+shi n ta rou
+shi n ya
+shi n zou
+shi zu o
+shou
+shou go
+shou hei
+shou i chi
+shou ji
+shou ji rou
+shou ma
+shou su ke
+shou ta
+shou ta rou
+shou ya
+shou zou
+shu u go
+shu u hei
+shu u i chi
+shu u ji
+shu ko
+shu n
+shu n i chi
+shu n i chi rou
+shu n ji
+shu n pei
+shu n sa ku
+shu n su ke
+shu n ta rou
+shu n ya
+shu n zou
+shu u sa ku
+shu u su ke
+shu u ta
+shu u zou
+sou gen
+sou i chi
+sou i chi rou
+sou ji
+so no su ke
+sou su ke
+sou ta rou
+su e hi ro
+su gu ru
+su ke hi ro
+su ke ma sa
+su ke to shi
+su ke tsu gu
+su mi o
+su mi yo shi
+su na o
+su su mu
+ta da a ki
+ta da chi ka
+ta da fu mi
+ta da ha ru
+ta da hi ko
+ta da hi ro
+ta da hi to
+ta da ka tsu
+ta da ma sa
+ta da mi
+ta da na ga
+ta da na o
+ta da na ri
+ta da no bu
+ta da no ri
+ta da o
+ta da o ki
+ta da shi
+ta da ta ka
+ta da te ru
+ta da to mo
+ta da to shi
+ta da tsu gu
+ta da tsu ne
+ta da yo
+ta da yo shi
+ta da yu ki
+ta i chi
+ta i chi rou
+ta i ga
+ta i i chi
+ta i ji
+ta i ki
+ta i shi
+ta i su ke
+ta ka
+ta ka a ki
+ta ka fu mi
+ta ka hi de
+ta ka hi ko
+ta ka hi ro
+ta ka hi sa
+ta ka hi to
+ta ka ki
+ta ka ma sa
+ta ka mi tsu
+ta ka no bu
+ta ka no ri
+ta ka o
+ta ka shi
+ta ka to mi
+ta ka to shi
+ta ka tsu gu
+ta ka u ji
+ta ka ya
+ta ka ya su
+ta ka yo shi
+ta ka yu ki
+ta ke a ki
+ta ke fu mi
+ta ke ha ru
+ta ke hi ko
+ta ke hi ro
+ta ke hi sa
+ta ke hi to
+ta ke i chi
+ta ke ji rou
+ta ke no ri
+ta ke o
+ta ke ru
+ta ke shi
+ta ke to
+ta ke to ra
+ta ke to shi
+ta ke ya
+ta ke yo shi
+ta ke zou
+ta ku
+ta ku ji
+ta ku ma
+ta ku mi
+ta ku o
+ta ku rou
+ta ku to
+ta ku ya
+ta ku zou
+ta mi o
+ta mo tsu
+ta rou
+ta te o
+ta tsu a ki
+ta tsu hi ko
+ta tsu hi ro
+ta tsu hi to
+ta tsu ji
+ta tsu ma
+ta tsu mi
+ta tsu no ri
+ta tsu o
+ta tsu rou
+ta tsu shi
+ta tsu ya
+ta tsu yo shi
+ta tsu yu ki
+te i ji
+te i ji rou
+te i ko
+te i zou
+te p pei
+te ru a ki
+te ru hi ko
+te ru hi sa
+te ru ma sa
+te ru no bu
+te ru o
+te ru yo shi
+te ru yu ki
+te tsu
+te tsu ha ru
+te tsu ji
+te tsu ma sa
+te tsu o
+te tsu rou
+te tsu shi
+te tsu ta rou
+te tsu ya
+te tsu zou
+to go
+to ki hi ko
+to ki o
+to ku ji
+to ku ji rou
+to ku o
+to ku rou
+to ku ta rou
+to mi o
+to mo a ki
+to mo chi ka
+to mo ha ru
+to mo hi de
+to mo hi ko
+to mo hi ro
+to mo hi sa
+to mo hi to
+to mo ji
+to mo ka zu
+to mo ki
+to mo mi chi
+to mo no bu
+to mo no ri
+to mo ta ka
+to mo ya
+to mo ya su
+to mo yo shi
+to mo yu ki
+to ra hi ko
+to ru
+to shi
+to shi a ki
+to shi ha ru
+to shi hi de
+to shi hi ko
+to shi hi ro
+to shi hi sa
+to shi hi to
+to shi ka tsu
+to shi ka zu
+to shi ki
+to shi ma sa
+to shi mi
+to shi mi chi
+to shi mi tsu
+to shi na ga
+to shi na ri
+to shi no bu
+to shi no ri
+to shi o
+to shi rou
+to shi ta ka
+to shi tsu gu
+to shi ya
+to shi ya su
+to shi yu ki
+to shi zou
+to yo a ki
+to yo hi ko
+to yo ka zu
+to yo ma tsu
+to yo shi ge
+to yo zou
+tsu gi o
+tsu ne ha ru
+tsu ne hi sa
+tsu ne ji rou
+tsu ne mi
+tsu ne no ri
+tsu ne o
+tsu ne yo shi
+tsu ne yu ki
+tsu to mu
+tsu yo shi
+u ma no su ke
+u me ji
+wa ta ru
+ya hi ko
+ya hi ro
+ya su a ki
+ya su fu mi
+ya su ha ru
+ya su hi de
+ya su hi ko
+ya su hi ro
+ya su hi sa
+ya su ji
+ya su ji rou
+ya su ka zu
+ya su ki
+ya su ma sa
+ya su mi
+ya su mi chi
+ya su na ri
+ya su no bu
+ya su no ri
+ya su o
+ya su rou
+ya su shi
+ya su ta ka
+ya su to mo
+ya su to shi
+ya su yo shi
+ya su yu ki
+ya ta rou
+you
+you hei
+you i chi
+you i chi rou
+you ji
+you ji rou
+yo ri mi tsu
+yo ri no bu
+yo ri shi ge
+yo ri ta ka
+yo ri tsu gu
+yo ri tsu ne
+yo ri yu ki
+yo shi
+yo shi fu mi
+yo shi hi de
+yo shi hi ko
+yo shi hi ro
+yo shi hi sa
+yo shi hi to
+yo shi i e
+yo shi ka ne
+yo shi ka tsu
+yo shi ka zu
+yo shi ki
+yo shi ki yo
+yo shi ku ni
+yo shi ma sa
+yo shi ma tsu
+yo shi mi chi
+yo shi na ga
+yo shi na o
+yo shi na ri
+yo shi no bu
+yo shi no ri
+yo shi o
+yo shi rou
+yo shi sa da
+yo shi shi ge
+yo shi su ke
+yo shi ta ka
+yo shi ta ke
+yo shi ta rou
+yo shi te ru
+yo shi to
+yo shi to mo
+yo shi tsu gu
+yo shi ya
+yo shi ya su
+yo shi yu ki
+you su ke
+you ta
+you zou
+yuu dai
+yu gi
+yu go
+yuu he i
+yuu i chi
+yuu i chi rou
+yuu ji
+yuu ji rou
+yuu ki chi
+yu ki ha ru
+yu ki hi ko
+yu ki hi ro
+yu ki ma sa
+yu ki mu ra
+yu ki no bu
+yu ki no ri
+yu ki o
+yu ki ta ka
+yu ki to
+yu ki ya
+yuu sa ku
+yuu sei
+yuu shi
+yuu su ke
+yuu ta
+yu ta ka
+yuu ta rou
+yuu to
+yuu ya
+yuu zou
+zen ji ro
+zen ki chi
+zen ta rou
+zen zou
+
+a ki mi
+a ki ra
+an ri
+a yu mu
+chi a ki
+chi hi ro
+chi to se
+ha ji me
+ha ru
+ha ru e
+ha ru ka
+ha ru mi
+ha tsu
+ha ya te
+hi ka ru
+hi na ta
+hi ro mi
+hi ro mu
+hi to mi
+ho ta ru
+i o ri
+i tsu ki
+i zu mi
+jun
+ka na me
+ka o ru
+ka to
+ka tsu mi
+ka yo
+ka zu
+ka zu mi
+ke i
+ku ni e
+ku ru mi
+kyo
+ma ko
+ma ko to
+ma sa mi
+ma su mi
+mi chi ru
+mi chi yo
+mi do ri
+mi ko to
+mi na mi
+mi ra i
+mi sa o
+mi tsu ki
+mi tsu ru
+na gi sa
+na o mi
+na tsu ki
+re i
+ren
+ri ku
+ri n
+ri sa
+ryou
+sa ka e
+sa tsu ki
+set su na
+shi ge ri
+shi no bu
+shi on
+shi zu ka
+so ra
+su ba ru
+ta ma ki
+te ru
+to mo
+to mo e
+to mo mi
+tsu ba sa
+tsu ka sa
+yo shi ka
+yo shi mi
+yuu
+yu ki
