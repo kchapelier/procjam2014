@@ -7,6 +7,8 @@ var japaneseMasculineFirstnames = (function () {
         elementsPositionRules: true
     };
 
+    /* jscs: disable */
+
     var data = {
         a: {
             value: 'a',
@@ -616,7 +618,13 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {i: 0.0625, ne: 0.625, ra: 0.1875, ku: 0.0625, tsu: 0.0625}
+            chain: {
+                i: 0.0625,
+                ne: 0.625,
+                ra: 0.1875,
+                ku: 0.0625,
+                tsu: 0.0625
+            }
         },
         ya: {
             value: 'ya',
@@ -778,7 +786,14 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {i: 0.25, tsu: 0.125, hi: 0.25, ma: 0.125, mo: 0.125, sa: 0.125}
+            chain: {
+                i: 0.25,
+                tsu: 0.125,
+                hi: 0.25,
+                ma: 0.125,
+                mo: 0.125,
+                sa: 0.125
+            }
         },
         i: {
             value: 'i',
@@ -990,7 +1005,11 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {n: 0.55, u: 0.4, ko: 0.05}
+            chain: {
+                n: 0.55,
+                u: 0.4,
+                ko: 0.05
+            }
         },
         za: {
             value: 'za',
@@ -1035,7 +1054,12 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {i: 0.25, n: 0.25, o: 0.25, sa: 0.25}
+            chain: {
+                i: 0.25,
+                n: 0.25,
+                o: 0.25,
+                sa: 0.25
+            }
         },
         ha: {
             value: 'ha',
@@ -1124,7 +1148,13 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {ru: 0.5, o: 0.03125, i: 0.125, p: 0.03125, tsu: 0.3125}
+            chain: {
+                ru: 0.5,
+                o: 0.03125,
+                i: 0.125,
+                p: 0.03125,
+                tsu: 0.3125
+            }
         },
         ho: {
             value: 'ho',
@@ -1177,7 +1207,10 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {o: 0.5, ta: 0.5}
+            chain: {
+                o: 0.5,
+                ta: 0.5
+            }
         },
         pa: {
             value: 'pa',
@@ -1191,14 +1224,22 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
-            chain: {i: 0.25, ji: 0.25, ki: 0.25, ta: 0.25}
+            chain: {
+                i: 0.25,
+                ji: 0.25,
+                ki: 0.25,
+                ta: 0.25
+            }
         },
         ju: {
             value: 'ju',
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {u: 0.4166666666666667, n: 0.5833333333333334}
+            chain: {
+                u: 0.4166666666666667,
+                n: 0.5833333333333334
+            }
         },
         bei: {
             value: 'bei',
@@ -1265,7 +1306,12 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {he: 0.25, i: 0.25, ji: 0.25, su: 0.25}
+            chain: {
+                he: 0.25,
+                i: 0.25,
+                ji: 0.25,
+                su: 0.25
+            }
         },
         kyu: {
             value: 'kyu',
@@ -1279,7 +1325,10 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {ji: 0.5, ta: 0.5}
+            chain: {
+                ji: 0.5,
+                ta: 0.5
+            }
         },
         re: {
             value: 're',
@@ -1334,7 +1383,10 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {i: 0.9285714285714286, n: 0.07142857142857142}
+            chain: {
+                i: 0.9285714285714286,
+                n: 0.07142857142857142
+            }
         },
         ryu: {
             value: 'ryu',
@@ -1389,7 +1441,14 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
-            chain: {hei: 0.125, i: 0.25, ji: 0.25, su: 0.125, ta: 0.125, zou: 0.125}
+            chain: {
+                hei: 0.125,
+                i: 0.25,
+                ji: 0.25,
+                su: 0.125,
+                ta: 0.125,
+                zou: 0.125
+            }
         },
         yuu: {
             value: 'yuu',
@@ -1424,7 +1483,12 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {ji: 0.25, ki: 0.25, ta: 0.25, zou: 0.25}
+            chain: {
+                ji: 0.25,
+                ki: 0.25,
+                ta: 0.25,
+                zou: 0.25
+            }
         },
         an: {
             value: 'an',
@@ -1476,6 +1540,8 @@ var japaneseMasculineFirstnames = (function () {
             chain: {}
         }
     };
+
+    /* jscs: enable */
 
     return new WMC(rules, data, true);
 }());

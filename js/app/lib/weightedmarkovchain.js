@@ -1,4 +1,4 @@
-var WMC = (function() {
+var WMC = (function () {
     "use strict";
 
     // TODO implement number value probability

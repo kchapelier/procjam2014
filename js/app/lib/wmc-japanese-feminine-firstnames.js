@@ -1,4 +1,4 @@
-var japaneseFeminineFirstnames = (function() {
+var japaneseFeminineFirstnames = (function () {
     "use strict";
 
     var rules = {
@@ -6,6 +6,8 @@ var japaneseFeminineFirstnames = (function() {
         elementsMaxNumber: 4,
         elementsPositionRules: true
     };
+
+    /* jscs: disable */
 
     var data = {
         a: {
@@ -150,7 +152,11 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {mi: 0.2, i: 0.6, ko: 0.2}
+            chain: {
+                mi: 0.2,
+                i: 0.6,
+                ko: 0.2
+            }
         },
         ki: {
             value: 'ki',
@@ -232,7 +238,12 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {zu: 0.25, ko: 0.25, na: 0.25, ri: 0.25}
+            chain: {
+                zu: 0.25,
+                ko: 0.25,
+                na: 0.25,
+                ri: 0.25
+            }
         },
         zu: {
             value: 'zu',
@@ -256,7 +267,14 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {i: 0.1, ko: 0.1, mi: 0.2, to: 0.2, ri: 0.3, ru: 0.1}
+            chain: {
+                i: 0.1,
+                ko: 0.1,
+                mi: 0.2,
+                to: 0.2,
+                ri: 0.3,
+                ru: 0.1
+            }
         },
         sa: {
             value: 'sa',
@@ -340,7 +358,11 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {ko: 0.375, gu: 0.25, i: 0.375}
+            chain: {
+                ko: 0.375,
+                gu: 0.25,
+                i: 0.375
+            }
         },
         no: {
             value: 'no',
@@ -522,14 +544,23 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {ko: 0.5, mi: 0.5}
+            chain: {
+                ko: 0.5,
+                mi: 0.5
+            }
         },
         ro: {
             value: 'ro',
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {e: 0.2, ko: 0.2, yo: 0.2, mi: 0.2, mu: 0.2}
+            chain: {
+                e: 0.2,
+                ko: 0.2,
+                yo: 0.2,
+                mi: 0.2,
+                mu: 0.2
+            }
         },
         ju: {
             value: 'ju',
@@ -543,7 +574,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {ya: 0.5, mi: 0.5}
+            chain: {
+                ya: 0.5,
+                mi: 0.5
+            }
         },
         ori: {
             value: 'ori',
@@ -564,14 +598,21 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {ko: 0.5, e: 0.5}
+            chain: {
+                ko: 0.5,
+                e: 0.5
+            }
         },
         re: {
             value: 're',
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {na: 0.3333333333333333, i: 0.5, n: 0.16666666666666666}
+            chain: {
+                na: 0.3333333333333333,
+                i: 0.5,
+                n: 0.16666666666666666
+            }
         },
         kyo: {
             value: 'kyo',
@@ -585,7 +626,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {ka: 0.6666666666666666, ri: 0.3333333333333333}
+            chain: {
+                ka: 0.6666666666666666,
+                ri: 0.3333333333333333
+            }
         },
         ra: {
             value: 'ra',
@@ -630,7 +674,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: true,
             acceptableAsLast: true,
-            chain: {ko: 0.6666666666666666, ka: 0.3333333333333333}
+            chain: {
+                ko: 0.6666666666666666,
+                ka: 0.3333333333333333
+            }
         },
         bi: {
             value: 'bi',
@@ -658,7 +705,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
-            chain: {i: 0.3333333333333333, tsu: 0.6666666666666666}
+            chain: {
+                i: 0.3333333333333333,
+                tsu: 0.6666666666666666
+            }
         },
         bu: {
             value: 'bu',
@@ -679,7 +729,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {u: 0.6666666666666666, ko: 0.3333333333333333}
+            chain: {
+                u: 0.6666666666666666,
+                ko: 0.3333333333333333
+            }
         },
         da: {
             value: 'da',
@@ -713,7 +766,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {ko: 0.5, ri: 0.5}
+            chain: {
+                ko: 0.5,
+                ri: 0.5
+            }
         },
         sho: {
             value: 'sho',
@@ -749,7 +805,10 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
-            chain: {i: 0.25, ru: 0.75}
+            chain: {
+                i: 0.25,
+                ru: 0.75
+            }
         },
         gi: {
             value: 'gi',
@@ -777,9 +836,14 @@ var japaneseFeminineFirstnames = (function() {
             acceptableAsFirst: false,
             acceptableAsMiddle: true,
             acceptableAsLast: false,
-            chain: {ru: 0.5, sa: 0.5}
+            chain: {
+                ru: 0.5,
+                sa: 0.5
+            }
         }
     };
+
+    /* jscs: enable */
 
     return new WMC(rules, data);
 }());
