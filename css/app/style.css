@@ -31,6 +31,15 @@ section > div {
     border-radius:8px;
 }
 
+section.names ul {
+    width: 45%;
+    float:left;
+}
+
+section.names a {
+    clear:both;
+}
+
 section a {
     color: #746284;
 }

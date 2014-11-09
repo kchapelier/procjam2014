@@ -15,6 +15,13 @@
             <section class="names">
                 <div>
                     <h1>So... what are you going to do exactly ?</h1>
+                    <ul class="feminineFirstnames">
+                        <li>&nbsp;</li>
+                    </ul>
+                    <ul class="masculineFirstnames">
+                        <li>&nbsp;</li>
+                    </ul>
+                    <a class="generateNames" href="#" >Generate a new set</a>
                 </div>
             </section>
             <section class="music">
@@ -27,19 +34,26 @@
         <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
         <script src="js/app/lib/weightedmarkovchain.js"></script>
         <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
+        <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
         <script>
             $(function() {
-                var generateFortyNames = function() {
-                    var names = [];
-                    for(var i = 0; i < 40; i++) {
-                        names.push(japaneseFeminineFirstnames.get().join(''));
+                var generateNames = function() {
+                    var flist = $('.feminineFirstnames'),
+                        mlist = $('.masculineFirstnames'),
+                        i;
+
+                    flist.empty();
+                    mlist.empty();
+
+                    for(i = 0; i < 10; i++) {
+                        flist.append($('<li>', { text : japaneseFeminineFirstnames.get().join('') }));
+                        mlist.append($('<li>', { text : japaneseMasculineFirstnames.get().join('') }));
                     }
-                    console.log(names);
                 };
 
                 var part2 = function() {
                     console.log('part2');
-                    generateFortyNames();
+                    generateNames();
                 };
 
                 var part3 = function() {
@@ -67,6 +81,11 @@
                 $('.next').on('click', function(e) {
                     e.preventDefault();
                     $('.main').moveDown();
+                });
+
+                $('.generateNames').on('click', function(e) {
+                    e.preventDefault();
+                    generateNames();
                 });
             });
         </script>

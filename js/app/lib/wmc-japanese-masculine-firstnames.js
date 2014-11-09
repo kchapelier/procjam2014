@@ -1477,5 +1477,5 @@ var japaneseMasculineFirstnames = (function () {
         }
     };
 
-    return new WMC(rules, data);
+    return new WMC(rules, data, true);
 }());
