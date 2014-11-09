@@ -25,8 +25,27 @@
         </div>
         <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
+        <script src="js/app/lib/weightedmarkovchain.js"></script>
+        <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
         <script>
             $(function() {
+                var generateFortyNames = function() {
+                    var names = [];
+                    for(var i = 0; i < 40; i++) {
+                        names.push(japaneseFeminineFirstnames.get().join(''));
+                    }
+                    console.log(names);
+                };
+
+                var part2 = function() {
+                    console.log('part2');
+                    generateFortyNames();
+                };
+
+                var part3 = function() {
+                    console.log('part3');
+                };
+
                 $('.main').onepage_scroll({
                     sectionContainer: "section",
                     easing: "ease",
@@ -35,7 +54,14 @@
                     updateURL: false,
                     loop: false,
                     keyboard: true,
-                    direction: "vertical"
+                    direction: "vertical",
+                    afterMove : function(index) {
+                        if(index === 2) {
+                            part2();
+                        } else if(index === 3) {
+                            part3();
+                        }
+                    }
                 });
 
                 $('.next').on('click', function(e) {
