@@ -33,6 +33,7 @@
             </section>
         </div>
         <script src="js/vendors/brain/brain-0.6.3.js"></script>
+        <script src="js/vendors/noisejs/perlin.js"></script>
         <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
         <script src="js/app/lib/map2d.js"></script>
@@ -40,6 +41,8 @@
         <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
         <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
         <script>
+            noise.seed(Math.random());
+
             $(function() {
                 var makeNeuralFunction = function(dataset) {
                     var net = new brain.NeuralNetwork();
@@ -85,8 +88,16 @@
 
                     var map = new Map2D(width, height);
 
-                    map.rect(0, 0, 100, 100, 255);
-                    map.circ(10, 10, 40, 0);
+                    map.rect(0, 0, width, height, function(x, y) {
+                        var v = ((
+                                    noise.perlin2(x / 200, y / 200) +
+                                    noise.perlin2(x / 100, y / 100) +
+                                    noise.perlin2(x / 50, y / 50) +
+                                    noise.perlin2(x / 25, y / 25)
+                                ) + 2) / 4 * 255;
+
+                        return v;
+                    });
 
                     Map2D.draw(context, 0, 0, map);
                 };
