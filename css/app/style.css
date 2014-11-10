@@ -32,7 +32,9 @@ section > div {
 }
 
 section.names ul {
+    opacity: 0;
     width: 45%;
+    padding-bottom:2%;
     float:left;
 }
 
@@ -41,6 +43,11 @@ section.names a {
 }
 
 section a {
-    color: #746284;
+    color: #FFFFFF;
+    background-color:#000000;
+    text-decoration: none;
+    display: inline-block;
+    border-radius:3px;
+    padding:1% 1.1%;
 }
 

@@ -53,7 +53,9 @@
 
                 var part2 = function() {
                     console.log('part2');
-                    generateNames();
+                    $('.names ul').animate({
+                        opacity: 1
+                    })
                 };
 
                 var part3 = function() {
@@ -87,6 +89,8 @@
                     e.preventDefault();
                     generateNames();
                 });
+
+                generateNames();
             });
         </script>
     </body>
