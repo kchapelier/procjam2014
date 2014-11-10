@@ -29,10 +29,10 @@ var Map2D = (function () {
     Map2D.prototype.rect = function (x, y, width, height, value) {
         for(var iy = 0; iy < height; iy++) {
             for(var ix = 0; ix < width; ix++) {
-                var value = typeof value === 'function' ? value(ix, iy, width, height) : value;
+                var v = typeof value === 'function' ? value(ix, iy, width, height) : value;
 
-                if(value !== null) {
-                    this.set(x + ix, y + iy, value);
+                if(v !== null) {
+                    this.set(x + ix, y + iy, v);
                 }
             }
         }
@@ -46,7 +46,7 @@ var Map2D = (function () {
             var hy = 2 * iy / height - 1;
             var h = hx * hx + hy * hy;
             if(h < 1 && h > -1) {
-                return value(ix, iy, width, height);
+                return typeof value === 'function' ? value(ix, iy, width, height) : value;
             }
 
             return null;
@@ -65,6 +65,26 @@ var Map2D = (function () {
         }
 
         return clone;
+    };
+
+    Map2D.draw = function (context, x, y, map) {
+        var width = map.width,
+            height = map.height,
+            imageData = context.createImageData(width, height),
+            data = imageData.data,
+            value, ix, iy;
+
+        for(ix = 0; ix < map.width; ix++) {
+            for(iy = 0; iy < height; iy++) {
+                value = map.get(ix, iy);
+                data[(ix + iy * width) * 4 + 0] = value;
+                data[(ix + iy * width) * 4 + 1] = value;
+                data[(ix + iy * width) * 4 + 2] = value;
+                data[(ix + iy * width) * 4 + 3] = 255;
+            }
+        }
+
+        context.putImageData(imageData, x, y);
     };
 
     return Map2D;
