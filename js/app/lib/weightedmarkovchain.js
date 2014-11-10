@@ -156,10 +156,10 @@ var WMC = (function () {
     WMC.prototype.generateSequence = function () {
         var maxElements = this.getElementsNumber(),
             result = [],
-            i;
+            i, current;
 
         for (i = 0; i < maxElements; i++) {
-            var current = this.next(result);
+            current = this.next(result);
 
             if (current === null) {
                 // reached a dead end
