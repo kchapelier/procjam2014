@@ -30,6 +30,7 @@
                 </div>
             </section>
         </div>
+        <script src="js/vendors/brain/brain-0.6.3.js"></script>
         <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
         <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
         <script src="js/app/lib/weightedmarkovchain.js"></script>
@@ -37,6 +38,32 @@
         <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
         <script>
             $(function() {
+                var makeNeuralFunction = function(dataset) {
+                    var net = new brain.NeuralNetwork();
+
+                    net.train(dataset);
+
+                    return function() {
+                        return net.run.call(net, arguments);
+                    };
+                };
+
+                var add = makeNeuralFunction([
+                    {input: [0.0, 0.0], output: { sum: 0.0 }},
+                    {input: [0.1, 0.0], output: { sum: 0.1 }},
+                    {input: [0.1, 0.1], output: { sum: 0.2 }},
+                    {input: [0.0, 0.1], output: { sum: 0.1 }},
+                    {input: [0.0, 1.0], output: { sum: 1.0 }},
+                    {input: [1.0, 0.0], output: { sum: 1.0 }},
+                    {input: [0.4, 0.6], output: { sum: 1.0 }},
+                    {input: [0.4, 0.2], output: { sum: 0.6 }},
+                    {input: [0.2, 0.6], output: { sum: 0.6 }}
+                ]);
+
+                console.log(add(0.2, 0.1));
+                console.log(add(0.0, 0.0));
+                console.log(add(0.5, 0.25));
+
                 var generateNames = function() {
                     var flist = $('.feminineFirstnames'),
                         mlist = $('.masculineFirstnames'),
