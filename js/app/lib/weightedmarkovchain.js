@@ -1,7 +1,8 @@
 var WMC = (function () {
     "use strict";
 
-    // TODO implement number value probability
+    // TODO implement starting value probability
+    // TODO implement backtracking for when the current element has a single element which cannot be used due to position rule
 
     var WMC = function (rules, data, unsafe) {
         this.rules = rules;
@@ -90,19 +91,47 @@ var WMC = (function () {
         );
     };
 
-    WMC.prototype.postProcess = function(elements) {
+    WMC.prototype.postProcess = function (elements) {
         var values = elements.map(function (e) {
             return e.value;
         });
 
-        if(typeof this.rules.postProcess === 'function') {
+        if (typeof this.rules.postProcess === 'function') {
             values = this.rules.postProcess(values);
         }
 
         return values;
     };
 
+    WMC.prototype.validateSequence = function (sequence) {
+        var valid = true;
+
+        if (typeof this.rules.validate === 'function') {
+            valid = this.rules.validate(sequence);
+        }
+
+        return valid;
+    };
+
+    WMC.prototype.validateElement = function (position, maxElements, element) {
+        var acceptable = true;
+
+        if (this.rules.elementsPositionRules) {
+            if (position === 0) {
+                acceptable = element.acceptableAsFirst;
+            } else if (position === maxElements - 1) {
+                acceptable = element.acceptableAsLast;
+            } else {
+                acceptable = element.acceptableAsMiddle;
+            }
+        }
+
+        return acceptable;
+    };
+
     WMC.prototype.next = function (previousValues) {
+        var value = null;
+
         if (previousValues && previousValues.length > 0) {
             var previous = previousValues[previousValues.length - 1];
             if (previous.hasOwnProperty('chain')) {
@@ -111,45 +140,33 @@ var WMC = (function () {
                     r = r - previous.chain[key];
 
                     if (r < 0) {
-                        return this.data[key];
+                        value = this.data[key];
+                        break;
                     }
                 }
             }
-
-            return null;
         } else {
             var elements = this.dataKeys;
-            return this.data[elements[Math.floor(Math.random() * elements.length)]];
+            value = this.data[elements[Math.floor(Math.random() * elements.length)]];
         }
+
+        return value;
     };
 
-    WMC.prototype.get = function () {
-        var elementsMaxNumber = this.getElementsNumber(),
+    WMC.prototype.generateSequence = function () {
+        var maxElements = this.getElementsNumber(),
             result = [],
             i;
 
-        for (i = 0; i < elementsMaxNumber; i++) {
-            var current = this.next(result),
-                acceptable = false;
+        for (i = 0; i < maxElements; i++) {
+            var current = this.next(result);
 
             if (current === null) {
                 // reached a dead end
                 break;
             }
 
-            if (this.rules.elementsPositionRules) {
-                if (i === 0) {
-                    acceptable = current.acceptableAsFirst;
-                } else if (i === elementsMaxNumber - 1) {
-                    acceptable = current.acceptableAsLast;
-                } else {
-                    acceptable = current.acceptableAsMiddle;
-                }
-            } else {
-                acceptable = true;
-            }
-
-            if (!acceptable) {
+            if (!this.validateElement(i, maxElements, current)) {
                 // retry
                 i--;
                 continue;
@@ -158,7 +175,30 @@ var WMC = (function () {
             result.push(current);
         }
 
-        return this.postProcess(result);
+        return result;
+    };
+
+    WMC.prototype.get = function () {
+        var result = null,
+            maxTries = 1000,
+            tries = 0;
+
+        while (result === null) {
+            tries++;
+
+            if (tries > maxTries) {
+                throw new Error('Weighted Markov Chain : ' + maxTries + ' iterations without any valid result.');
+            }
+
+            result = this.generateSequence();
+            result = this.postProcess(result);
+
+            if (!this.validateSequence(result)) {
+                result = null;
+            }
+        }
+
+        return result;
     };
 
     return WMC;

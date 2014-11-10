@@ -5,7 +5,7 @@ var japaneseFeminineFirstnames = (function () {
         elementsMinNumber: 2,
         elementsMaxNumber: 4,
         elementsPositionRules: true,
-        postProcess : function(values) {
+        postProcess: function (values) {
             var name = values.join('');
             name = name.charAt(0).toUpperCase() + name.slice(1);
             return name;
