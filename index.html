@@ -27,6 +27,8 @@
             <section class="music">
                 <div>
                     <h1>Aaaand ?</h1>
+
+                    <canvas id="canvas" width="200" height="200"></canvas>
                 </div>
             </section>
         </div>
@@ -76,6 +78,27 @@
 
                 var part3 = function() {
                     console.log('part3');
+                    var canvas = document.getElementById('canvas');
+                    var context = canvas.getContext('2d');
+
+                    var map = new Map2D(200, 200),
+                        imageData = context.createImageData(200, 200),
+                        data = imageData.data;
+
+                    for(var x = 0; x < 200; x++) {
+                        for(var y = 0; y < 200; y++) {
+                            data[(x * 200 + y) * 4 + 0] = 0; map.getIndex();
+                            data[(x * 200 + y) * 4 + 1] = 0; map.getIndex();
+                            data[(x * 200 + y) * 4 + 2] = 0; map.getIndex();
+                            data[(x * 200 + y) * 4 + 3] = 255;
+                        }
+                    }
+
+                    console.log(canvas);
+                    console.log(imageData);
+
+                    context.putImageData(imageData, 0, 0);
+
                 };
 
                 $('.main').onepage_scroll({

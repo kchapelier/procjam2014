@@ -1,3 +1,7 @@
+/**
+ * Naive implementation of a fast 2 dimensional array with a wrapped typed array.
+ * http://jsperf.com/normal-2d-array-vs-wrapped-typedarray/2
+ */
 var Map2D = (function () {
     "use strict";
 
