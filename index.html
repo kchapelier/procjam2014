@@ -72,6 +72,39 @@
                     }
                 };
 
+                var drawNoise = function() {
+                    var canvas = document.getElementById('canvas'),
+                            context = canvas.getContext('2d'),
+                            width = canvas.width,
+                            height = canvas.height;
+
+                    var map = new Map2D(width, height);
+
+                    map.rect(0, 0, width, height, function(x, y) {
+                        var v = ((
+                                noise.simplex2(x / 200, y / 200) * 16 +
+                                noise.perlin2(x / 100, y / 100) * 8 +
+                                noise.perlin2(x / 50, y / 50) * 4 +
+                                noise.perlin2(x / 25, y / 25) * 2 +
+                                noise.perlin2(x / 12.5, y / 12.55)
+                                ) + 31) / 62 * 255;
+
+                        return v;
+                    });
+
+                    var map2 = Map2D.clone(map);
+
+                    var average = map2.reduce(function(a, b) {
+                        return a + b;
+                    }) / (width * height);
+
+                    map2.map(function(value, x, y) {
+                        return value > average ? 255 : 0;
+                    });
+
+                    Map2D.draw(context, 0, 0, map2);
+                };
+
                 var part2 = function() {
                     console.log('part2');
                     $('.names ul').animate({
@@ -81,26 +114,7 @@
 
                 var part3 = function() {
                     console.log('part3');
-                    var canvas = document.getElementById('canvas'),
-                        context = canvas.getContext('2d'),
-                        width = canvas.width,
-                        height = canvas.height;
 
-                    var map = new Map2D(width, height);
-
-                    map.rect(0, 0, width, height, function(x, y) {
-                        var v = ((
-                                    noise.perlin2(x / 200, y / 200) * 16 +
-                                    noise.perlin2(x / 100, y / 100) * 8 +
-                                    noise.perlin2(x / 50, y / 50) * 4 +
-                                    noise.perlin2(x / 25, y / 25) * 2 +
-                                    noise.perlin2(x / 12.5, y / 12.55)
-                                ) + 31) / 62 * 255;
-
-                        return v;
-                    });
-
-                    Map2D.draw(context, 0, 0, map);
                 };
 
                 $('.main').onepage_scroll({
@@ -132,6 +146,7 @@
                 });
 
                 generateNames();
+                setTimeout(drawNoise, 500);
             });
         </script>
     </body>

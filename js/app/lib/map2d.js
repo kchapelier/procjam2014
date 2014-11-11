@@ -9,7 +9,7 @@ var Map2D = (function () {
         this.width = width;
         this.height = height;
         this.type = type || Uint8Array;
-        this.map = new this.type(width * height);
+        this.values = new this.type(width * height);
     };
 
     Map2D.prototype.getIndex = function (x, y) {
@@ -17,11 +17,11 @@ var Map2D = (function () {
     };
 
     Map2D.prototype.get = function (x, y) {
-        return this.map[this.getIndex(x, y)];
+        return this.values[this.getIndex(x, y)];
     };
 
     Map2D.prototype.set = function (x, y, value) {
-        this.map[this.getIndex(x, y)] = value;
+        this.values[this.getIndex(x, y)] = value;
 
         return this;
     };
@@ -55,12 +55,44 @@ var Map2D = (function () {
         return this;
     };
 
+    Map2D.prototype.map = function (callback) {
+        var value,
+            i, x, y;
+
+        for(i = 0; i < this.values.length; i++) {
+            value = this.values[i];
+            x = i % this.width;
+            y = Math.floor(i / this.width);
+
+            this.values[i] = callback(value, x, y);
+        }
+    };
+
+    Map2D.prototype.reduce = function (callback, initialValue) {
+        var current = initialValue || 0,
+            value, i, x, y;
+
+        for(i = 0; i < this.values.length; i++) {
+            value = this.values[i];
+            x = i % this.width;
+            y = Math.floor(i / this.width);
+
+            if(value > 700) {
+                console.log(value, x, y);
+            }
+
+            current = callback(current, value, x, y);
+        }
+
+        return current;
+    };
+
     Map2D.clone = function (map) {
         var clone = new Map2D(map.width, map.height, map.type);
 
         for(var iy = 0; iy < map.height; iy++) {
             for(var ix = 0; ix < map.width; ix++) {
-                clone.set(x + ix, y + iy, map.get(ix, iy));
+                clone.set(ix, iy, map.get(ix, iy));
             }
         }
 
