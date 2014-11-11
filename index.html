@@ -1,150 +1,151 @@
 <html>
-    <head>
-        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="css/vendors/jquery.onepage-scroll.css" />
-        <link rel="stylesheet" href="css/app/style.css" />
-    </head>
-    <body>
-        <div class="main">
-            <section class="intro">
-                <div>
-                    <h1>Lets do something !</h1>
-                    <a class="next" href="#">Yes, let's do it !</a>
-                </div>
-            </section>
-            <section class="names">
-                <div>
-                    <h1>So... what are you going to do exactly ?</h1>
-                    <ul class="feminineFirstnames">
-                        <li>&nbsp;</li>
-                    </ul>
-                    <ul class="masculineFirstnames">
-                        <li>&nbsp;</li>
-                    </ul>
-                    <a class="generateNames" href="#" >Generate a new set</a>
-                </div>
-            </section>
-            <section class="music">
-                <div>
-                    <h1>Aaaand ?</h1>
-
-                    <canvas id="canvas" width="1900" height="800"></canvas>
-                </div>
-            </section>
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/vendors/jquery.onepage-scroll.css"/>
+    <link rel="stylesheet" href="css/app/style.css"/>
+</head>
+<body>
+<div class="main">
+    <section class="intro">
+        <div>
+            <h1>Lets do something !</h1>
+            <a class="next" href="#">Yes, let's do it !</a>
         </div>
-        <script src="js/vendors/brain/brain-0.6.3.js"></script>
-        <script src="js/vendors/noisejs/perlin.js"></script>
-        <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
-        <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
-        <script src="js/app/lib/map2d.js"></script>
-        <script src="js/app/lib/weightedmarkovchain.js"></script>
-        <script src="js/app/lib/wmc-norway-cities-names.js"></script>
-        <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
-        <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
-        <script src="js/app/map-generation.js"></script>
-        <script>
-            noise.seed(Math.random());
+    </section>
+    <section class="names">
+        <div>
+            <h1>So... what are you going to do exactly ?</h1>
+            <ul class="feminineFirstnames">
+                <li>&nbsp;</li>
+            </ul>
+            <ul class="masculineFirstnames">
+                <li>&nbsp;</li>
+            </ul>
+            <a class="generateNames" href="#">Generate a new set</a>
+        </div>
+    </section>
+    <section class="music">
+        <div>
+            <h1>Aaaand ?</h1>
 
-            $(function() {
-                var makeNeuralFunction = function(dataset) {
-                    var net = new brain.NeuralNetwork();
+            <canvas id="canvas" width="1200" height="500"></canvas>
+        </div>
+    </section>
+</div>
+<script src="js/vendors/brain/brain-0.6.3.js"></script>
+<script src="js/vendors/noisejs/perlin.js"></script>
+<script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
+<script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
+<script src="js/app/lib/map2d.js"></script>
+<script src="js/app/lib/weightedmarkovchain.js"></script>
+<script src="js/app/lib/wmc-norway-cities-names.js"></script>
+<script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
+<script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
+<script src="js/app/map-generation.js"></script>
+<script>
+    var seed = Math.random();
+    console.log('seed', seed);
+    noise.seed(seed);
 
-                    net.train(dataset);
+    $(function () {
+        var makeNeuralFunction = function (dataset) {
+            var net = new brain.NeuralNetwork();
 
-                    return function() {
-                        return net.run.call(net, arguments);
-                    };
-                };
+            net.train(dataset);
 
-                var roundUp = function(to, src) {
-                    return Math.round(src * to);
-                };
+            return function () {
+                return net.run.call(net, arguments);
+            };
+        };
 
-                var generateNames = function() {
-                    var flist = $('.feminineFirstnames'),
-                        mlist = $('.masculineFirstnames'),
-                        i;
+        var roundUp = function (to, src) {
+            return Math.round(src * to);
+        };
 
-                    flist.empty();
-                    mlist.empty();
+        var generateNames = function () {
+            var flist = $('.feminineFirstnames'),
+                mlist = $('.masculineFirstnames'),
+                i;
 
-                    for(i = 0; i < 10; i++) {
-                        flist.append($('<li>', { text : japaneseFeminineFirstnames.get() }));
-                        mlist.append($('<li>', { text : japaneseMasculineFirstnames.get() }));
-                    }
-                };
+            flist.empty();
+            mlist.empty();
 
-                var drawNoise = function() {
-                    var canvas = document.getElementById('canvas'),
-                        context = canvas.getContext('2d'),
-                        width = canvas.width,
-                        height = canvas.height;
+            for (i = 0; i < 10; i++) {
+                flist.append($('<li>', {text: japaneseFeminineFirstnames.get()}));
+                mlist.append($('<li>', {text: japaneseMasculineFirstnames.get()}));
+            }
+        };
 
-                    var heightPropensityMap = getHeightPropensityMap(width, height);
-                    var heightMap = getHeightMap(width, height, heightPropensityMap);
+        var drawNoise = function () {
+            var canvas = document.getElementById('canvas'),
+                    context = canvas.getContext('2d'),
+                    width = canvas.width,
+                    height = canvas.height;
 
-					var map2 = Map2D.clone(heightMap);
+            var heightPropensityMap = getHeightPropensityMap(width, height);
+            var heightMap = getHeightMap(width, height, heightPropensityMap);
+            //var erodedMap = getErodedMap(heightMap);
 
-                    var average = map2.reduce(function(a, b) {
+            var map2 = Map2D.clone(heightMap);
+
+            var average = map2.reduce(function (a, b) {
                         return a + b;
                     }) / (width * height) * 1.25;
 
-                    map2.map(function(value, x, y) {
-                        return Math.min(255, value > average ? value * 1.2 : value / 1.75);
-                    });
-
-                    Map2D.draw(context, 0, 0, map2);
-
-                    //TODO the shape of the continents and island looks ok but their edge are way too wobbly
-                    //TODO need to simplify the noise cloud (i.e. use less octaves)
-                    //TODO and use erosion simulation to get more grainy details in the continents and erase the smallest islands
-                    //TODO continent / island identification
-                    //TODO lake / rivers
-                };
-
-                var part2 = function() {
-                    console.log('part2');
-                    $('.names ul').animate({
-                        opacity: 1
-                    })
-                };
-
-                var part3 = function() {
-                    console.log('part3');
-
-                };
-
-                $('.main').onepage_scroll({
-                    sectionContainer: "section",
-                    easing: "ease",
-                    animationTime: 700,
-                    pagination: true,
-                    updateURL: false,
-                    loop: false,
-                    keyboard: true,
-                    direction: "vertical",
-                    afterMove : function(index) {
-                        if(index === 2) {
-                            part2();
-                        } else if(index === 3) {
-                            part3();
-                        }
-                    }
-                });
-
-                $('.next').on('click', function(e) {
-                    e.preventDefault();
-                    $('.main').moveDown();
-                });
-
-                $('.generateNames').on('click', function(e) {
-                    e.preventDefault();
-                    generateNames();
-                });
-
-                generateNames();
-                setTimeout(drawNoise, 100);
+            map2.map(function (value, x, y) {
+                return Math.min(255, value > average ? (value - 30) * 1.5 : value / 1.75);
+                //return Math.min(255, value > average ? (10 + value - average) * (6) : 0);
             });
-        </script>
-    </body>
+
+            Map2D.draw(context, 0, 0, map2);
+
+            //TODO use erosion simulation to get more grainy details in the continents and erase the smallest islands
+            //TODO continent / island identification
+            //TODO lake / rivers
+        };
+
+        var part2 = function () {
+            console.log('part2');
+            $('.names ul').animate({
+                opacity: 1
+            })
+        };
+
+        var part3 = function () {
+            console.log('part3');
+        };
+
+        $('.main').onepage_scroll({
+            sectionContainer: "section",
+            easing: "ease",
+            animationTime: 700,
+            pagination: true,
+            updateURL: false,
+            loop: false,
+            keyboard: true,
+            direction: "vertical",
+            afterMove: function (index) {
+                if (index === 2) {
+                    part2();
+                } else if (index === 3) {
+                    part3();
+                }
+            }
+        });
+
+        $('.next').on('click', function (e) {
+            e.preventDefault();
+            $('.main').moveDown();
+        });
+
+        $('.generateNames').on('click', function (e) {
+            e.preventDefault();
+            generateNames();
+        });
+
+        generateNames();
+        setTimeout(drawNoise, 100);
+    });
+</script>
+</body>
 </html>

@@ -13,11 +13,21 @@ var Map2D = (function () {
     };
 
     Map2D.prototype.getIndex = function (x, y) {
+        if (x < 0 || y < 0 || x > this.width - 1 || y > this.height - 1) {
+            return NaN;
+        }
+
         return y * this.width + x;
     };
 
     Map2D.prototype.get = function (x, y) {
-        return this.values[this.getIndex(x, y)];
+        var index = this.getIndex(x, y);
+
+        if (isNaN(index)) {
+            return index;
+        } else {
+            return this.values[index];
+        }
     };
 
     Map2D.prototype.set = function (x, y, value) {
