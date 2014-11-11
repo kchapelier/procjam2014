@@ -28,7 +28,7 @@
                 <div>
                     <h1>Aaaand ?</h1>
 
-                    <canvas id="canvas" width="800" height="300"></canvas>
+                    <canvas id="canvas" width="800" height="600"></canvas>
                 </div>
             </section>
         </div>
@@ -40,6 +40,7 @@
         <script src="js/app/lib/weightedmarkovchain.js"></script>
         <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
         <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
+        <script src="js/app/map-generation.js"></script>
         <script>
             noise.seed(Math.random());
 
@@ -74,12 +75,15 @@
 
                 var drawNoise = function() {
                     var canvas = document.getElementById('canvas'),
-                            context = canvas.getContext('2d'),
-                            width = canvas.width,
-                            height = canvas.height;
+                        context = canvas.getContext('2d'),
+                        width = canvas.width,
+                        height = canvas.height;
 
-                    var map = new Map2D(width, height);
+                    var map = getHeightPropensityMap(width, height);
 
+                    Map2D.draw(context, 0, 0, map);
+
+                    /*
                     map.rect(0, 0, width, height, function(x, y) {
                         var v = ((
                                 noise.simplex2(x / 200, y / 200) * 16 +
@@ -91,7 +95,9 @@
 
                         return v;
                     });
+                    */
 
+                    /*
                     var map2 = Map2D.clone(map);
 
                     var average = map2.reduce(function(a, b) {
@@ -101,8 +107,9 @@
                     map2.map(function(value, x, y) {
                         return value > average ? 255 : 0;
                     });
+                    */
 
-                    Map2D.draw(context, 0, 0, map2);
+
                 };
 
                 var part2 = function() {
