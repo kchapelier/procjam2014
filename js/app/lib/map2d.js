@@ -94,6 +94,12 @@ var Map2D = (function () {
         return current;
     };
 
+    Map2D.prototype.replace = function (sourceValue, destinationValue) {
+        this.map(function(value) {
+            return value === sourceValue ? destinationValue : value;
+        });
+    };
+
     Map2D.clone = function (map) {
         var clone = new Map2D(map.width, map.height, map.type);
 
