@@ -28,7 +28,7 @@
                 <div>
                     <h1>Aaaand ?</h1>
 
-                    <canvas id="canvas" width="800" height="600"></canvas>
+                    <canvas id="canvas" width="1200" height="500"></canvas>
                 </div>
             </section>
         </div>
@@ -82,35 +82,23 @@
                     var heightPropensityMap = getHeightPropensityMap(width, height);
                     var heightMap = getHeightMap(width, height, heightPropensityMap);
 
-                    Map2D.draw(context, 0, 0, heightMap);
-
-                    /*
-                    map.rect(0, 0, width, height, function(x, y) {
-                        var v = ((
-                                noise.simplex2(x / 200, y / 200) * 16 +
-                                noise.perlin2(x / 100, y / 100) * 8 +
-                                noise.perlin2(x / 50, y / 50) * 4 +
-                                noise.perlin2(x / 25, y / 25) * 2 +
-                                noise.perlin2(x / 12.5, y / 12.55)
-                                ) + 31) / 62 * 255;
-
-                        return v;
-                    });
-                    */
-
-                    /*
-                    var map2 = Map2D.clone(map);
+					var map2 = Map2D.clone(heightMap);
 
                     var average = map2.reduce(function(a, b) {
                         return a + b;
-                    }) / (width * height);
+                    }) / (width * height) * 1.25;
 
                     map2.map(function(value, x, y) {
                         return value > average ? 255 : 0;
                     });
-                    */
 
+                    Map2D.draw(context, 0, 0, map2);
 
+                    //TODO the shape of the continents and island looks ok but their edge are way too wobbly
+                    //TODO need to simplify the noise cloud (i.e. use less octaves)
+                    //TODO and use erosion simulation to get more grainy details in the continents and erase the smallest islands
+                    //TODO continent / island identification
+                    //TODO lake / rivers
                 };
 
                 var part2 = function() {
@@ -154,7 +142,7 @@
                 });
 
                 generateNames();
-                setTimeout(drawNoise, 500);
+                setTimeout(drawNoise, 100);
             });
         </script>
     </body>

@@ -9,7 +9,7 @@ var getHeightPropensityMap = function(width, height) {
 
     console.time('getHeightPropensityMap');
 
-    var map = new Map2D(width, height);
+    var map = new Map2D(width, height, Float32Array);
 
     map.map(function (value, x, y) {
         // distortion
@@ -27,6 +27,8 @@ var getHeightPropensityMap = function(width, height) {
         );
 
         var increment = Math.pow(1 - Math.sqrt(Math.abs(v)), 3);
+        
+        //increment = isNaN(increment) ? 0 : increment;
 
         return Math.max(0, Math.min(1, (base * increment) * 2));
     });
@@ -44,17 +46,19 @@ var getHeightMap = function (width, height, propensityMap) {
     var map = new Map2D(width, height);
 
     map.map(function (value, x, y) {
-        var value = Math.abs(noise.perlin3(x / 1200, y / 1200, 300)) * 32 +
-                    noise.simplex2(x / 600, y / 600) * 16 +
-                    noise.perlin2(x / 300, y / 300) * 8 +
-                    noise.perlin2(x / 150, y / 150) * 4 +
-                    noise.perlin2(x / 75, y / 75) * 2 +
+    	var propensity = propensityMap.get(x, y);
+    
+        var value = Math.abs(noise.perlin3(x / 1200, y / 1200, 300 + propensity * 0.5)) * (32 + propensity * 32) +
+                    noise.simplex2(x / 600, y / 600) * (16 + propensity * 16) +
+                    noise.perlin2(x / 300, y / 300) * (8 + propensity * 8) +
+                    noise.perlin2(x / 150, y / 150) * (4 + propensity * 4) +
+                    noise.perlin2(x / 75, y / 75) * (2 + propensity * 2) +
                     noise.simplex2(x / 75, y / 75) +
                     noise.perlin2(x / 35, y / 35) +
-                    noise.perlin2(x / 17, y / 17) +
-                    noise.perlin2(x / 8, y / 8);
+                    noise.perlin2(x / 17, y / 17) * (1 + propensity * propensity * propensity) +
+                    noise.perlin2(x / 8, y / 8) + propensity;
 
-        return Math.max(0, Math.min(1, (value + 31) / 70))  * 255;
+        return Math.max(0, Math.min(1, (value + 31) / 100)) * 255;
     });
 
     console.timeEnd('getHeightMap');
