@@ -1,0 +1,108 @@
+# Used to generate the markov chain
+
+a r e n d a l
+b e r g e n
+b o d ø
+d r a m m e n
+e g e r s u n d
+f a r s u n d
+f l e k k e f j o r d
+f l o r ø
+f r e d r i k s t a d
+g j ø v i k
+g r i m s t a d
+h a l d e n
+h a m a r
+h a m m e r f e s t
+h a r s t a d
+h a u g e s u n d
+h o l m e s t r a n d
+h o r t e n
+h ø n e f o s s
+k o n g s b e r g
+k o n g s v i n g e r
+k r i s t i a n s a n d
+k r i s t i a n s u n d
+l a r v i k
+l i l l e h a m m e r
+m a n d a l
+m o l d e
+m o s s
+n a m s o s
+n a r v i k
+n o t o d d e n
+o s l o
+p o r s g r u n n
+r i s ø r
+s a n d e f j o r d
+s a n d n e s
+s a r p s b o r g
+s k i e n
+s t a v a n g e r
+s t e i n k j e r
+s ø g n e
+t r o m s ø
+t r o n d h e i m
+t ø n s b e r g
+v a d s ø
+v a r d ø
+v e n n e s l a
+å l e s u n d
+a l t a
+a s k i m
+b r e k s t a d
+b r e v i k
+b r u m u n d d a l
+b r y n e
+b r ø n n ø y s u n d
+d r ø b a k
+e l v e r u m
+f a u s k e
+f a g e r n e s
+f i n n s n e s
+f o s n a v å g
+f ø r d e
+h o k k s u n d
+h o n n i n g s v å g
+j ø r p e l a n d
+k i r k e n e s
+k o l v e r e i d
+k o p e r v i k
+k r a g e r ø
+l a n g e s u n d
+l e i r v i k
+l e k n e s
+l e v a n g e r
+l i l l e s a n d
+l i l l e s t r ø m
+l y n g d a l
+m o i r a n a
+m o s j ø e n
+m y s e n
+m å l ø y
+o d d a
+o r k a n g e r
+o t t a
+r j u k a n
+s a n d n e s s j ø e n
+s a n d v i k a
+s a u d a
+s k i
+s k u d e n e s h a v n
+s o r t l a n d
+s t a t h e l l e
+s t a v e r n
+s t j ø r d a l s h a l s e n
+t a n a n g e r
+u l s t e i n v i k
+v e r d a l s ø r a
+å k r e h a m n
+å n d a l s n e s
+h o l m s b u
+h v i t s t e n
+h ø l e n
+r ø r o s
+s e t e r m o e n
+s o g n d a l
+s o n
+å s g å r d s t r a n d
