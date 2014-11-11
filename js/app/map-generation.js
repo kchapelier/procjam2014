@@ -67,6 +67,26 @@ var getHeightMap = function (width, height, propensityMap) {
     return map;
 };
 
+var getContinentMap = function (heightMap) {
+    "use strict";
+
+    console.time('getContinentMap');
+
+    var map = Map2D.clone(heightMap);
+
+    var average = map.reduce(function (a, b) {
+        return a + b;
+    }) / (map.width * map.height) * 1.25;
+
+    map.map(function (value, x, y) {
+        return value > average ? 255 : 0;
+    });
+
+    console.timeEnd('getContinentMap');
+
+    return map;
+};
+
 var getErodedMap = function (heightMap) {
     "use strict";
 

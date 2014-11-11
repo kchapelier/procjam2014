@@ -84,20 +84,64 @@
 
             var heightPropensityMap = getHeightPropensityMap(width, height);
             var heightMap = getHeightMap(width, height, heightPropensityMap);
+            var continentMap = getContinentMap(heightMap);
             //var erodedMap = getErodedMap(heightMap);
 
-            var map2 = Map2D.clone(heightMap);
-
-            var average = map2.reduce(function (a, b) {
-                        return a + b;
-                    }) / (width * height) * 1.25;
-
-            map2.map(function (value, x, y) {
-                return Math.min(255, value > average ? (value - 30) * 1.5 : value / 1.75);
-                //return Math.min(255, value > average ? (10 + value - average) * (6) : 0);
+            var map = Map2D.clone(heightMap);
+            map.map(function (value, x, y) {
+                return Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75);
+                //return Math.min(255, continentMap.get(x, y) ? (10 + value - average) * (6) : 0);
             });
 
-            Map2D.draw(context, 0, 0, map2);
+            var zones = [];
+
+            continentMap.map(function(value, x, y) {
+                if(value === 255) {
+                    value = Math.floor(Math.random() * 150 + 50);
+
+                    var zone = {
+                        start : {
+                            x : x,
+                            y : y
+                        },
+                        value : value
+                    };
+
+                    var count = 0;
+
+
+
+                    var points = [[x,y]];
+
+                    while(points.length > 0) {
+                        count++;
+                        var point = points.pop();
+
+                        continentMap.set(point[0], point[1], value);
+
+                        var left = [point[0] - 1, point[1], continentMap.get(point[0] - 1, point[1])],
+                            right = [point[0] + 1, point[1], continentMap.get(point[0] + 1, point[1])],
+                            up = [point[0], point[1] - 1, continentMap.get(point[0], point[1] - 1)],
+                            down = [point[0], point[1] + 1, continentMap.get(point[0], point[1] + 1)];
+
+                        [left, right, up, down].forEach(function(adjPoint) {
+                            if(adjPoint[2] === 255) {
+                                points.push(adjPoint);
+                            }
+                        });
+                    }
+
+                    zone.size = count;
+
+                    zones.push(zone);
+                }
+
+                return value;
+            });
+
+            console.log(zones);
+
+            Map2D.draw(context, 0, 0, continentMap);
 
             //TODO use erosion simulation to get more grainy details in the continents and erase the smallest islands
             //TODO continent / island identification
