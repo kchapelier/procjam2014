@@ -27,11 +27,11 @@ var Map2D = (function () {
     };
 
     Map2D.prototype.rect = function (x, y, width, height, value) {
-        for(var iy = 0; iy < height; iy++) {
-            for(var ix = 0; ix < width; ix++) {
+        for (var iy = 0; iy < height; iy++) {
+            for (var ix = 0; ix < width; ix++) {
                 var v = typeof value === 'function' ? value(ix, iy, width, height) : value;
 
-                if(v !== null) {
+                if (v !== null) {
                     this.set(x + ix, y + iy, v);
                 }
             }
@@ -42,10 +42,11 @@ var Map2D = (function () {
 
     Map2D.prototype.circ = function (x, y, radius, value) {
         this.rect(x, y, radius * 2, radius * 2, function (ix, iy, width, height) {
-            var hx = 2 * ix / width - 1;
-            var hy = 2 * iy / height - 1;
-            var h = hx * hx + hy * hy;
-            if(h < 1 && h > -1) {
+            var hx = 2 * ix / width - 1,
+                hy = 2 * iy / height - 1,
+                h = hx * hx + hy * hy;
+
+            if (h < 1 && h > -1) {
                 return typeof value === 'function' ? value(ix, iy, width, height) : value;
             }
 
@@ -59,7 +60,7 @@ var Map2D = (function () {
         var value,
             i, x, y;
 
-        for(i = 0; i < this.values.length; i++) {
+        for (i = 0; i < this.values.length; i++) {
             value = this.values[i];
             x = i % this.width;
             y = Math.floor(i / this.width);
@@ -72,14 +73,10 @@ var Map2D = (function () {
         var current = initialValue || 0,
             value, i, x, y;
 
-        for(i = 0; i < this.values.length; i++) {
+        for (i = 0; i < this.values.length; i++) {
             value = this.values[i];
             x = i % this.width;
             y = Math.floor(i / this.width);
-
-            if(value > 700) {
-                console.log(value, x, y);
-            }
 
             current = callback(current, value, x, y);
         }
@@ -90,8 +87,8 @@ var Map2D = (function () {
     Map2D.clone = function (map) {
         var clone = new Map2D(map.width, map.height, map.type);
 
-        for(var iy = 0; iy < map.height; iy++) {
-            for(var ix = 0; ix < map.width; ix++) {
+        for (var iy = 0; iy < map.height; iy++) {
+            for (var ix = 0; ix < map.width; ix++) {
                 clone.set(ix, iy, map.get(ix, iy));
             }
         }
@@ -106,8 +103,8 @@ var Map2D = (function () {
             data = imageData.data,
             value, ix, iy;
 
-        for(ix = 0; ix < map.width; ix++) {
-            for(iy = 0; iy < height; iy++) {
+        for (ix = 0; ix < map.width; ix++) {
+            for (iy = 0; iy < height; iy++) {
                 value = map.get(ix, iy);
                 data[(ix + iy * width) * 4 + 0] = value;
                 data[(ix + iy * width) * 4 + 1] = value;
