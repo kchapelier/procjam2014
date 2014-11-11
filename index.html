@@ -79,9 +79,10 @@
                         width = canvas.width,
                         height = canvas.height;
 
-                    var map = getHeightPropensityMap(width, height);
+                    var heightPropensityMap = getHeightPropensityMap(width, height);
+                    var heightMap = getHeightMap(width, height, heightPropensityMap);
 
-                    Map2D.draw(context, 0, 0, map);
+                    Map2D.draw(context, 0, 0, heightMap);
 
                     /*
                     map.rect(0, 0, width, height, function(x, y) {
