@@ -84,12 +84,12 @@
                     width = canvas.width,
                     height = canvas.height;
 
-            var heightPropensityMap = getHeightPropensityMap(width, height);
+            var heightPropensityMap = getAltHeightPropensityMap(width, height);
             var heightMap = getHeightMap(width, height, heightPropensityMap);
             //heightMap = getErodedMap(heightMap);
             var continentMap = getContinentMap(heightMap);
-            var preprocessedZones = differentiateContinents(continentMap);
-            var zones = postProcessZones(continentMap, heightMap, preprocessedZones);
+            //var preprocessedZones = differentiateContinents(continentMap);
+            //var zones = postProcessZones(continentMap, heightMap, preprocessedZones);
 
             var map = Map2D.clone(heightMap);
             map.map(function (value, x, y) {
@@ -99,8 +99,8 @@
 
             Map2D.draw(context, 0, 0, map);
 
-            console.log(zones.continents.reduce(function(p, e) { return p + ' ' + e.name; }, 'Continents :'));
-            console.log(zones.islands.reduce(function(p, e) { return p + ' ' + e.name; }, 'Islands :'));
+            //console.log(zones.continents.reduce(function(p, e) { return p + ' ' + e.name; }, 'Continents :'));
+            //console.log(zones.islands.reduce(function(p, e) { return p + ' ' + e.name; }, 'Islands :'));
 
             //TODO use erosion simulation to get more grainy details in the continents
             //TODO lake / rivers
