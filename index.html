@@ -85,78 +85,13 @@
             var heightPropensityMap = getHeightPropensityMap(width, height);
             var heightMap = getHeightMap(width, height, heightPropensityMap);
             var continentMap = getContinentMap(heightMap);
+            var preprocessedZones = differentiateContinents(continentMap);
+            var zones = postProcessZones(continentMap, heightMap, preprocessedZones);
+
+
             //var erodedMap = getErodedMap(heightMap);
 
-            var preprocessedZones = [];
 
-            var newValue = 250;
-            continentMap.map(function (value, x, y) {
-                if (value === 255) {
-                    var count = 0,
-                        points = [[x,y,value]];
-
-                    newValue = newValue - 5;
-                    value = newValue;
-
-                    var zone = {
-                        start : {
-                            x : x,
-                            y : y
-                        },
-                        value : value,
-                        name : japaneseFeminineFirstnames.get() //TODO replace this
-                    };
-
-                    while (points.length > 0) {
-                        count++;
-                        var point = points.pop();
-
-                        continentMap.set(point[0], point[1], value);
-
-                        var left = [point[0] - 1, point[1], continentMap.get(point[0] - 1, point[1])],
-                            right = [point[0] + 1, point[1], continentMap.get(point[0] + 1, point[1])],
-                            up = [point[0], point[1] - 1, continentMap.get(point[0], point[1] - 1)],
-                            down = [point[0], point[1] + 1, continentMap.get(point[0], point[1] + 1)];
-
-                        [left, right, up, down].forEach(function (adjPoint) {
-                            if(adjPoint[2] === 255) {
-                                points.push(adjPoint);
-                            }
-                        });
-                    }
-
-                    zone.size = count;
-
-                    preprocessedZones.push(zone);
-                }
-
-                return value;
-            });
-
-            var zones = {
-                continents : [],
-                islands : []
-            };
-
-            preprocessedZones.forEach(function (zone) {
-                if (zone.size > 6000) {
-                    zones.continents.push(zone);
-                } else if (zone.size > 6) {
-                    zones.islands.push(zone);
-                } else {
-                    continentMap.map(function(value, x, y) {
-                        if(value === zone.value) {
-                            //remove from the continent map
-                            value = 0;
-                            //remove from the height map
-                            heightMap.set(x, y, heightMap.get(x, y) * 0.85);
-                        }
-
-                        return value;
-                    });
-
-                }
-            });
 
             console.log(zones);
 

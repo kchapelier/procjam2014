@@ -95,7 +95,7 @@ var Map2D = (function () {
     };
 
     Map2D.prototype.replace = function (sourceValue, destinationValue) {
-        this.map(function(value) {
+        this.map(function (value) {
             return value === sourceValue ? destinationValue : value;
         });
     };

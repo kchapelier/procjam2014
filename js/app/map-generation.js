@@ -87,6 +87,101 @@ var getContinentMap = function (heightMap) {
     return map;
 };
 
+var differentiateContinents = function (continentMap) {
+    "use strict";
+
+    console.time('differentiateContinents');
+
+    //not ideal
+    //alter the continent map and is limited to ~253 earth bodies
+    //could instead return a map per zone ?
+
+    var preprocessedZones = [];
+
+    var newValue = 255;
+
+    continentMap.map(function (value, x, y) {
+        if (value === 255) {
+            var count = 0,
+                points = [[x, y, value]];
+
+            newValue = newValue - 1;
+            value = newValue;
+
+            var zone = {
+                start: {
+                    x: x,
+                    y: y
+                },
+                value: value,
+                name: japaneseFeminineFirstnames.get() //TODO replace this
+            };
+
+            while (points.length > 0) {
+                count++;
+                var point = points.pop();
+
+                continentMap.set(point[0], point[1], value);
+
+                var left = [point[0] - 1, point[1], continentMap.get(point[0] - 1, point[1])],
+                    right = [point[0] + 1, point[1], continentMap.get(point[0] + 1, point[1])],
+                    up = [point[0], point[1] - 1, continentMap.get(point[0], point[1] - 1)],
+                    down = [point[0], point[1] + 1, continentMap.get(point[0], point[1] + 1)];
+
+                [left, right, up, down].forEach(function (adjPoint) {
+                    if (adjPoint[2] === 255) {
+                        points.push(adjPoint);
+                    }
+                });
+            }
+
+            zone.size = count;
+
+            preprocessedZones.push(zone);
+        }
+
+        return value;
+    });
+
+    console.timeEnd('differentiateContinents');
+
+    return preprocessedZones;
+};
+
+var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
+    "use strict";
+
+    console.time('postProcessZones');
+
+    var zones = {
+        continents: [],
+        islands: []
+    };
+
+    preprocessedZones.forEach(function (zone) {
+        if (zone.size > 6000) {
+            zones.continents.push(zone);
+        } else if (zone.size > 6) {
+            zones.islands.push(zone);
+        } else {
+            continentMap.map(function (value, x, y) {
+                if (value === zone.value) {
+                    //remove from the continent map
+                    value = 0;
+                    //remove from the height map
+                    heightMap.set(x, y, heightMap.get(x, y) * 0.85);
+                }
+
+                return value;
+            });
+        }
+    });
+
+    console.timeEnd('postProcessZones');
+
+    return zones;
+};
+
 var getErodedMap = function (heightMap) {
     "use strict";
 
