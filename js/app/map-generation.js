@@ -92,7 +92,7 @@ var differentiateContinents = function (continentMap) {
 
     console.time('differentiateContinents');
 
-    //not ideal
+    //too big and not ideal
     //alter the continent map and is limited to ~253 earth bodies
     //could instead return a map per zone ?
 
@@ -114,7 +114,7 @@ var differentiateContinents = function (continentMap) {
                     y: y
                 },
                 value: value,
-                name: japaneseFeminineFirstnames.get() //TODO replace this
+                name: ''
             };
 
             while (points.length > 0) {
@@ -163,6 +163,7 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
             zones.continents.push(zone);
         } else if (zone.size > 6) {
             zones.islands.push(zone);
+            zone.name = japaneseIslandsNames.get();
         } else {
             continentMap.map(function (value, x, y) {
                 if (value === zone.value) {
@@ -194,29 +195,45 @@ var getErodedMap = function (heightMap) {
 
     for (var i = 0; i < 1; i++) {
         map.map(function (value, x, y) {
-            var left = heightMap.get(x - 1, y);
-            var right = heightMap.get(x + 1, y);
-            var up = heightMap.get(x, y - 1);
-            var down = heightMap.get(x, y + 1);
-            var v = value;
+            var mult = 1;
+            var mult2 = 1;
 
-            if (left > value) {
-                v -= Math.sqrt(left - value) / 2;
+	        var v = value / 255;
+            var left = heightMap.get(x - 1, y) / 255;
+            var right = heightMap.get(x + 1, y) / 255;
+            var up = heightMap.get(x, y - 1) / 255;
+            var down = heightMap.get(x, y + 1) / 255;
+            var score = 0;
+
+            if (left > v) {
+                v += (left - v) * mult;
+                score++;
             }
 
-            if (right > value) {
-                v -= Math.sqrt(right - value) / 2;
+            if (right > v) {
+                v += (right - v) * mult;
+                score++;
             }
 
-            if (up > value) {
-                v -= Math.sqrt(up - value) / 2;
+            if (up > v) {
+                v += (up - v) * mult;
+                score++;
             }
 
-            if (down > value) {
-                v -= Math.sqrt(down - value) / 2;
+
+            if (down > v) {
+                v += (down - v) * mult;
+                score++;
             }
 
-            return v;
+			if(score > 1) {
+				value = (
+					value * (8 - score / 2) +
+					Math.min(1, Math.max(0, v) * 255 * score / 2)
+				) / 8;
+			}
+
+            return value;
         });
     }
 

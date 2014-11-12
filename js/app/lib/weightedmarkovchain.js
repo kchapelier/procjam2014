@@ -23,28 +23,30 @@ var WMC = (function () {
             self = this,
             item, children, key;
 
-        for (key in this.data) {
-            item = this.data[key];
-            if (item.hasOwnProperty('chain')) {
-                children = Object.keys(item.chain);
+        if(this.rules.elementsPositionRules) {
+            for (key in this.data) {
+                item = this.data[key];
+                if (item.hasOwnProperty('chain')) {
+                    children = Object.keys(item.chain);
 
-                if (children.length === 1 && soleChildren.indexOf(children[0]) === -1) {
-                    soleChildren.push(children[0]);
+                    if (children.length === 1 && soleChildren.indexOf(children[0]) === -1) {
+                        soleChildren.push(children[0]);
+                    }
                 }
             }
+
+            soleChildren.forEach(function (item) {
+                var element = self.data[item];
+
+                if (!element.acceptableAsMiddle) {
+                    throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsMiddle');
+                }
+
+                if (!element.acceptableAsLast) {
+                    throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsLast');
+                }
+            });
         }
-
-        soleChildren.forEach(function (item) {
-            var element = self.data[item];
-
-            if (!element.acceptableAsMiddle) {
-                throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsMiddle');
-            }
-
-            if (!element.acceptableAsLast) {
-                throw new Error('Weighted Markov Chain : "' + item + '" is a sole child but is not acceptableAsLast');
-            }
-        });
     };
 
     WMC.prototype.prepareData = function () {
