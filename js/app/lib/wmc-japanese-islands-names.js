@@ -10,14 +10,16 @@ var japaneseIslandsNames = (function () {
             name = name.replace(/[^naeiuo]+$/, '');
             name = name.charAt(0).toUpperCase() + name.slice(1);
 
-            var rand = Math.random();
+            if (name !== '') {
+                var rand = Math.random();
 
-            if (rand > 0.45) {
-                name += 'jima';
-            } else if (rand > 0.1) {
-                name += 'shima';
-            } else {
-                name += 'to';
+                if (rand > 0.45) {
+                    name += 'jima';
+                } else if (rand > 0.1) {
+                    name += 'shima';
+                } else {
+                    name += 'to';
+                }
             }
 
             return name;
