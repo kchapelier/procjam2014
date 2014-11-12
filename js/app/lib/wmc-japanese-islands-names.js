@@ -12,9 +12,9 @@ var japaneseIslandsNames = (function () {
 
             var rand = Math.random();
 
-            if(rand > 0.45) {
+            if (rand > 0.45) {
                 name += 'jima';
-            } else if(rand > 0.1) {
+            } else if (rand > 0.1) {
                 name += 'shima';
             } else {
                 name += 'to';

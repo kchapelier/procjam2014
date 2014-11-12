@@ -75,8 +75,8 @@ var getContinentMap = function (heightMap) {
     var map = Map2D.clone(heightMap);
 
     var average = map.reduce(function (a, b) {
-        return a + b;
-    }) / (map.width * map.height) * 1.25;
+            return a + b;
+        }) / (map.width * map.height) * 1.25;
 
     map.map(function (value, x, y) {
         return value > average ? 255 : 0;
@@ -161,6 +161,7 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     preprocessedZones.forEach(function (zone) {
         if (zone.size > 6000) {
             zones.continents.push(zone);
+            zone.name = japanesePlacesNames.get();
         } else if (zone.size > 6) {
             zones.islands.push(zone);
             zone.name = japaneseIslandsNames.get();
@@ -198,7 +199,7 @@ var getErodedMap = function (heightMap) {
             var mult = 1;
             var mult2 = 1;
 
-	        var v = value / 255;
+            var v = value / 255;
             var left = heightMap.get(x - 1, y) / 255;
             var right = heightMap.get(x + 1, y) / 255;
             var up = heightMap.get(x, y - 1) / 255;
@@ -220,18 +221,17 @@ var getErodedMap = function (heightMap) {
                 score++;
             }
 
-
             if (down > v) {
                 v += (down - v) * mult;
                 score++;
             }
 
-			if(score > 1) {
-				value = (
-					value * (8 - score / 2) +
-					Math.min(1, Math.max(0, v) * 255 * score / 2)
-				) / 8;
-			}
+            if (score > 1) {
+                value = (
+                    value * (8 - score / 2) +
+                    Math.min(1, Math.max(0, v) * 255 * score / 2)
+                ) / 8;
+            }
 
             return value;
         });

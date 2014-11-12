@@ -40,11 +40,12 @@
 <script src="js/app/lib/map2d.js"></script>
 <script src="js/app/lib/weightedmarkovchain.js"></script>
 <script src="js/app/lib/wmc-japanese-islands-names.js"></script>
+<script src="js/app/lib/wmc-japanese-places-names.js"></script>
 <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
 <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
 <script src="js/app/map-generation.js"></script>
 <script>
-    var seed = 0.18236233410425484; //Math.random();
+    var seed = Math.random();
     console.log('seed', seed);
     noise.seed(seed);
 
@@ -98,7 +99,8 @@
 
             Map2D.draw(context, 0, 0, map);
 
-            console.log(zones);
+            console.log(zones.continents.reduce(function(p, e) { return p + ' ' + e.name; }, 'Continents :'));
+            console.log(zones.islands.reduce(function(p, e) { return p + ' ' + e.name; }, 'Islands :'));
 
             //TODO use erosion simulation to get more grainy details in the continents
             //TODO lake / rivers

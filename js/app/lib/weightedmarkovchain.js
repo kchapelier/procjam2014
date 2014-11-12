@@ -23,7 +23,7 @@ var WMC = (function () {
             self = this,
             item, children, key;
 
-        if(this.rules.elementsPositionRules) {
+        if (this.rules.elementsPositionRules) {
             for (key in this.data) {
                 item = this.data[key];
                 if (item.hasOwnProperty('chain')) {
