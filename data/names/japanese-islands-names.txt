@@ -1,0 +1,60 @@
+# Used to generate the markov chain
+
+d e n
+i o
+k a g o
+k i k a i
+k u c h i n o e r a b u
+k u r o
+m a g e
+t a k e
+t a n e g a
+y a k u
+s a t s u n a n
+a m a m i
+e d a t e k u
+k i y a m a
+o s u m i
+s u k o m o b a n a r e
+t o k a r a
+y u b a n a r e
+k i k a i
+k a k e r o m a
+y o r o
+u k e
+t o k u n o
+o k i n o e r a b u
+y o r o n
+s h i n t o
+t a o
+a r a g u s u k u
+h a t e r u m a
+i r i o m o t e
+k a y a m a
+k o h a m a
+k u r o
+s o t o b a n a r i
+y u b u
+h a t o m a
+s h i s h i
+m i r u k u
+d a i t o
+o k i d a i t o
+m i n a m i d a i t o
+k i t a d a i t o
+r y u k y u
+o k i n a w a
+o g a s a w a r a
+b o n i n
+i w o
+y a e y a m a
+i s h i g a k i
+i r i o m o t e
+t a k e t o m i
+y o n a g u n i
+m i y a k o
+s a k i s h i
+h a t i r u m a
+y u t a s a r u
+a c h i s a n
+t a k a s a n
