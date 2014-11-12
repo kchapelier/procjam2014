@@ -43,7 +43,7 @@
 <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
 <script src="js/app/map-generation.js"></script>
 <script>
-    var seed = 0.49508876097388566; //Math.random();
+    var seed = Math.random();
     console.log('seed', seed);
     noise.seed(seed);
 
@@ -139,9 +139,9 @@
             };
 
             preprocessedZones.forEach(function (zone) {
-                if (zone.size > 100) {
+                if (zone.size > 6000) {
                     zones.continents.push(zone);
-                } else if (zone.size > 4) {
+                } else if (zone.size > 6) {
                     zones.islands.push(zone);
                 } else {
                     continentMap.map(function(value, x, y) {
