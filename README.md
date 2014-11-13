@@ -1,7 +1,12 @@
-procjam2014
-===========
+# procjam2014
 
 http://itch.io/jam/procjam ヽ(￣д￣;)ノ
+
+![Generated map example](https://raw.githubusercontent.com/kchapelier/procjam2014/master/img/github/image1.png)
+![Generated map example](https://raw.githubusercontent.com/kchapelier/procjam2014/master/img/github/image2.png)
+![Generated map example](https://raw.githubusercontent.com/kchapelier/procjam2014/master/img/github/image3.png)
+
+## TODO
 
 - [X] Better post processing of islands and generic places name WMC models
 - [ ] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
