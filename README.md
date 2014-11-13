@@ -11,7 +11,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [X] Better post processing of islands and generic places name WMC models
 - [ ] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
 - [X] Store a map for each continent / island
-- [ ] Implement continents / island highlighting
+- [X] Implement continents / island highlighting
 - [ ] Sprinkle some cities on top of the continents
 - [ ] Mix alternatives propensity height map algorithms for water and earth bodies
 - [ ] Alternative renderers ?

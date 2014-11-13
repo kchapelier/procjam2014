@@ -79,32 +79,45 @@
             }
         };
 
-        var drawNoise = function () {
-            var canvas = document.getElementById('canvas'),
-                    context = canvas.getContext('2d'),
-                    width = canvas.width,
-                    height = canvas.height;
+        var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            width = canvas.width,
+            height = canvas.height,
+            heightPropensityMap,
+            heightMap,
+            continentMap,
+            zones;
 
-            var heightPropensityMap = getAltHeightPropensityMap(width, height);
-            var heightMap = getHeightMap(width, height, heightPropensityMap);
+        var drawMap = function () {
+            var preprocessedZones;
+
+            heightPropensityMap = getAltHeightPropensityMap(width, height);
+            heightMap = getHeightMap(width, height, heightPropensityMap);
             //heightMap = getErodedMap(heightMap);
-            var continentMap = getContinentMap(heightMap);
-            var preprocessedZones = differentiateContinents(continentMap);
-            var zones = postProcessZones(continentMap, heightMap, preprocessedZones);
-
-            var map = Map2D.clone(heightMap);
-            map.map(function (value, x, y) {
-                return Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75);
-                //return Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0);
-            });
-
-            Map2D.draw(context, 0, 0, map);
-
+            continentMap = getContinentMap(heightMap);
+            preprocessedZones = differentiateContinents(continentMap);
+            zones = postProcessZones(continentMap, heightMap, preprocessedZones);
             console.log(zones.continents.reduce(function(p, e) { return p + ' ' + e.name; }, 'Continents :'));
             console.log(zones.islands.reduce(function(p, e) { return p + ' ' + e.name; }, 'Islands :'));
 
             //TODO use erosion simulation to get more grainy details in the continents
             //TODO lake / rivers
+        };
+
+        var displayMap = function() {
+            var map = Map2D.clone(heightMap);
+            map.map(function (value, x, y) {
+                value = Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75);
+                //value = Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0);
+
+                if (currentHighlight && !currentHighlight.map.get(x, y)) {
+                    value = value / 2;
+                }
+
+                return value;
+            });
+
+            Map2D.draw(context, 0, 0, map);
         };
 
         var part2 = function () {
@@ -147,7 +160,44 @@
         });
 
         generateNames();
-        setTimeout(drawNoise, 100);
+        setTimeout(function() {
+            drawMap();
+            displayMap();
+        }, 100);
+
+        var currentHighlight = null;
+        $('#canvas').on('mousemove', function(e) {
+            var previous = currentHighlight,
+                x = e.offsetX - 1,
+                y = e.offsetY - 3,
+                i;
+
+            currentHighlight = null;
+
+            if(previous && previous.map.get(x, y) > 0) {
+                currentHighlight = previous;
+            } else {
+                for(var key in zones) {
+                    for (i = 0; i < zones[key].length; i++) {
+                        if (zones[key][i].map.get(x, y) > 0) {
+                            currentHighlight = zones[key][i];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if(previous !== currentHighlight) {
+                previous = currentHighlight;
+
+                if(currentHighlight !== null) {
+                    console.log(currentHighlight.name, currentHighlight.size);
+                }
+
+                displayMap();
+            }
+
+        });
     });
 </script>
 </body>
