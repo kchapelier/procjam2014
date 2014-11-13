@@ -35,6 +35,7 @@
 </div>
 <script src="js/vendors/brain/brain-0.6.3.js"></script>
 <script src="js/vendors/noisejs/perlin.js"></script>
+<script src="js/vendors/mathp/mathp-1.1.1.js"></script>
 <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
 <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script src="js/app/lib/map2d.js"></script>
@@ -94,7 +95,7 @@
             var map = Map2D.clone(heightMap);
             map.map(function (value, x, y) {
                 return Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75);
-                return Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0);
+                //return Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0);
             });
 
             Map2D.draw(context, 0, 0, map);
