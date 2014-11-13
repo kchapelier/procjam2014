@@ -13,7 +13,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [X] Store a map for each continent / island
 - [X] Implement continents / island highlighting
 - [ ] Sprinkle some cities on top of the continents
-- [ ] Mix alternatives propensity height map algorithms for water and earth bodies
+- [X] Mix alternatives propensity height map algorithms for water and earth bodies
 - [ ] Alternative renderers ?
 - [ ] Use Web Workers
 - [ ] Make sure a single seed always return the exact same map

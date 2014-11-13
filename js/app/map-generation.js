@@ -21,6 +21,8 @@ var getHeightPropensityMap = function (width, height) {
             noise.perlin3(x / 250, y / 250, 15)
         ))));
 
+		// soften with large scale perlin cloud
+
         var v = Math.min(
             noise.perlin3(x / 300 + dx * 1.3, y / 300 + dy, 50),
             noise.perlin3(x / 300 + dx, y / 300 + dy * 1.3, 50.30)
@@ -51,7 +53,7 @@ var getAltHeightPropensityMap = function (width, height) {
         var dy = noise.perlin2(4000 + x / 50, 4000 + y / 50) / 40 + noise.simplex2(4000 + x / 25, 4000 + y / 25) / 60 + noise.simplex2(4000 + x / 10, 4000 + y / 10) / 130;
 
         var base = Math.abs(Math.pow(0.2, Math.max(-1, Math.min(
-            noise.perlin3(x / 800 + dx, y / 800 + dy, 50),
+            noise.perlin3(x / 200 + dx, y / 200 + dy, 50),
             noise.perlin3(x / 450, y / 450, 55)
         ))));
 
@@ -77,7 +79,7 @@ var getAltHeightPropensityMap = function (width, height) {
     return map;
 };
 
-var getHeightMap = function (width, height, propensityMap) {
+var getHeightMap = function (width, height, propensityMap, abyssMap) {
     "use strict";
 
     console.time('getHeightMap');
@@ -85,9 +87,10 @@ var getHeightMap = function (width, height, propensityMap) {
     var map = new Map2D(width, height);
 
     map.map(function (value, x, y) {
-        var propensity = propensityMap.get(x, y);
+        var propensity = propensityMap.get(x, y),
+        	abyss = abyssMap.get(x, y);
 
-        var value = Math.abs(noise.perlin3(x / 1200, y / 1200, 300 + propensity * 0.5)) * (32 + propensity * 32) +
+        var value = Math.abs(noise.perlin3(x / 1200, y / 1200, 300 + propensity * 0.4 + abyss * 0.2)) * (32 + propensity * 32) +
             noise.simplex2(x / 600, y / 600) * (16 + propensity * 16) +
             noise.perlin2(x / 300, y / 300) * (8 + propensity * 8) +
             noise.perlin2(x / 150, y / 150) * (4 + propensity * 4) +
@@ -97,8 +100,12 @@ var getHeightMap = function (width, height, propensityMap) {
             noise.perlin2(x / 17, y / 17) * (1 + propensity * propensity * propensity) +
             noise.perlin2(x / 8, y / 8) * 0.5 +
             noise.perlin2(x / 4, y / 4) * 0.2 + propensity;
+            
+        value = Math.max(0, Math.min(1, (value + 31) / 100));
+            
+        value = Mathp.wshaper(value - (abyss * Math.pow(0.5 - value / 2, 2)), 0, 1, [Math.max(0, value - abyss * 4), 0.5, 1]);
 
-        return Math.max(0, Math.min(1, (value + 31) / 100)) * 255;
+        return value * 255;
     });
 
     console.timeEnd('getHeightMap');
@@ -204,9 +211,11 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     preprocessedZones.forEach(function (zone) {
         if (zone.size > 12000) {
             zones.continents.push(zone);
+            zone.type = 'continent';
             zone.name = japanesePlacesNames.get();
         } else if (zone.size > 6) {
             zones.islands.push(zone);
+            zone.type = 'island';
             zone.name = japaneseIslandsNames.get();
         } else {
             continentMap.map(function (value, x, y) {
