@@ -34,22 +34,15 @@
     </section>
 </div>
 <script src="js/vendors/brain/brain-0.6.3.js"></script>
-<script src="js/vendors/noisejs/perlin.js"></script>
 <script src="js/vendors/mathp/mathp-1.1.1.js"></script>
 <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
 <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script src="js/app/lib/map2d.js"></script>
 <script src="js/app/lib/weightedmarkovchain.js"></script>
-<script src="js/app/lib/wmc-japanese-islands-names.js"></script>
-<script src="js/app/lib/wmc-japanese-places-names.js"></script>
 <script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
 <script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
 <script src="js/app/map-generation.js"></script>
 <script>
-    var seed = Math.random();
-    console.log('seed', seed);
-    noise.seed(seed);
-
     $(function () {
         var makeNeuralFunction = function (dataset) {
             var net = new brain.NeuralNetwork();
@@ -59,10 +52,6 @@
             return function () {
                 return net.run.call(net, arguments);
             };
-        };
-
-        var roundUp = function (to, src) {
-            return Math.round(src * to);
         };
 
         var generateNames = function () {
@@ -80,46 +69,7 @@
         };
 
         var canvas = document.getElementById('canvas'),
-            context = canvas.getContext('2d'),
-            width = canvas.width,
-            height = canvas.height,
-            heightPropensityMap,
-            heightMap,
-            continentMap,
-            zones;
-
-        var drawMap = function () {
-            var preprocessedZones;
-
-            firstHeightPropensityMap = getHeightPropensityMap(width, height);
-            secondHeightPropensityMap = getAltHeightPropensityMap(width, height);
-            heightMap = getHeightMap(width, height, firstHeightPropensityMap, secondHeightPropensityMap);
-            //heightMap = getErodedMap(heightMap);
-            continentMap = getContinentMap(heightMap);
-            preprocessedZones = differentiateContinents(continentMap);
-            zones = postProcessZones(continentMap, heightMap, preprocessedZones);
-            console.log(zones.continents.reduce(function(p, e) { return p + ' ' + e.name; }, 'Continents :'));
-            console.log(zones.islands.reduce(function(p, e) { return p + ' ' + e.name; }, 'Islands :'));
-
-            //TODO use erosion simulation to get more grainy details in the continents
-            //TODO lake / rivers
-        };
-
-        var displayMap = function() {
-            var map = Map2D.clone(heightMap);
-            map.map(function (value, x, y) {
-                value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75));
-                //value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0));
-
-                if (currentHighlight && !currentHighlight.map.get(x, y)) {
-                    value = value / 2;
-                }
-
-                return value;
-            });
-
-            Map2D.draw(context, 0, 0, map);
-        };
+            context = canvas.getContext('2d');
 
         var part2 = function () {
             console.log('part2');
@@ -160,69 +110,17 @@
             generateNames();
         });
 
-        /*
         generateNames();
-        setTimeout(function() {
-            drawMap();
-            displayMap();
-        }, 100);
 
-        var currentHighlight = null;
         $('#canvas').on('mousemove', function(e) {
-            var previous = currentHighlight,
-                x = e.offsetX - 1,
-                y = e.offsetY - 3,
-                i;
-
-            currentHighlight = null;
-
-            if(previous && previous.map.get(x, y) > 0) {
-                currentHighlight = previous;
-            } else {
-                for(var key in zones) {
-                    for (i = 0; i < zones[key].length; i++) {
-                        if (zones[key][i].map.get(x, y) > 0) {
-                            currentHighlight = zones[key][i];
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if(previous !== currentHighlight) {
-                previous = currentHighlight;
-
-                if(currentHighlight !== null) {
-                    console.log(currentHighlight.name, currentHighlight.size);
-                }
-
-                displayMap();
-            }
-
+            mapGenerator.mousemove(e.offsetX - 1, e.offsetY - 3);
         });
-        */
 
         mapGenerator.setContext(context);
-        mapGenerator.height = 0.2;
-        mapGenerator.width = 400;
-        mapGenerator.height = 400;
+        mapGenerator.seed = Math.random();
+        mapGenerator.width = canvas.width;
+        mapGenerator.height = canvas.height;
         mapGenerator.requestMap();
-
-        /*
-        var worker = new Worker("./js/app/workers/map-generation-worker.js");
-        worker.addEventListener('message', function(e) {
-            console.log(e.data.zones);
-
-            var map = Map2D.fromTypedArray(e.data.heightMap, e.data.params.width, e.data.params.height);
-            Map2D.draw(context, 0, 0, map);
-        });
-
-        worker.postMessage({
-            seed : 0.2,
-            width : 300,
-            height : 300
-        });
-        */
     });
 </script>
 </body>

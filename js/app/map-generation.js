@@ -6,6 +6,7 @@ var mapGenerator = {
     height: 0,
     busy: false,
     data: null,
+    highlight : null,
     setContext: function (context) {
         this.context = context;
     },
@@ -58,6 +59,58 @@ var mapGenerator = {
         this.busy = false;
     },
     display: function () {
-        Map2D.draw(this.context, 0, 0, this.data.heightMap);
+        var heightMap = this.data.heightMap,
+            continentMap = this.data.continentMap,
+            highlightMap = this.highlight ? this.highlight.map : null;
+
+        var map = Map2D.clone(this.data.heightMap);
+        map.map(function (value, x, y) {
+            value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75));
+            //value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0));
+
+            if (highlightMap && !highlightMap.get(x, y)) {
+                value = value / 2;
+            }
+
+            return value;
+        });
+
+        Map2D.draw(this.context, 0, 0, map);
+    },
+    mousemove: function (x, y) {
+        if(this.data === null) {
+            return false;
+        }
+
+        var zones = this.data.zones,
+            previous = this.highlight,
+            i;
+
+        this.highlight = null;
+
+        if (previous && previous.map.get(x, y) > 0) {
+            this.highlight = previous;
+        } else {
+            for (var key in zones) {
+                for (i = 0; i < zones[key].length; i++) {
+                    if (zones[key][i].map.get(x, y) > 0) {
+                        this.highlight = zones[key][i];
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(previous !== this.highlight) {
+            previous = this.highlight;
+
+            if(this.highlight !== null) {
+                console.log(this.highlight.name, this.highlight.size);
+            }
+
+            this.display();
+        }
+
+        return true;
     }
 }

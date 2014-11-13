@@ -18,6 +18,9 @@ self.addEventListener('message', function (e) {
 
     noise.seed(seed);
 
+    //TODO use erosion simulation to get more grainy details in the continents
+    //TODO lake / rivers
+
     var heightPropensityMap = getHeightPropensityMap(width, height),
         altHeightPropensityMap = getAltHeightPropensityMap(width, height),
         heightMap = getHeightMap(width, height, heightPropensityMap, altHeightPropensityMap),

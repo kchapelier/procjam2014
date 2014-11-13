@@ -15,7 +15,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [ ] Sprinkle some cities on top of the continents
 - [X] Mix alternatives propensity height map algorithms for water and earth bodies
 - [ ] Alternative renderers ?
-- [ ] Use Web Workers
+- [X] Use Web Workers
 - [ ] Make sure a single seed always return the exact same map
 - [ ] Make sure it also works on Firefox at the very least
 - [ ] UI with parameters for generating the map
