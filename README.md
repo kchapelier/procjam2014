@@ -3,7 +3,7 @@ procjam2014
 
 http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 
-- [ ] Better post processing of islands and generic places name WMC models
+- [X] Better post processing of islands and generic places name WMC models
 - [ ] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
 - [ ] Store a map for each continent / island
 - [ ] Implement continents / island highlighting

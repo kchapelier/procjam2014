@@ -55,7 +55,7 @@ var getAltHeightPropensityMap = function (width, height) {
             noise.perlin3(x / 450, y / 450, 55)
         ))));
 
-        base+= Math.abs(Math.min(1, Math.max(-1, Math.min(
+        base += Math.abs(Math.min(1, Math.max(-1, Math.min(
             noise.perlin3(x / 400 + dx, y / 400 + dy, 10),
             noise.perlin3(x / 250, y / 250, 15)
         ))));

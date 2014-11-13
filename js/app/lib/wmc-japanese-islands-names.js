@@ -25,7 +25,35 @@ var japaneseIslandsNames = (function () {
             return name;
         },
         validate: function (sequence) {
-            return sequence.length > 2;
+            var validDoubleCons = ['sh', 'ch', 'ts'];
+            var regexMultipleConsonnes = /[^aeiou\-]{2,}/g; //doesn't include y on purpose
+            var valid = true;
+
+            if (sequence.length > 2) {
+                var multipleConsonnes = sequence.toLowerCase().match(regexMultipleConsonnes);
+
+                if (multipleConsonnes) {
+                    for (var i = 0; i < multipleConsonnes.length && valid; i++) {
+                        var cons = multipleConsonnes[i];
+
+                        if (cons.charAt(0) === 'n') {
+                            cons = cons.substr(1);
+                        }
+
+                        if (cons.charAt(cons.length - 1) === 'y') {
+                            cons = cons.substr(0, cons.length - 1);
+                        }
+
+                        if (cons.length > 1 && validDoubleCons.indexOf(cons) === -1) {
+                            valid = false;
+                        }
+                    }
+                }
+            } else {
+                valid = false;
+            }
+
+            return valid;
         }
     };
 
