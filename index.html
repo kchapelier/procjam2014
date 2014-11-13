@@ -160,6 +160,7 @@
             generateNames();
         });
 
+        /*
         generateNames();
         setTimeout(function() {
             drawMap();
@@ -199,6 +200,18 @@
             }
 
         });
+        */
+
+
+        var worker = new Worker("./js/app/workers/map-generation-worker.js");
+        worker.addEventListener('message', function(e) {
+            console.log(e.data.zones);
+
+            var map = Map2D.fromTypedArray(e.data.heightMap, 1200, 500);
+            Map2D.draw(context, 0, 0, map);
+        });
+
+        worker.postMessage(new Uint8ClampedArray());
     });
 </script>
 </body>
