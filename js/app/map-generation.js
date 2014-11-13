@@ -141,6 +141,8 @@ var differentiateContinents = function (continentMap) {
 
     continentMap.map(function (value, x, y) {
         if (value === 255) {
+            var map = new Map2D(continentMap.width, continentMap.height, Uint8Array);
+
             var count = 0,
                 points = [[x, y, value]];
 
@@ -161,6 +163,7 @@ var differentiateContinents = function (continentMap) {
                 var point = points.pop();
 
                 continentMap.set(point[0], point[1], value);
+                map.set(point[0], point[1], 255);
 
                 var left = [point[0] - 1, point[1], continentMap.get(point[0] - 1, point[1])],
                     right = [point[0] + 1, point[1], continentMap.get(point[0] + 1, point[1])],
@@ -175,6 +178,7 @@ var differentiateContinents = function (continentMap) {
             }
 
             zone.size = count;
+            zone.map = map;
 
             preprocessedZones.push(zone);
         }
@@ -198,7 +202,7 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     };
 
     preprocessedZones.forEach(function (zone) {
-        if (zone.size > 6000) {
+        if (zone.size > 12000) {
             zones.continents.push(zone);
             zone.name = japanesePlacesNames.get();
         } else if (zone.size > 6) {
