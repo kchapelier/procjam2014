@@ -202,16 +202,27 @@
         });
         */
 
+        mapGenerator.setContext(context);
+        mapGenerator.height = 0.2;
+        mapGenerator.width = 400;
+        mapGenerator.height = 400;
+        mapGenerator.requestMap();
 
+        /*
         var worker = new Worker("./js/app/workers/map-generation-worker.js");
         worker.addEventListener('message', function(e) {
             console.log(e.data.zones);
 
-            var map = Map2D.fromTypedArray(e.data.heightMap, 1200, 500);
+            var map = Map2D.fromTypedArray(e.data.heightMap, e.data.params.width, e.data.params.height);
             Map2D.draw(context, 0, 0, map);
         });
 
-        worker.postMessage(new Uint8ClampedArray());
+        worker.postMessage({
+            seed : 0.2,
+            width : 300,
+            height : 300
+        });
+        */
     });
 </script>
 </body>

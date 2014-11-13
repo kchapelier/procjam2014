@@ -12,9 +12,9 @@ importScripts(
 );
 
 self.addEventListener('message', function (e) {
-    var seed = Math.random(),
-        width = 1200,
-        height = 500;
+    var seed = e.data.seed,
+        width = e.data.width,
+        height = e.data.height;
 
     noise.seed(seed);
 
@@ -26,6 +26,11 @@ self.addEventListener('message', function (e) {
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
 
     self.postMessage({
+        params : {
+            seed : seed,
+            width : width,
+            height : height
+        },
         heightMap : heightMap.values,
         continentMap : continentMap.values,
         zones : {
