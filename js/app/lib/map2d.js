@@ -100,6 +100,13 @@ var Map2D = (function () {
         });
     };
 
+    Map2D.fromTypedArray = function (array, width, height) {
+        var map = new Map2D(width, height, array.constructor);
+        map.values = array; //.slide(0);
+
+        return map;
+    };
+
     Map2D.clone = function (map) {
         var clone = new Map2D(map.width, map.height, map.type);
 
