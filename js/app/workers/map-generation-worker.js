@@ -15,7 +15,8 @@ importScripts(
 self.addEventListener('message', function (e) {
     var seed = e.data.seed,
         width = e.data.width,
-        height = e.data.height;
+        height = e.data.height,
+        seaLevel = e.data.seaLevel;
 
     noise.seed(seed);
     Math.seedrandom(seed, {
@@ -28,7 +29,7 @@ self.addEventListener('message', function (e) {
     var heightPropensityMap = getHeightPropensityMap(width, height),
         altHeightPropensityMap = getAltHeightPropensityMap(width, height),
         heightMap = getHeightMap(width, height, heightPropensityMap, altHeightPropensityMap),
-        continentMap = getContinentMap(heightMap),
+        continentMap = getContinentMap(heightMap, seaLevel),
         preprocessedZones = differentiateContinents(continentMap),
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
 
@@ -160,14 +161,14 @@ var getHeightMap = function (width, height, propensityMap, abyssMap) {
     return map;
 };
 
-var getContinentMap = function (heightMap) {
+var getContinentMap = function (heightMap, seaLevel) {
     console.time('getContinentMap');
 
     var map = Map2D.clone(heightMap);
 
     var average = map.reduce(function (a, b) {
-            return a + b;
-        }) / (map.width * map.height) * 1.25;
+        return a + b;
+    }) / (map.width * map.height) * 1.25;
 
     map.map(function (value, x, y) {
         return value > average ? 255 : 0;
@@ -297,7 +298,7 @@ var getCitiesFromMap = function(map, probability, heightMap) {
 
 var addCitiesToZones = function (heightMap, zones) {
     zones.continents.forEach(function (continent) {
-        var nbCitiesEstimated = Math.ceil(Math.pow(continent.size / 2200, 1.2)),
+        var nbCitiesEstimated = Math.ceil(Math.pow(continent.size / 2200, 1.05)),
             probability = nbCitiesEstimated / continent.size;
 
         continent.cities = getCitiesFromMap(continent.map, probability, heightMap);

@@ -2,118 +2,67 @@
 <head>
     <meta charset="utf-8">
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/vendors/jquery.onepage-scroll.css"/>
     <link rel="stylesheet" href="css/app/style.css"/>
 </head>
 <body>
-<div class="main">
-    <section class="intro">
-        <div>
-            <h1>Lets do something !</h1>
-            <a class="next" href="#">Yes, let's do it !</a>
-        </div>
-    </section>
-    <section class="names">
-        <div>
-            <h1>So... what are you going to do exactly ?</h1>
-            <ul class="feminineFirstnames">
-                <li>&nbsp;</li>
-            </ul>
-            <ul class="masculineFirstnames">
-                <li>&nbsp;</li>
-            </ul>
-            <a class="generateNames" href="#">Generate a new set</a>
-        </div>
-    </section>
-    <section class="music">
-        <div>
-            <h1>Aaaand ?</h1>
-
-            <div style="position:relative">
-                <canvas id="canvas" width="1200" height="500"></canvas>
-            </div>
-
-        </div>
-    </section>
+<div class="container">
+    <div style="position:relative">
+        <canvas id="canvas" width="1200" height="500"></canvas>
+    </div>
 </div>
-<script src="js/vendors/brain/brain-0.6.3.js"></script>
+<script src="js/vendors/dat.gui/dat.gui.min.js"></script>
 <script src="js/vendors/canvas-toblob/canvas-toblob.js"></script>
 <script src="js/vendors/filesaver/filesaver.js"></script>
 <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
-<script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script src="js/app/lib/map2d.js"></script>
-<script src="js/app/lib/weightedmarkovchain.js"></script>
-<script src="js/app/lib/wmc-japanese-feminine-firstnames.js"></script>
-<script src="js/app/lib/wmc-japanese-masculine-firstnames.js"></script>
 <script src="js/app/map-generation.js"></script>
 <script>
     $(function () {
-        var makeNeuralFunction = function (dataset) {
-            var net = new brain.NeuralNetwork();
-
-            net.train(dataset);
-
-            return function () {
-                return net.run.call(net, arguments);
-            };
-        };
-
-        var generateNames = function () {
-            var flist = $('.feminineFirstnames'),
-                mlist = $('.masculineFirstnames'),
-                i;
-
-            flist.empty();
-            mlist.empty();
-
-            for (i = 0; i < 10; i++) {
-                flist.append($('<li>', {text: japaneseFeminineFirstnames.get()}));
-                mlist.append($('<li>', {text: japaneseMasculineFirstnames.get()}));
-            }
-        };
 
         var canvas = document.getElementById('canvas');
 
-        var part2 = function () {
-            console.log('part2');
-            $('.names ul').animate({
-                opacity: 1
-            })
+        var app = {
+            seed: 0,
+            seaLevel: 0.5,
+            glitch: false,
+            cities: false,
+            randomSeed: function () {
+                this.seed = Math.floor(Math.random() * 1000000000);
+            },
+            generate: function () {
+                mapGenerator.setCanvas(canvas);
+                mapGenerator.seaLevel = this.seaLevel;
+                mapGenerator.seed = this.seed / 1000000000;
+                mapGenerator.width = canvas.width;
+                mapGenerator.height = canvas.height;
+                mapGenerator.requestMap();
+            },
+            save: function () {
+                mapGenerator.savePng();
+            }
         };
 
-        var part3 = function () {
-            console.log('part3');
-        };
+        app.randomSeed();
 
-        $('.main').onepage_scroll({
-            sectionContainer: "section",
-            easing: "ease",
-            animationTime: 700,
-            pagination: true,
-            updateURL: false,
-            loop: false,
-            keyboard: true,
-            direction: "vertical",
-            afterMove: function (index) {
-                if (index === 2) {
-                    part2();
-                } else if (index === 3) {
-                    part3();
-                }
+        var gui = new dat.GUI({ autoPlace: false });
+
+        document.body.appendChild(gui.domElement);
+
+        gui.add(app, "seaLevel").name('sea level').min(0).max(1).step(0.01);
+        gui.add(app, "glitch").name('glitched out');
+        gui.add(app, "cities").name('cities').onFinishChange(function (value) {
+            if (value) {
+                canvas.parentNode.classList.add('display-cities');
+            } else {
+                canvas.parentNode.classList.remove('display-cities');
             }
         });
+        gui.add(app, "seed").listen();
+        gui.add(app, "randomSeed").name('New Random Seed');
+        gui.add(app, "generate").name('Generate');
+        gui.add(app, "save").name('Save as PNG');
 
-        $('.next').on('click', function (e) {
-            e.preventDefault();
-            $('.main').moveDown();
-        });
 
-        $('.generateNames').on('click', function (e) {
-            e.preventDefault();
-            generateNames();
-        });
-
-        generateNames();
 
         $('#canvas').on('mousemove', function (e) {
             var x, y, offset;
@@ -130,11 +79,7 @@
             mapGenerator.mousemove(x - 1, y - 3);
         });
 
-        mapGenerator.setCanvas(canvas);
-        mapGenerator.seed = Math.random();
-        mapGenerator.width = canvas.width;
-        mapGenerator.height = canvas.height;
-        mapGenerator.requestMap();
+
     });
 </script>
 </body>

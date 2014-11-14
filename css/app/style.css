@@ -1,58 +1,65 @@
 /* Palette : http://paletton.com/#uid=73f1m0k9chi5OIC90oG7-77dB3Q */
 
-section {
-    box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+html,body{
+    min-height:100%;
+}
+
+body {
+    margin:0;
+    padding:0;
+    background:#000;
     font-family:"Roboto", sans-serif;
 }
 
-section.intro {
-    background-color:#C5C28D;
-    color:#1F1E12;
-    z-index:10;
+.container {
+    padding: 0;
+    margin: 0;
+    position:absolute;
+    top:10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background:#232323;
 }
 
-section.names {
-    background-color:#A3C8C4;
-    color:#1B2322;
-    z-index:9;
+body .dg.main {
+    font-family: "Roboto", sans-serif;
+    position:absolute;
+    right:10px;
+    top:10px;
 }
 
-section.music {
-    background-color:#C5A58D;
-    color:#1F1712;
-    z-index:8;
+body .dg .close-button {
+    display:none;
 }
 
-section > div {
-    background:red;
-    margin:3%;
-    padding:2% 3% 3% 3%;
-    background-color:rgba(255,255,255,0.25);
-    border-radius:8px;
+body .dg li:not(.folder) {
+    background-color: rgba(0,0,0,0.65);
 }
 
-section.names ul {
-    opacity: 0;
-    width: 45%;
-    padding-bottom:2%;
-    float:left;
+body .dg .cr:not(.function) {
+    border-left: 0 !important;
 }
 
-section.names a {
-    clear:both;
+body .dg .cr.function {
+    border-left: 3px solid #888 !important;
 }
 
-section a {
-    color: #FFFFFF;
-    background-color:#000000;
-    text-decoration: none;
-    display: inline-block;
-    border-radius:3px;
-    padding:1% 1.1%;
+body .dg .c .slider .slider-fg, body .dg .c .slider:hover .slider-fg {
+    background:#EEE;
+}
+
+body .dg .cr.number .c input[type=text] {
+    color:#EEE;
+}
+
+body .dg .cr.function .property-name {
+    width: 90%;
+    font-weight:bold;
 }
 
 .city {
-    /*display: none;*/
+    display: none;
     position : absolute;
     width : 3px;
     height : 3px;
@@ -65,4 +72,8 @@ section a {
     transform: scale(3);
     background: #FFF;
     z-index:10;
+}
+
+.display-cities .city {
+    display:block;
 }

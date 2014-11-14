@@ -18,7 +18,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [X] Use Web Workers
 - [X] Make sure a single seed always return the exact same map
 - [ ] Make sure it also works on Firefox at the very least
-- [ ] UI with parameters for generating the map
+- [X] UI with parameters for generating the map
 - [ ] UI : enable visualisation of different partial maps (propensity map, height map, continent map, ...)
 - [X] "Save map as png" functionality
 - [X] Post on itch.io (http://itch.io/jam/procjam/rate/13748)

@@ -5,6 +5,7 @@ var mapGenerator = {
     seed: 0,
     width: 0,
     height: 0,
+    seaLevel: 0.5,
     busy: false,
     data: null,
     highlight: null,
@@ -17,7 +18,7 @@ var mapGenerator = {
         var self = this;
 
         if (this.worker === null) {
-            this.worker = new Worker('./js/app/workers/map-generation-worker.js');
+            this.worker = new Worker('./js/app/workers/map-generation-worker.js#t=1');
             this.worker.addEventListener('message', function (e) {
                 self.receiveMap(e.data);
             });
@@ -38,8 +39,11 @@ var mapGenerator = {
         worker.postMessage({
             seed: this.seed,
             width: this.width,
-            height: this.height
+            height: this.height,
+            seaLevel: this.seaLevel
         });
+
+        console.log(this.seaLevel);
 
         return true;
     },
@@ -66,7 +70,7 @@ var mapGenerator = {
     },
     savePng: function () {
         this.canvas.toBlob(function (blob) {
-            saveAs(blob, "generated-map.png");
+            saveAs(blob, 'black-sea-' + (new Date().getTime()) + '.png');
         });
     },
     setCitiesLayer : function () {
