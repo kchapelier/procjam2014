@@ -7,7 +7,7 @@ var mapGenerator = {
     height: 0,
     busy: false,
     data: null,
-    highlight : null,
+    highlight: null,
     setCanvas: function (canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
@@ -15,9 +15,9 @@ var mapGenerator = {
     getWorker: function () {
         var self = this;
 
-        if(this.worker === null) {
+        if (this.worker === null) {
             this.worker = new Worker('./js/app/workers/map-generation-worker.js');
-            this.worker.addEventListener('message', function(e) {
+            this.worker.addEventListener('message', function (e) {
                 self.receiveMap(e.data);
             });
         }
@@ -27,7 +27,7 @@ var mapGenerator = {
     requestMap: function () {
         var worker;
 
-        if(this.busy) {
+        if (this.busy) {
             return false;
         }
 
@@ -35,9 +35,9 @@ var mapGenerator = {
 
         worker = this.getWorker();
         worker.postMessage({
-            seed : this.seed,
-            width : this.width,
-            height : this.height
+            seed: this.seed,
+            width: this.width,
+            height: this.height
         });
 
         return true;
@@ -61,7 +61,7 @@ var mapGenerator = {
         this.busy = false;
     },
     savePng: function () {
-        this.canvas.toBlob(function(blob) {
+        this.canvas.toBlob(function (blob) {
             saveAs(blob, "generated-map.png");
         });
     },
@@ -85,7 +85,7 @@ var mapGenerator = {
         Map2D.draw(this.context, 0, 0, map);
     },
     mousemove: function (x, y) {
-        if(this.data === null) {
+        if (this.data === null) {
             return false;
         }
 
@@ -108,10 +108,10 @@ var mapGenerator = {
             }
         }
 
-        if(previous !== this.highlight) {
+        if (previous !== this.highlight) {
             previous = this.highlight;
 
-            if(this.highlight !== null) {
+            if (this.highlight !== null) {
                 console.log(this.highlight.name, this.highlight.size);
             }
 

@@ -29,19 +29,19 @@ self.addEventListener('message', function (e) {
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
 
     self.postMessage({
-        params : {
-            seed : seed,
-            width : width,
-            height : height
+        params: {
+            seed: seed,
+            width: width,
+            height: height
         },
-        heightMap : heightMap.values,
-        continentMap : continentMap.values,
-        zones : {
-            continents : zones.continents.map(function (e) {
+        heightMap: heightMap.values,
+        continentMap: continentMap.values,
+        zones: {
+            continents: zones.continents.map(function (e) {
                 e.map = e.map.values;
                 return e;
             }),
-            islands : zones.islands.map(function (e) {
+            islands: zones.islands.map(function (e) {
                 e.map = e.map.values;
                 return e;
             })
@@ -79,8 +79,6 @@ var getHeightPropensityMap = function (width, height) {
 
         var increment = Math.pow(1 - Math.sqrt(Math.abs(v)), 3);
 
-        //increment = isNaN(increment) ? 0 : increment;
-
         return Math.max(0, Math.min(1, (base * increment) * 2));
     });
 
@@ -116,8 +114,6 @@ var getAltHeightPropensityMap = function (width, height) {
 
         var increment = Math.pow(1 - Math.sqrt(Math.abs(v)), 3);
 
-        //increment = isNaN(increment) ? 0 : increment;
-
         return Math.max(0, Math.min(1, (base * increment) * 2));
     });
 
@@ -127,8 +123,6 @@ var getAltHeightPropensityMap = function (width, height) {
 };
 
 var getHeightMap = function (width, height, propensityMap, abyssMap) {
-    "use strict";
-
     console.time('getHeightMap');
 
     var map = new Map2D(width, height, Uint8ClampedArray);
