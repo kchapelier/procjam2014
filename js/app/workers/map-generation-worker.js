@@ -18,7 +18,9 @@ self.addEventListener('message', function (e) {
         height = e.data.height;
 
     noise.seed(seed);
-    Math.seedrandom(seed, { global : true }); // replace Math.random globally (in the worker)
+    Math.seedrandom(seed, {
+        global: true // replace Math.random globally (in the worker)
+    });
 
     //TODO use erosion simulation to get more grainy details in the continents
     //TODO lake / rivers
@@ -29,6 +31,8 @@ self.addEventListener('message', function (e) {
         continentMap = getContinentMap(heightMap),
         preprocessedZones = differentiateContinents(continentMap),
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
+
+    addCitiesToZones(heightMap, zones);
 
     self.postMessage({
         params: {
@@ -273,6 +277,39 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     return zones;
 };
 
+var getCitiesFromMap = function(map, probability, heightMap) {
+    var cities = [];
+
+    map.map(function(value, x, y) {
+        if(value && Math.random() < probability) {
+            cities.push({
+                name: japanesePlacesNames.get(),
+                x: x,
+                y: y
+            });
+        }
+
+        return value;;
+    });
+
+    return cities;
+};
+
+var addCitiesToZones = function (heightMap, zones) {
+    zones.continents.forEach(function (continent) {
+        var nbCitiesEstimated = Math.ceil(Math.pow(continent.size / 2200, 1.2)),
+            probability = nbCitiesEstimated / continent.size;
+
+        continent.cities = getCitiesFromMap(continent.map, probability, heightMap);
+    });
+
+    zones.islands.forEach(function (islands) {
+        var nbCitiesEstimated = Math.ceil(islands.size / 1800),
+            probability = nbCitiesEstimated / islands.size;
+
+        islands.cities = getCitiesFromMap(islands.map, probability, heightMap);
+    });
+};
 
 
 

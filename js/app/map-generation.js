@@ -56,6 +56,9 @@ var mapGenerator = {
 
         this.data = data;
 
+        console.log(this.data);
+
+        this.setCitiesLayer();
         this.display();
 
         this.busy = false;
@@ -64,6 +67,10 @@ var mapGenerator = {
         this.canvas.toBlob(function (blob) {
             saveAs(blob, "generated-map.png");
         });
+    },
+    setCitiesLayer : function () {
+        var parent = $(this.canvas).parent();
+        console.log(parent);
     },
     display: function () {
         var heightMap = this.data.heightMap,
