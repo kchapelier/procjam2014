@@ -2,6 +2,7 @@
 
 importScripts(
     '../../vendors/noisejs/perlin.js',
+    '../../vendors/seedrandom/seedrandom-2.3.10.min.js',
     '../../vendors/mathp/mathp-1.1.1.js', //TODO remove this dep
     '../lib/map2d.js',
 
@@ -12,11 +13,12 @@ importScripts(
 );
 
 self.addEventListener('message', function (e) {
-    var seed = e.data.seed,
+    var seed = 0.23, //e.data.seed,
         width = e.data.width,
         height = e.data.height;
 
     noise.seed(seed);
+    Math.seedrandom(seed, { global : true }); // replace Math.random globally (in the worker)
 
     //TODO use erosion simulation to get more grainy details in the continents
     //TODO lake / rivers

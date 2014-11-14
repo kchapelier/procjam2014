@@ -16,7 +16,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [X] Mix alternatives propensity height map algorithms for water and earth bodies
 - [ ] Alternative renderers ?
 - [X] Use Web Workers
-- [ ] Make sure a single seed always return the exact same map
+- [X] Make sure a single seed always return the exact same map
 - [ ] Make sure it also works on Firefox at the very least
 - [ ] UI with parameters for generating the map
 - [ ] UI : enable visualisation of different partial maps (propensity map, height map, continent map, ...)
