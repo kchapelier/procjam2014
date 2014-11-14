@@ -21,4 +21,5 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [ ] UI with parameters for generating the map
 - [ ] UI : enable visualisation of different partial maps (propensity map, height map, continent map, ...)
 - [X] "Save map as png" functionality
-- [ ] Post on itch.io or on own server ?
+- [X] Post on itch.io (http://itch.io/jam/procjam/rate/13748)
+- [ ] Public hosting
