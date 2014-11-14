@@ -9,24 +9,25 @@ body {
     padding:0;
     background:#000;
     font-family:"Roboto", sans-serif;
+    overflow:hidden;
 }
 
 .container {
     padding: 0;
     margin: 0;
     position:absolute;
-    top:10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background:#232323;
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background:#000;
 }
 
 body .dg.main {
     font-family: "Roboto", sans-serif;
     position:absolute;
-    right:10px;
-    top:10px;
+    right:0px;
+    top:0px;
 }
 
 body .dg .close-button {
@@ -49,7 +50,7 @@ body .dg .c .slider .slider-fg, body .dg .c .slider:hover .slider-fg {
     background:#EEE;
 }
 
-body .dg .cr.number .c input[type=text] {
+body .dg .cr .c input[type=text] {
     color:#EEE;
 }
 
@@ -76,4 +77,38 @@ body .dg .cr.function .property-name {
 
 .display-cities .city {
     display:block;
+}
+
+.loading-overlay {
+    display:none;
+    padding: 0;
+    margin: 0;
+    position:absolute;
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0,0,0,0.5);
+    z-index:100;
+}
+
+.loading .loading-overlay {
+    display:block;
+}
+
+.github {
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+    display:block;
+    width:32px;
+    height:32px;
+    text-indent:-99999px;
+    background-image:url(../../img/github-logo.png);
+    transform: scale(0.75);
+    opacity:0.5;
+}
+
+.github:hover {
+    opacity:1;
 }

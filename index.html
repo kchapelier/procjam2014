@@ -1,6 +1,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>Black Sea</title>
+    <meta name="description" content="Black Sea, a procedural generation experiment">
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/app/style.css"/>
 </head>
@@ -9,6 +11,10 @@
     <div style="position:relative">
         <canvas id="canvas" width="1200" height="500"></canvas>
     </div>
+    <div class="loading-overlay"></div>
+
+    <a href="https://github.com/kchapelier/procjam2014/"
+       class="github" target="_blank" title="Repository on github">Black Sea Procjam2014</a>
 </div>
 <script src="js/vendors/dat.gui/dat.gui.min.js"></script>
 <script src="js/vendors/canvas-toblob/canvas-toblob.js"></script>
@@ -22,20 +28,24 @@
         var canvas = document.getElementById('canvas');
 
         var app = {
-            seed: 0,
+            seed: '0',
             seaLevel: 0.5,
             glitch: false,
             cities: false,
             randomSeed: function () {
-                this.seed = Math.floor(Math.random() * 1000000000);
+                this.seed = Math.floor(Math.random() * 1000000000).toString();
             },
             generate: function () {
                 mapGenerator.setCanvas(canvas);
                 mapGenerator.seaLevel = this.seaLevel;
-                mapGenerator.seed = this.seed / 1000000000;
+                mapGenerator.seed = parseInt(this.seed, 10) / 1000000000;
                 mapGenerator.width = canvas.width;
                 mapGenerator.height = canvas.height;
                 mapGenerator.requestMap();
+            },
+            generateRandom: function () {
+                this.randomSeed();
+                this.generate();
             },
             save: function () {
                 mapGenerator.savePng();
@@ -48,17 +58,17 @@
 
         document.body.appendChild(gui.domElement);
 
-        gui.add(app, "seaLevel").name('sea level').min(0).max(1).step(0.01);
-        gui.add(app, "glitch").name('glitched out');
-        gui.add(app, "cities").name('cities').onFinishChange(function (value) {
+        //gui.add(app, "seaLevel").min(0).max(1).step(0.01).name('Sea level');
+        //gui.add(app, "glitch").name('Glitched out');
+        gui.add(app, "cities").name('Display cities').onFinishChange(function (value) {
             if (value) {
                 canvas.parentNode.classList.add('display-cities');
             } else {
                 canvas.parentNode.classList.remove('display-cities');
             }
         });
-        gui.add(app, "seed").listen();
-        gui.add(app, "randomSeed").name('New Random Seed');
+        gui.add(app, "seed").name('Seed').listen();
+        gui.add(app, "generateRandom").name('Generate from new random seed');
         gui.add(app, "generate").name('Generate');
         gui.add(app, "save").name('Save as PNG');
 
@@ -78,6 +88,16 @@
 
             mapGenerator.mousemove(x - 1, y - 3);
         });
+
+
+        var resize = function() {
+            canvas.width = $('.container').width();
+            canvas.height = $('.container').height();
+        };
+
+        $(window).on('resize', resize);
+
+        resize();
 
 
     });

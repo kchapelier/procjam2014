@@ -14,12 +14,17 @@ var mapGenerator = {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
     },
+    setOverlay: function (overlay) {
+        this.overlay = overlay;
+    },
     getWorker: function () {
         var self = this;
 
         if (this.worker === null) {
             this.worker = new Worker('./js/app/workers/map-generation-worker.js#t=1');
             this.worker.addEventListener('message', function (e) {
+                self.worker.terminate();
+                self.worker = null;
                 self.receiveMap(e.data);
             });
         }
@@ -33,6 +38,7 @@ var mapGenerator = {
             return false;
         }
 
+        document.body.classList.add('loading');
         this.busy = true;
 
         worker = this.getWorker();
@@ -42,8 +48,6 @@ var mapGenerator = {
             height: this.height,
             seaLevel: this.seaLevel
         });
-
-        console.log(this.seaLevel);
 
         return true;
     },
@@ -61,11 +65,11 @@ var mapGenerator = {
 
         this.data = data;
 
-        console.log(this.data);
-
+        this.highlight = null;
         this.setCitiesLayer();
         this.display();
 
+        document.body.classList.remove('loading');
         this.busy = false;
     },
     savePng: function () {
@@ -76,7 +80,7 @@ var mapGenerator = {
     setCitiesLayer : function () {
         var parent = $(this.canvas).parent();
 
-        //parent.getElement('.city').destroy();
+        parent.find('.city').remove();
 
         var placeCity = function(className, city) {
             var el = $('<div>', {
@@ -108,11 +112,11 @@ var mapGenerator = {
         parent.find('.city').on({
             mouseenter : function (e) {
                 $(e.currentTarget).addClass('highlighted');
-                console.log($(e.currentTarget).data('title'), 'enter');
+                //console.log($(e.currentTarget).data('title'), 'enter');
             },
             mouseleave : function (e) {
                 $(e.currentTarget).removeClass('highlighted');
-                console.log($(e.currentTarget).data('title'), 'leave');
+                //console.log($(e.currentTarget).data('title'), 'leave');
             }
         });
 
@@ -172,7 +176,7 @@ var mapGenerator = {
             previous = this.highlight;
 
             if (this.highlight !== null) {
-                console.log(this.highlight.name, this.highlight.size);
+                //console.log(this.highlight.type, this.highlight.name, 'superficie', this.highlight.size);
             }
 
             this.display();

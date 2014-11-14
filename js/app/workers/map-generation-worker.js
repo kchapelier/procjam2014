@@ -63,7 +63,7 @@ self.addEventListener('message', function (e) {
  * @returns {Map2D}
  */
 var getHeightPropensityMap = function (width, height) {
-    console.time('getHeightPropensityMap');
+    //console.time('getHeightPropensityMap');
 
     var map = new Map2D(width, height, Float32Array);
 
@@ -89,13 +89,13 @@ var getHeightPropensityMap = function (width, height) {
         return Math.max(0, Math.min(1, (base * increment) * 2));
     });
 
-    console.timeEnd('getHeightPropensityMap');
+    //console.timeEnd('getHeightPropensityMap');
 
     return map;
 };
 
 var getAltHeightPropensityMap = function (width, height) {
-    console.time('getAltHeightPropensityMap');
+    //console.time('getAltHeightPropensityMap');
 
     var map = new Map2D(width, height, Float32Array);
 
@@ -124,13 +124,13 @@ var getAltHeightPropensityMap = function (width, height) {
         return Math.max(0, Math.min(1, (base * increment) * 2));
     });
 
-    console.timeEnd('getAltHeightPropensityMap');
+    //console.timeEnd('getAltHeightPropensityMap');
 
     return map;
 };
 
 var getHeightMap = function (width, height, propensityMap, abyssMap) {
-    console.time('getHeightMap');
+    //console.time('getHeightMap');
 
     var map = new Map2D(width, height, Uint8ClampedArray);
 
@@ -156,13 +156,13 @@ var getHeightMap = function (width, height, propensityMap, abyssMap) {
         return value * 255;
     });
 
-    console.timeEnd('getHeightMap');
+    //console.timeEnd('getHeightMap');
 
     return map;
 };
 
 var getContinentMap = function (heightMap, seaLevel) {
-    console.time('getContinentMap');
+    //console.time('getContinentMap');
 
     var map = Map2D.clone(heightMap);
 
@@ -174,13 +174,13 @@ var getContinentMap = function (heightMap, seaLevel) {
         return value > average ? 255 : 0;
     });
 
-    console.timeEnd('getContinentMap');
+    //console.timeEnd('getContinentMap');
 
     return map;
 };
 
 var differentiateContinents = function (continentMap) {
-    console.time('differentiateContinents');
+    //console.time('differentiateContinents');
 
     //too big and not ideal
     //alter the continent map and is limited to ~253 earth bodies
@@ -237,13 +237,13 @@ var differentiateContinents = function (continentMap) {
         return value;
     });
 
-    console.timeEnd('differentiateContinents');
+    //console.timeEnd('differentiateContinents');
 
     return preprocessedZones;
 };
 
 var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
-    console.time('postProcessZones');
+    //console.time('postProcessZones');
 
     var zones = {
         continents: [],
@@ -273,7 +273,7 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
         }
     });
 
-    console.timeEnd('postProcessZones');
+    //console.timeEnd('postProcessZones');
 
     return zones;
 };
@@ -319,7 +319,7 @@ var getErodedMap = function (heightMap) {
     //TODO get a false erosion simulator that works
     //traditional droplets algorithm are way too expensive and doesn't seem to work well with grid based terrain
 
-    console.time('getErodedMap');
+    //console.time('getErodedMap');
 
     var map = Map2D.clone(heightMap);
 
@@ -366,7 +366,7 @@ var getErodedMap = function (heightMap) {
         });
     }
 
-    console.timeEnd('getErodedMap');
+    //console.timeEnd('getErodedMap');
 
     return map;
 };
