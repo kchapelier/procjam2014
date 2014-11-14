@@ -13,7 +13,7 @@ importScripts(
 );
 
 self.addEventListener('message', function (e) {
-    var seed = 0.23, //e.data.seed,
+    var seed = e.data.seed,
         width = e.data.width,
         height = e.data.height;
 
@@ -304,7 +304,7 @@ var addCitiesToZones = function (heightMap, zones) {
     });
 
     zones.islands.forEach(function (islands) {
-        var nbCitiesEstimated = Math.ceil(islands.size / 1800),
+        var nbCitiesEstimated = Math.ceil(islands.size / 1700),
             probability = nbCitiesEstimated / islands.size;
 
         islands.cities = getCitiesFromMap(islands.map, probability, heightMap);

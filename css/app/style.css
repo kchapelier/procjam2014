@@ -51,3 +51,18 @@ section a {
     padding:1% 1.1%;
 }
 
+.city {
+    /*display: none;*/
+    position : absolute;
+    width : 3px;
+    height : 3px;
+    background: #CCC;
+    border: 1px solid #222;
+    transition: background, transform 0.15s linear;
+}
+
+.city.highlighted {
+    transform: scale(3);
+    background: #FFF;
+    z-index:10;
+}

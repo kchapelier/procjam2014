@@ -8,6 +8,7 @@ var mapGenerator = {
     busy: false,
     data: null,
     highlight: null,
+    highlightedCity: null,
     setCanvas: function (canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
@@ -70,7 +71,48 @@ var mapGenerator = {
     },
     setCitiesLayer : function () {
         var parent = $(this.canvas).parent();
-        console.log(parent);
+
+        //parent.getElement('.city').destroy();
+
+        var placeCity = function(className, city) {
+            var el = $('<div>', {
+                'class' : 'city ' + className,
+                'css' : {
+                    top : city.y - 1,
+                    left : city.x - 1
+                },
+                'data-title' : city.name
+            });
+
+            parent.append(el);
+        };
+
+        this.data.zones.continents.forEach(function(continent, index) {
+            var className = 'continent-' + index;
+            continent.cities.forEach(function(city, index) {
+                placeCity(className, city);
+            });
+        });
+
+        this.data.zones.islands.forEach(function(island, index) {
+            var className = 'islands-' + index;
+            island.cities.forEach(function(city, index) {
+                placeCity(className, city);
+            });
+        });
+
+        parent.find('.city').on({
+            mouseenter : function (e) {
+                $(e.currentTarget).addClass('highlighted');
+                console.log($(e.currentTarget).data('title'), 'enter');
+            },
+            mouseleave : function (e) {
+                $(e.currentTarget).removeClass('highlighted');
+                console.log($(e.currentTarget).data('title'), 'leave');
+            }
+        });
+
+
     },
     display: function () {
         var heightMap = this.data.heightMap,
@@ -89,7 +131,14 @@ var mapGenerator = {
             return value;
         });
 
+        if(this.highlight) {
+
+        }
+
         Map2D.draw(this.context, 0, 0, map);
+    },
+    highlightCity: function () {
+
     },
     mousemove: function (x, y) {
         if (this.data === null) {

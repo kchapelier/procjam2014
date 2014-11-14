@@ -12,7 +12,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [X] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
 - [X] Store a map for each continent / island
 - [X] Implement continents / island highlighting
-- [ ] Sprinkle some cities on top of the continents
+- [X] Sprinkle some cities on top of the continents
 - [X] Mix alternatives propensity height map algorithms for water and earth bodies
 - [ ] Alternative renderers ?
 - [X] Use Web Workers
