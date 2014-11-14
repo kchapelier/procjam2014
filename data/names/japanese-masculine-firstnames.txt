@@ -174,11 +174,11 @@ i e sa da
 i k ko
 i ku o
 i ku rou
-i p pei
+i ppei
 i sa mi
 i sa mu
 i sa o
-i s sei
+i ssei
 i ta ru
 i wa o
 ji i chi rou
@@ -274,7 +274,7 @@ ke i i chi
 ke i i chi rou
 ke i ji
 ke i ji rou
-ke i juu
+ke i ju u
 ke i ki
 ke i no su ke
 ke i shi
@@ -366,8 +366,8 @@ ma hi ro
 ma ki o
 ma mo ru
 ma na bu
-man ji rou
-man ta rou
+ma n ji rou
+ma n ta rou
 ma re o
 ma sa a ki
 ma sa bu mi
@@ -831,7 +831,7 @@ te i ji
 te i ji rou
 te i ko
 te i zou
-te p pei
+te ppei
 te ru a ki
 te ru hi ko
 te ru hi sa
@@ -1008,15 +1008,15 @@ yo shi yu ki
 you su ke
 you ta
 you zou
-yuu dai
+yu u dai
 yu gi
 yu go
-yuu he i
-yuu i chi
-yuu i chi rou
-yuu ji
-yuu ji rou
-yuu ki chi
+yu u he i
+yu u i chi
+yu u i chi rou
+yu u ji
+yu u ji rou
+yu u ki chi
 yu ki ha ru
 yu ki hi ko
 yu ki hi ro
@@ -1028,24 +1028,24 @@ yu ki o
 yu ki ta ka
 yu ki to
 yu ki ya
-yuu sa ku
-yuu sei
-yuu shi
-yuu su ke
-yuu ta
+yu u sa ku
+yu u sei
+yu u shi
+yu u su ke
+yu u ta
 yu ta ka
-yuu ta rou
-yuu to
-yuu ya
-yuu zou
-zen ji ro
-zen ki chi
-zen ta rou
-zen zou
+yu u ta rou
+yu u to
+yu u ya
+yu u zou
+ze n ji ro
+ze n ki chi
+ze n ta rou
+ze n zou
 
 a ki mi
 a ki ra
-an ri
+a n ri
 a yu mu
 chi a ki
 chi hi ro
@@ -1102,7 +1102,7 @@ ri sa
 ryou
 sa ka e
 sa tsu ki
-set su na
+se tsu na
 shi ge ri
 shi no bu
 shi on
@@ -1118,5 +1118,5 @@ tsu ba sa
 tsu ka sa
 yo shi ka
 yo shi mi
-yuu
+yu u
 yu ki

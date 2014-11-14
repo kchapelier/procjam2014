@@ -21,14 +21,15 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: false,
             chain: {
-                ki: 0.7619047619047619,
-                ra: 0.015873015873015872,
-                ri: 0.047619047619047616,
-                sa: 0.015873015873015872,
-                to: 0.015873015873015872,
-                tsu: 0.1111111111111111,
-                zu: 0.015873015873015872,
-                yu: 0.015873015873015872
+                ki: 0.75,
+                ra: 0.015625,
+                ri: 0.046875,
+                sa: 0.015625,
+                to: 0.015625,
+                tsu: 0.109375,
+                zu: 0.015625,
+                n: 0.015625,
+                yu: 0.015625
             }
         },
         ki: {
@@ -236,17 +237,18 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                sa: 0.75,
-                tsu: 0.09090909090909091,
-                ta: 0.022727272727272728,
-                hi: 0.011363636363636364,
-                ki: 0.022727272727272728,
-                mo: 0.011363636363636364,
-                na: 0.011363636363636364,
-                re: 0.011363636363636364,
-                su: 0.03409090909090909,
-                no: 0.011363636363636364,
-                ko: 0.022727272727272728
+                sa: 0.7333333333333333,
+                tsu: 0.08888888888888889,
+                ta: 0.022222222222222223,
+                hi: 0.011111111111111112,
+                ki: 0.022222222222222223,
+                mo: 0.011111111111111112,
+                na: 0.011111111111111112,
+                n: 0.022222222222222223,
+                re: 0.011111111111111112,
+                su: 0.03333333333333333,
+                no: 0.011111111111111112,
+                ko: 0.022222222222222223
             }
         },
         tsu: {
@@ -255,34 +257,34 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                gu: 0.11965811965811966,
-                hi: 0.1111111111111111,
-                o: 0.08547008547008547,
-                shi: 0.042735042735042736,
-                to: 0.042735042735042736,
-                ya: 0.042735042735042736,
-                ji: 0.03418803418803419,
-                a: 0.02564102564102564,
-                e: 0.008547008547008548,
-                ki: 0.05982905982905983,
-                ma: 0.03418803418803419,
-                na: 0.02564102564102564,
-                no: 0.042735042735042736,
-                su: 0.017094017094017096,
-                ta: 0.02564102564102564,
-                te: 0.017094017094017096,
-                yo: 0.042735042735042736,
-                yu: 0.02564102564102564,
-                chi: 0.008547008547008548,
-                gi: 0.017094017094017096,
-                ha: 0.017094017094017096,
-                ne: 0.08547008547008547,
-                mi: 0.017094017094017096,
-                rou: 0.017094017094017096,
-                zou: 0.008547008547008548,
-                ru: 0.008547008547008548,
-                ba: 0.008547008547008548,
-                ka: 0.008547008547008548
+                gu: 0.11864406779661017,
+                hi: 0.11016949152542373,
+                o: 0.0847457627118644,
+                shi: 0.0423728813559322,
+                to: 0.0423728813559322,
+                ya: 0.0423728813559322,
+                ji: 0.03389830508474576,
+                a: 0.025423728813559324,
+                e: 0.00847457627118644,
+                ki: 0.059322033898305086,
+                ma: 0.03389830508474576,
+                na: 0.03389830508474576,
+                no: 0.0423728813559322,
+                su: 0.01694915254237288,
+                ta: 0.025423728813559324,
+                te: 0.01694915254237288,
+                yo: 0.0423728813559322,
+                yu: 0.025423728813559324,
+                chi: 0.00847457627118644,
+                gi: 0.01694915254237288,
+                ha: 0.01694915254237288,
+                ne: 0.0847457627118644,
+                mi: 0.01694915254237288,
+                rou: 0.01694915254237288,
+                zou: 0.00847457627118644,
+                ru: 0.00847457627118644,
+                ba: 0.00847457627118644,
+                ka: 0.00847457627118644
             }
         },
         no: {
@@ -511,12 +513,12 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: false,
             chain: {
-                ki: 0.8863636363636364,
-                u: 0.022727272727272728,
-                gi: 0.022727272727272728,
-                go: 0.022727272727272728,
-                ta: 0.022727272727272728,
-                mu: 0.022727272727272728
+                ki: 0.639344262295082,
+                u: 0.29508196721311475,
+                gi: 0.01639344262295082,
+                go: 0.01639344262295082,
+                ta: 0.01639344262295082,
+                mu: 0.01639344262295082
             }
         },
         ra: {
@@ -687,25 +689,25 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                ri: 0.014705882352941176,
-                ji: 0.14705882352941177,
-                ta: 0.14705882352941177,
-                i: 0.20588235294117646,
-                zo: 0.029411764705882353,
-                pa: 0.014705882352941176,
-                ki: 0.08823529411764706,
-                pei: 0.04411764705882353,
-                ya: 0.058823529411764705,
-                zou: 0.04411764705882353,
-                ku: 0.014705882352941176,
-                su: 0.058823529411764705,
-                go: 0.029411764705882353,
-                sa: 0.029411764705882353,
-                shin: 0.014705882352941176,
-                to: 0.014705882352941176,
-                yu: 0.014705882352941176,
-                shou: 0.014705882352941176,
-                jou: 0.014705882352941176
+                ri: 0.02666666666666667,
+                ji: 0.16,
+                ta: 0.16,
+                i: 0.18666666666666668,
+                zo: 0.02666666666666667,
+                pa: 0.013333333333333334,
+                ki: 0.09333333333333334,
+                pei: 0.04,
+                ya: 0.05333333333333334,
+                zou: 0.05333333333333334,
+                ku: 0.013333333333333334,
+                su: 0.05333333333333334,
+                go: 0.02666666666666667,
+                sa: 0.02666666666666667,
+                shin: 0.013333333333333334,
+                to: 0.013333333333333334,
+                yu: 0.013333333333333334,
+                shou: 0.013333333333333334,
+                jou: 0.013333333333333334
             }
         },
         ji: {
@@ -817,15 +819,15 @@ var japaneseMasculineFirstnames = (function () {
                 e: 0.04201680672268908,
                 k: 0.008403361344537815,
                 ku: 0.01680672268907563,
-                p: 0.008403361344537815,
+                ppei: 0.008403361344537815,
                 sa: 0.025210084033613446,
-                s: 0.008403361344537815,
+                ssei: 0.008403361344537815,
                 ta: 0.01680672268907563,
                 wa: 0.008403361344537815,
                 ji: 0.08403361344537816,
                 to: 0.008403361344537815,
                 i: 0.058823529411764705,
-                juu: 0.008403361344537815,
+                ju: 0.008403361344537815,
                 no: 0.008403361344537815,
                 shi: 0.03361344537815126,
                 zo: 0.008403361344537815,
@@ -858,23 +860,25 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                i: 0.10344827586206896,
-                bei: 0.034482758620689655,
-                ki: 0.06896551724137931,
-                shi: 0.034482758620689655,
-                ta: 0.13793103448275862,
-                zou: 0.10344827586206896,
-                he: 0.034482758620689655,
-                ji: 0.10344827586206896,
-                no: 0.034482758620689655,
-                sa: 0.06896551724137931,
-                sei: 0.034482758620689655,
-                su: 0.06896551724137931,
-                ya: 0.034482758620689655,
-                go: 0.034482758620689655,
-                hei: 0.034482758620689655,
-                ma: 0.034482758620689655,
-                me: 0.034482758620689655
+                i: 0.1111111111111111,
+                bei: 0.022222222222222223,
+                ki: 0.06666666666666667,
+                shi: 0.044444444444444446,
+                ta: 0.13333333333333333,
+                zou: 0.08888888888888889,
+                he: 0.044444444444444446,
+                ji: 0.1111111111111111,
+                no: 0.022222222222222223,
+                sa: 0.06666666666666667,
+                sei: 0.044444444444444446,
+                su: 0.06666666666666667,
+                ya: 0.044444444444444446,
+                go: 0.022222222222222223,
+                hei: 0.022222222222222223,
+                ma: 0.022222222222222223,
+                me: 0.022222222222222223,
+                dai: 0.022222222222222223,
+                to: 0.022222222222222223
             }
         },
         go: {
@@ -923,31 +927,31 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                ke: 0.4935064935064935,
-                e: 0.025974025974025976,
-                o: 0.03896103896103896,
-                zou: 0.012987012987012988,
-                gu: 0.012987012987012988,
-                mi: 0.06493506493506493,
-                na: 0.03896103896103896,
-                su: 0.012987012987012988,
-                mu: 0.012987012987012988,
-                a: 0.012987012987012988,
-                fu: 0.012987012987012988,
-                ha: 0.012987012987012988,
-                hi: 0.05194805194805195,
-                ji: 0.025974025974025976,
-                ka: 0.012987012987012988,
-                ki: 0.012987012987012988,
-                ma: 0.012987012987012988,
-                no: 0.025974025974025976,
-                rou: 0.012987012987012988,
-                shi: 0.012987012987012988,
-                ta: 0.012987012987012988,
-                to: 0.025974025974025976,
-                yo: 0.012987012987012988,
-                yu: 0.012987012987012988,
-                ba: 0.012987012987012988
+                ke: 0.5,
+                e: 0.02631578947368421,
+                o: 0.039473684210526314,
+                zou: 0.013157894736842105,
+                gu: 0.013157894736842105,
+                mi: 0.06578947368421052,
+                na: 0.02631578947368421,
+                su: 0.013157894736842105,
+                mu: 0.013157894736842105,
+                a: 0.013157894736842105,
+                fu: 0.013157894736842105,
+                ha: 0.013157894736842105,
+                hi: 0.05263157894736842,
+                ji: 0.02631578947368421,
+                ka: 0.013157894736842105,
+                ki: 0.013157894736842105,
+                ma: 0.013157894736842105,
+                no: 0.02631578947368421,
+                rou: 0.013157894736842105,
+                shi: 0.013157894736842105,
+                ta: 0.013157894736842105,
+                to: 0.02631578947368421,
+                yo: 0.013157894736842105,
+                yu: 0.013157894736842105,
+                ba: 0.013157894736842105
             }
         },
         ke: {
@@ -1157,7 +1161,7 @@ var japaneseMasculineFirstnames = (function () {
                 ru: 0.5,
                 o: 0.03125,
                 i: 0.125,
-                p: 0.03125,
+                ppei: 0.03125,
                 tsu: 0.3125
             }
         },
@@ -1179,29 +1183,15 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsLast: false,
             chain: {ko: 1}
         },
-        p: {
-            value: 'p',
-            acceptableAsFirst: false,
-            acceptableAsMiddle: true,
-            acceptableAsLast: false,
-            chain: {pei: 1}
-        },
-        pei: {
-            value: 'pei',
+        ppei: {
+            value: 'ppei',
             acceptableAsFirst: false,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
             chain: {}
         },
-        s: {
-            value: 's',
-            acceptableAsFirst: false,
-            acceptableAsMiddle: true,
-            acceptableAsLast: false,
-            chain: {sei: 1}
-        },
-        sei: {
-            value: 'sei',
+        ssei: {
+            value: 'ssei',
             acceptableAsFirst: false,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
@@ -1239,11 +1229,11 @@ var japaneseMasculineFirstnames = (function () {
         ju: {
             value: 'ju',
             acceptableAsFirst: true,
-            acceptableAsMiddle: false,
+            acceptableAsMiddle: true,
             acceptableAsLast: false,
             chain: {
-                u: 0.4166666666666667,
-                n: 0.5833333333333334
+                u: 0.46153846153846156,
+                n: 0.5384615384615384
             }
         },
         bei: {
@@ -1253,8 +1243,8 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsLast: true,
             chain: {}
         },
-        juu: {
-            value: 'juu',
+        pei: {
+            value: 'pei',
             acceptableAsFirst: false,
             acceptableAsMiddle: false,
             acceptableAsLast: true,
@@ -1295,6 +1285,13 @@ var japaneseMasculineFirstnames = (function () {
                 zou: 0.09090909090909091
             }
         },
+        sei: {
+            value: 'sei',
+            acceptableAsFirst: false,
+            acceptableAsMiddle: false,
+            acceptableAsLast: true,
+            chain: {}
+        },
         so: {
             value: 'so',
             acceptableAsFirst: true,
@@ -1324,16 +1321,6 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: false,
             acceptableAsLast: false,
             chain: {ki: 1}
-        },
-        man: {
-            value: 'man',
-            acceptableAsFirst: true,
-            acceptableAsMiddle: false,
-            acceptableAsLast: false,
-            chain: {
-                ji: 0.5,
-                ta: 0.5
-            }
         },
         re: {
             value: 're',
@@ -1389,8 +1376,9 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsMiddle: true,
             acceptableAsLast: true,
             chain: {
-                i: 0.9285714285714286,
-                n: 0.07142857142857142
+                i: 0.8666666666666667,
+                n: 0.06666666666666667,
+                tsu: 0.06666666666666667
             }
         },
         ryu: {
@@ -1455,27 +1443,6 @@ var japaneseMasculineFirstnames = (function () {
                 zou: 0.125
             }
         },
-        yuu: {
-            value: 'yuu',
-            acceptableAsFirst: true,
-            acceptableAsMiddle: false,
-            acceptableAsLast: true,
-            chain: {
-                dai: 0.0625,
-                he: 0.0625,
-                i: 0.125,
-                ji: 0.125,
-                ki: 0.0625,
-                sa: 0.0625,
-                sei: 0.0625,
-                shi: 0.0625,
-                su: 0.0625,
-                ta: 0.125,
-                to: 0.0625,
-                ya: 0.0625,
-                zou: 0.0625
-            }
-        },
         dai: {
             value: 'dai',
             acceptableAsFirst: false,
@@ -1483,24 +1450,12 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsLast: true,
             chain: {}
         },
-        zen: {
-            value: 'zen',
+        ze: {
+            value: 'ze',
             acceptableAsFirst: true,
             acceptableAsMiddle: false,
             acceptableAsLast: false,
-            chain: {
-                ji: 0.25,
-                ki: 0.25,
-                ta: 0.25,
-                zou: 0.25
-            }
-        },
-        an: {
-            value: 'an',
-            acceptableAsFirst: true,
-            acceptableAsMiddle: false,
-            acceptableAsLast: false,
-            chain: {ri: 1}
+            chain: {n: 1}
         },
         jun: {
             value: 'jun',
@@ -1530,13 +1485,6 @@ var japaneseMasculineFirstnames = (function () {
             acceptableAsLast: true,
             chain: {}
         },
-        set: {
-            value: 'set',
-            acceptableAsFirst: true,
-            acceptableAsMiddle: false,
-            acceptableAsLast: false,
-            chain: {su: 1}
-        },
         on: {
             value: 'on',
             acceptableAsFirst: false,
@@ -1548,5 +1496,5 @@ var japaneseMasculineFirstnames = (function () {
 
     /* jscs: enable */
 
-    return new WMC(rules, data, true);
+    return new WMC(rules, data);
 }());

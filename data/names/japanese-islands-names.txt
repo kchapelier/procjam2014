@@ -1,4 +1,5 @@
 # Used to generate the markov chain
+# Does not contain only islands names and also contains some ryukyuan
 
 d e n
 i o

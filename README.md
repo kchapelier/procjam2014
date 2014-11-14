@@ -9,7 +9,7 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 ## TODO
 
 - [X] Better post processing of islands and generic places name WMC models
-- [ ] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
+- [X] Fix the possible infinite loop issue on WMC (or fix the data set to make it impossible)
 - [X] Store a map for each continent / island
 - [X] Implement continents / island highlighting
 - [ ] Sprinkle some cities on top of the continents
