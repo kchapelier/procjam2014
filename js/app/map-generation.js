@@ -1,4 +1,5 @@
 var mapGenerator = {
+    canvas: null,
     context: null,
     worker: null,
     seed: 0,
@@ -7,8 +8,9 @@ var mapGenerator = {
     busy: false,
     data: null,
     highlight : null,
-    setContext: function (context) {
-        this.context = context;
+    setCanvas: function (canvas) {
+        this.canvas = canvas;
+        this.context = canvas.getContext('2d');
     },
     getWorker: function () {
         var self = this;
@@ -57,6 +59,11 @@ var mapGenerator = {
         this.display();
 
         this.busy = false;
+    },
+    savePng: function () {
+        this.canvas.toBlob(function(blob) {
+            saveAs(blob, "generated-map.png");
+        });
     },
     display: function () {
         var heightMap = this.data.heightMap,

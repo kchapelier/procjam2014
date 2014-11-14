@@ -20,5 +20,5 @@ http://itch.io/jam/procjam ヽ(￣д￣;)ノ
 - [ ] Make sure it also works on Firefox at the very least
 - [ ] UI with parameters for generating the map
 - [ ] UI : enable visualisation of different partial maps (propensity map, height map, continent map, ...)
-- [ ] "Save map as png" functionality
+- [X] "Save map as png" functionality
 - [ ] Post on itch.io or on own server ?

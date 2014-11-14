@@ -34,7 +34,8 @@
     </section>
 </div>
 <script src="js/vendors/brain/brain-0.6.3.js"></script>
-<script src="js/vendors/mathp/mathp-1.1.1.js"></script>
+<script src="js/vendors/canvas-toblob/canvas-toblob.js"></script>
+<script src="js/vendors/filesaver/filesaver.js"></script>
 <script src="js/vendors/jquery/jquery-2.1.1.min.js"></script>
 <script src="js/vendors/jquery.onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script src="js/app/lib/map2d.js"></script>
@@ -68,8 +69,7 @@
             }
         };
 
-        var canvas = document.getElementById('canvas'),
-            context = canvas.getContext('2d');
+        var canvas = document.getElementById('canvas');
 
         var part2 = function () {
             console.log('part2');
@@ -127,7 +127,7 @@
             mapGenerator.mousemove(x - 1, y - 3);
         });
 
-        mapGenerator.setContext(context);
+        mapGenerator.setCanvas(canvas);
         mapGenerator.seed = Math.random();
         mapGenerator.width = canvas.width;
         mapGenerator.height = canvas.height;
