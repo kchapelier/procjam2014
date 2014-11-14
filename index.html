@@ -112,8 +112,19 @@
 
         generateNames();
 
-        $('#canvas').on('mousemove', function(e) {
-            mapGenerator.mousemove(e.offsetX - 1, e.offsetY - 3);
+        $('#canvas').on('mousemove', function (e) {
+            var x, y, offset;
+
+            if(typeof e.offsetX === "undefined" || typeof e.offsetY === "undefined") {
+                offset = $(e.currentTarget).offset();
+                x = Math.round(e.pageX - offset.left);
+                y = Math.round(e.pageY - offset.top);
+            } else {
+                x = e.offsetX;
+                y = e.offsetY;
+            }
+
+            mapGenerator.mousemove(x - 1, y - 3);
         });
 
         mapGenerator.setContext(context);
