@@ -54,6 +54,7 @@ var mapGenerator = {
         return true;
     },
     receiveMap: function (data) {
+        data.heightPropensityMap = Map2D.fromTypedArray(data.heightPropensityMap, data.params.width, data.params.height);
         data.heightMap = Map2D.fromTypedArray(data.heightMap, data.params.width, data.params.height);
         data.continentMap = Map2D.fromTypedArray(data.continentMap, data.params.width, data.params.height);
 

@@ -49,6 +49,7 @@ self.addEventListener('message', function (e) {
             width: width,
             height: height
         },
+        heightPropensityMap: heightPropensityMap.values,
         heightMap: heightMap.values,
         continentMap: continentMap.values,
         zones: {
@@ -193,14 +194,15 @@ var getHeightMap = function (width, height, propensityMap, abyssMap) {
 var getContinentMap = function (heightMap, seaLevel) {
     //console.time('getContinentMap');
 
-    var map = Map2D.clone(heightMap);
+    var map = Map2D.clone(heightMap),
+        seaLevelFactor = Math.sqrt(seaLevel + 0.5);
 
     var average = map.reduce(function (a, b) {
         return a + b;
     }) / (map.width * map.height) * 1.25;
 
     map.map(function (value, x, y) {
-        return value > average ? 255 : 0;
+        return value > average * seaLevelFactor ? 255 : 0;
     });
 
     //console.timeEnd('getContinentMap');
