@@ -26,12 +26,19 @@ self.addEventListener('message', function (e) {
     //TODO use erosion simulation to get more grainy details in the continents
     //TODO lake / rivers
 
-    var heightPropensityMap = getHeightPropensityMap(width, height),
-        altHeightPropensityMap = getAltHeightPropensityMap(width, height),
+    console.log('test');
+
+    console.time('total');
+
+    var propensityDistortionMaps = getPropensityDistortionMaps(width, height),
+        heightPropensityMap = getHeightPropensityMap(width, height, propensityDistortionMaps),
+        altHeightPropensityMap = getAltHeightPropensityMap(width, height, propensityDistortionMaps),
         heightMap = getHeightMap(width, height, heightPropensityMap, altHeightPropensityMap),
         continentMap = getContinentMap(heightMap, seaLevel),
         preprocessedZones = differentiateContinents(continentMap),
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
+
+    console.timeEnd('total');
 
     addCitiesToZones(heightMap, zones);
 
@@ -56,21 +63,42 @@ self.addEventListener('message', function (e) {
     });
 });
 
+var getPropensityDistortionMaps = function (width, height) {
+    var mapX = new Map2D(width, height, Float32Array),
+        mapY = new Map2D(width, height, Float32Array);
+
+    mapX.map(function (value, x, y) {
+        var dist = noise.perlin2(400 + x / 50, 400 + y / 50) / 40 + noise.simplex2(400 + x / 25, 400 + y / 25) / 60 + noise.simplex2(400 + x / 10, 400 + y / 10) / 130;
+        return dist * 1;
+    });
+
+    mapY.map(function (value, x, y) {
+        var dist = noise.perlin2(4000 + x / 50, 4000 + y / 50) / 40 + noise.simplex2(4000 + x / 25, 4000 + y / 25) / 60 + noise.simplex2(4000 + x / 10, 4000 + y / 10) / 130;
+        return dist * 1;
+    });
+
+    return {
+        x: mapX,
+        y: mapY
+    };
+}
+
 /**
  * Intermediary layer to use when building the final heightmap.
  * @param width
  * @param height
+ * @param distortions
  * @returns {Map2D}
  */
-var getHeightPropensityMap = function (width, height) {
+var getHeightPropensityMap = function (width, height, distortions) {
     //console.time('getHeightPropensityMap');
 
     var map = new Map2D(width, height, Float32Array);
 
     map.map(function (value, x, y) {
         // distortion
-        var dx = noise.perlin2(400 + x / 50, 400 + y / 50) / 40 + noise.simplex2(400 + x / 25, 400 + y / 25) / 60 + noise.simplex2(400 + x / 10, 400 + y / 10) / 130;
-        var dy = noise.perlin2(4000 + x / 50, 4000 + y / 50) / 40 + noise.simplex2(4000 + x / 25, 4000 + y / 25) / 60 + noise.simplex2(4000 + x / 10, 4000 + y / 10) / 130;
+        var dx = distortions.x.get(x, y),
+            dy = distortions.y.get(x, y);
 
         var base = Math.abs(Math.min(1, Math.max(-1, Math.min(
             noise.perlin3(x / 400 + dx, y / 400 + dy, 10),
@@ -94,15 +122,15 @@ var getHeightPropensityMap = function (width, height) {
     return map;
 };
 
-var getAltHeightPropensityMap = function (width, height) {
+var getAltHeightPropensityMap = function (width, height, distortions) {
     //console.time('getAltHeightPropensityMap');
 
     var map = new Map2D(width, height, Float32Array);
 
     map.map(function (value, x, y) {
         // distortion
-        var dx = noise.perlin2(400 + x / 50, 400 + y / 50) / 40 + noise.simplex2(400 + x / 25, 400 + y / 25) / 60 + noise.simplex2(400 + x / 10, 400 + y / 10) / 130;
-        var dy = noise.perlin2(4000 + x / 50, 4000 + y / 50) / 40 + noise.simplex2(4000 + x / 25, 4000 + y / 25) / 60 + noise.simplex2(4000 + x / 10, 4000 + y / 10) / 130;
+        var dx = distortions.x.get(x, y),
+            dy = distortions.y.get(x, y);
 
         var base = Math.abs(Math.pow(0.2, Math.max(-1, Math.min(
             noise.perlin3(x / 200 + dx, y / 200 + dy, 50),
