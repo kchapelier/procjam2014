@@ -3,6 +3,8 @@ var WMC = (function () {
 
     // TODO implement starting value probability
     // TODO implement backtracking for when the current element has a single element which cannot be used due to position rule
+    // TODO result cache to avoid repeated results
+    // TODO maxTries configurable in rules
 
     var WMC = function (rules, data, unsafe) {
         this.rules = rules;

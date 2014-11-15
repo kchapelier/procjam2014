@@ -77,50 +77,48 @@ var mapGenerator = {
             saveAs(blob, 'black-sea-' + (new Date().getTime()) + '.png');
         });
     },
-    setCitiesLayer : function () {
+    setCitiesLayer: function () {
         var parent = $(this.canvas).parent();
 
         parent.find('.city').remove();
 
-        var placeCity = function(className, city) {
+        var placeCity = function (className, city) {
             var el = $('<div>', {
-                'class' : 'city ' + className,
-                'css' : {
-                    top : city.y - 1,
-                    left : city.x - 1
+                'class': 'city ' + className,
+                css: {
+                    top: city.y - 1,
+                    left: city.x - 1
                 },
-                'data-title' : city.name
+                'data-title': city.name
             });
 
             parent.append(el);
         };
 
-        this.data.zones.continents.forEach(function(continent, index) {
+        this.data.zones.continents.forEach(function (continent, index) {
             var className = 'continent-' + index;
-            continent.cities.forEach(function(city, index) {
+            continent.cities.forEach(function (city, index) {
                 placeCity(className, city);
             });
         });
 
-        this.data.zones.islands.forEach(function(island, index) {
+        this.data.zones.islands.forEach(function (island, index) {
             var className = 'islands-' + index;
-            island.cities.forEach(function(city, index) {
+            island.cities.forEach(function (city, index) {
                 placeCity(className, city);
             });
         });
 
         parent.find('.city').on({
-            mouseenter : function (e) {
+            mouseenter: function (e) {
                 $(e.currentTarget).addClass('highlighted');
                 //console.log($(e.currentTarget).data('title'), 'enter');
             },
-            mouseleave : function (e) {
+            mouseleave: function (e) {
                 $(e.currentTarget).removeClass('highlighted');
                 //console.log($(e.currentTarget).data('title'), 'leave');
             }
         });
-
-
     },
     display: function () {
         var heightMap = this.data.heightMap,
@@ -139,14 +137,14 @@ var mapGenerator = {
             return value;
         });
 
-        if(this.highlight) {
-
+        if (this.highlight) {
+            //display in ui
         }
 
         Map2D.draw(this.context, 0, 0, map);
     },
     highlightCity: function () {
-
+        //display in ui
     },
     mousemove: function (x, y) {
         if (this.data === null) {
@@ -176,7 +174,7 @@ var mapGenerator = {
             previous = this.highlight;
 
             if (this.highlight !== null) {
-                //console.log(this.highlight.type, this.highlight.name, 'superficie', this.highlight.size);
+                console.log(this.highlight.type, this.highlight.name, 'superficie', this.highlight.size);
             }
 
             this.display();

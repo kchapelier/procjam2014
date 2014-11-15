@@ -278,11 +278,11 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     return zones;
 };
 
-var getCitiesFromMap = function(map, probability, heightMap) {
+var getCitiesFromMap = function (map, probability, heightMap) {
     var cities = [];
 
-    map.map(function(value, x, y) {
-        if(value && Math.random() < probability) {
+    map.map(function (value, x, y) {
+        if (value && Math.random() < probability) {
             cities.push({
                 name: japanesePlacesNames.get(),
                 x: x,

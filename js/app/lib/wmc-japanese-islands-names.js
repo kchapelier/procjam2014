@@ -6,35 +6,39 @@ var japaneseIslandsNames = (function () {
         elementsMaxNumber: 8,
         elementsPositionRules: false,
         postProcess: function (values) {
-            var name = values.join('');
+            var name = values.join(''),
+                rand;
+
             name = name.replace(/[^naeiuo]+$/, '');
             name = name.charAt(0).toUpperCase() + name.slice(1);
 
             if (name !== '') {
-                var rand = Math.random();
+                rand = Math.random();
 
                 if (rand > 0.45) {
                     name += 'jima';
                 } else if (rand > 0.1) {
                     name += 'shima';
                 } else {
-                    name += 'to';
+                    name += 'tō';
                 }
             }
 
             return name;
         },
         validate: function (sequence) {
-            var validDoubleCons = ['sh', 'ch', 'ts'];
-            var regexMultipleConsonnes = /[^aeiou\-]{2,}/g; //doesn't include y on purpose
-            var valid = true;
+            var validDoubleCons = ['sh', 'ch', 'ts'],
+                regexMultipleConsonnes = /[^ōaeiou\-]{2,}/g, //doesn't include y on purpose
+                valid = true,
+                multipleConsonnes,
+                i, cons;
 
             if (sequence.length > 2) {
-                var multipleConsonnes = sequence.toLowerCase().match(regexMultipleConsonnes);
+                multipleConsonnes = sequence.toLowerCase().match(regexMultipleConsonnes);
 
                 if (multipleConsonnes) {
-                    for (var i = 0; i < multipleConsonnes.length && valid; i++) {
-                        var cons = multipleConsonnes[i];
+                    for (i = 0; i < multipleConsonnes.length && valid; i++) {
+                        cons = multipleConsonnes[i];
 
                         if (cons.charAt(0) === 'n') {
                             cons = cons.substr(1);

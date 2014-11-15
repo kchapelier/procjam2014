@@ -4,22 +4,20 @@
 
 "use strict";
 
-var fs = require('fs');
-
-var file = process.argv.length > 2 ? process.argv[2] : null;
+var fs = require('fs'),
+    file = process.argv.length > 2 ? process.argv[2] : null;
 
 if (!file) {
     throw new Error('wmcgen must be given a file path');
 }
 
-fs.readFile(file, {encoding: 'utf8'}, function (error, data) {
+fs.readFile(file, 'utf8', function (error, data) {
     generation(data);
 });
 
 var generation = function (content) {
-    var names = content.toString().split('\n');
-
-    var values = {};
+    var names = content.toString().split('\n'),
+        values = {};
 
     //var maxFirst = 0;
     //var maxLast = 0;
