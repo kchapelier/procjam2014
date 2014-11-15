@@ -16,7 +16,8 @@ self.addEventListener('message', function (e) {
     var seed = e.data.seed,
         width = e.data.width,
         height = e.data.height,
-        seaLevel = e.data.seaLevel;
+        seaLevel = e.data.seaLevel,
+        distortionAmount = e.data.distortionAmount;
 
     noise.seed(seed);
     Math.seedrandom(seed, {
@@ -30,7 +31,7 @@ self.addEventListener('message', function (e) {
 
     console.time('total');
 
-    var propensityDistortionMaps = getPropensityDistortionMaps(width, height),
+    var propensityDistortionMaps = getPropensityDistortionMaps(width, height, distortionAmount),
         heightPropensityMap = getHeightPropensityMap(width, height, propensityDistortionMaps),
         altHeightPropensityMap = getAltHeightPropensityMap(width, height, propensityDistortionMaps),
         heightMap = getHeightMap(width, height, heightPropensityMap, altHeightPropensityMap),
@@ -63,18 +64,18 @@ self.addEventListener('message', function (e) {
     });
 });
 
-var getPropensityDistortionMaps = function (width, height) {
+var getPropensityDistortionMaps = function (width, height, distortionLevel) {
     var mapX = new Map2D(width, height, Float32Array),
         mapY = new Map2D(width, height, Float32Array);
 
     mapX.map(function (value, x, y) {
         var dist = noise.perlin2(400 + x / 50, 400 + y / 50) / 40 + noise.simplex2(400 + x / 25, 400 + y / 25) / 60 + noise.simplex2(400 + x / 10, 400 + y / 10) / 130;
-        return dist * 1;
+        return dist * distortionLevel;
     });
 
     mapY.map(function (value, x, y) {
         var dist = noise.perlin2(4000 + x / 50, 4000 + y / 50) / 40 + noise.simplex2(4000 + x / 25, 4000 + y / 25) / 60 + noise.simplex2(4000 + x / 10, 4000 + y / 10) / 130;
-        return dist * 1;
+        return dist * distortionLevel;
     });
 
     return {

@@ -6,6 +6,7 @@ var mapGenerator = {
     width: 0,
     height: 0,
     seaLevel: 0.5,
+    distortionAmount: 1,
     busy: false,
     data: null,
     highlight: null,
@@ -46,7 +47,8 @@ var mapGenerator = {
             seed: this.seed,
             width: this.width,
             height: this.height,
-            seaLevel: this.seaLevel
+            seaLevel: this.seaLevel,
+            distortionAmount: this.distortionAmount
         });
 
         return true;
