@@ -1,3 +1,5 @@
+// TODO there is a whole to refactor here
+
 var mapGenerator = {
     canvas: null,
     context: null,
@@ -116,14 +118,26 @@ var mapGenerator = {
             });
         });
 
+        var self = this;
+
         parent.find('.city').on({
             mouseenter: function (e) {
                 $(e.currentTarget).addClass('highlighted');
-                //console.log($(e.currentTarget).data('title'), 'enter');
+                if (self.highlightCallback) {
+                    self.highlightCallback('City : ' + $(e.currentTarget).data('title'));
+                }
             },
             mouseleave: function (e) {
                 $(e.currentTarget).removeClass('highlighted');
-                //console.log($(e.currentTarget).data('title'), 'leave');
+
+                // duplicated code
+                if (self.highlightCallback) {
+                    if(self.highlight) {
+                        self.highlightCallback(self.highlight.type + ' : ' + self.highlight.name + ', superficie : ' + self.highlight.size);
+                    } else {
+                        self.highlightCallback(false);
+                    }
+                }
             }
         });
     },
@@ -137,7 +151,7 @@ var mapGenerator = {
             //value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0));
 
             if (highlightMap && !highlightMap.get(x, y)) {
-                value = value / 2;
+                value = value / 1.75;
             }
 
             return value;
@@ -149,7 +163,6 @@ var mapGenerator = {
             } else {
                 this.highlightCallback(false);
             }
-
         }
 
         Map2D.draw(this.context, 0, 0, map);
