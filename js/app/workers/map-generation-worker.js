@@ -217,9 +217,8 @@ var differentiateContinents = function (continentMap) {
     //alter the continent map and is limited to ~253 earth bodies
     //could instead return a map per zone ?
 
-    var preprocessedZones = [];
-
-    var newValue = 255;
+    var preprocessedZones = [],
+        newValue = 255;
 
     continentMap.map(function (value, x, y) {
         if (value === 255) {
