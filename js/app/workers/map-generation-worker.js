@@ -284,13 +284,13 @@ var postProcessZones = function (continentMap, heightMap, preprocessedZones) {
     };
 
     preprocessedZones.forEach(function (zone) {
-        if (zone.size > 12000) {
+        if (zone.size > 15000) {
             zones.continents.push(zone);
-            zone.type = 'continent';
+            zone.type = 'Continent';
             zone.name = japanesePlacesNames.get();
         } else if (zone.size > 6) {
             zones.islands.push(zone);
-            zone.type = 'island';
+            zone.type = 'Island';
             zone.name = japaneseIslandsNames.get();
         } else {
             continentMap.map(function (value, x, y) {

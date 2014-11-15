@@ -9,6 +9,7 @@
 <body>
 <div class="container">
     <div id="canvas-container"><canvas id="canvas" width="100" height="100"></canvas></div>
+    <div id="highlightInfo">Test : blabla</div>
     <div class="overlay loading-overlay"><div></div></div>
 
     <a href="http://itch.io/jam/procjam/rate/13748"
@@ -103,7 +104,17 @@
             mapGenerator.mousemove(x - 1, y - 3);
         });
 
+        var highlight = $('#highlightInfo');
+
         mapGenerator.setCanvas(canvas);
+        mapGenerator.setHighlightCallback(function(info) {
+            if(info) {
+                highlight.text(info);
+            } else {
+                highlight.text('');
+            }
+
+        });
 
         var resize = function() {
             canvas.width = $('.container').width();

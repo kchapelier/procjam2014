@@ -63,6 +63,17 @@ body .dg .cr.function .property-name {
     position:relative;
 }
 
+#highlightInfo {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:75px;
+    margin:0px;
+    padding:4px;
+    background:rgba(0,0,0, 0.5);
+    color:#EEE;
+}
+
 .city {
     display: none;
     position : absolute;
@@ -138,10 +149,11 @@ body .dg .cr.function .property-name {
 }
 
 .icon.github {
+    right: 2px;
     background-image:url(../../img/github-logo.png);
 }
 
 .icon.itchio {
-    right:32px;
+    right:36px;
     background-image:url(../../img/itchio-logo.png);
 }

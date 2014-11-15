@@ -10,11 +10,15 @@ var mapGenerator = {
     displayType: 'heightMap',
     busy: false,
     data: null,
+    highlightCallback: null,
     highlight: null,
     highlightedCity: null,
     setCanvas: function (canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
+    },
+    setHighlightCallback: function (callback) {
+        this.highlightCallback = callback;
     },
     setOverlay: function (overlay) {
         this.overlay = overlay;
@@ -139,8 +143,13 @@ var mapGenerator = {
             return value;
         });
 
-        if (this.highlight) {
-            //display in ui
+        if (this.highlightCallback) {
+            if(this.highlight) {
+                this.highlightCallback(this.highlight.type + ' : ' + this.highlight.name + ', superficie : ' + this.highlight.size);
+            } else {
+                this.highlightCallback(false);
+            }
+
         }
 
         Map2D.draw(this.context, 0, 0, map);
