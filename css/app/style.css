@@ -59,6 +59,10 @@ body .dg .cr.function .property-name {
     font-weight:bold;
 }
 
+#canvas-container {
+    position:relative;
+}
+
 .city {
     display: none;
     position : absolute;
@@ -79,8 +83,7 @@ body .dg .cr.function .property-name {
     display:block;
 }
 
-.loading-overlay {
-    display:none;
+.overlay {
     padding: 0;
     margin: 0;
     position:absolute;
@@ -89,6 +92,10 @@ body .dg .cr.function .property-name {
     left: 0px;
     right: 0px;
     background-color: rgba(0,0,0,0.5);
+}
+
+.loading-overlay {
+    display:none;
     z-index:100;
 }
 
@@ -114,7 +121,7 @@ body .dg .cr.function .property-name {
     box-shadow: 0 0 80px #000;
 }
 
-.github {
+.icon {
     position:absolute;
     right: 0px;
     bottom: 0px;
@@ -122,11 +129,19 @@ body .dg .cr.function .property-name {
     width:32px;
     height:32px;
     text-indent:-99999px;
-    background-image:url(../../img/github-logo.png);
     transform: scale(0.75);
     opacity:0.5;
 }
 
-.github:hover {
+.icon:hover {
     opacity:1;
+}
+
+.icon.github {
+    background-image:url(../../img/github-logo.png);
+}
+
+.icon.itchio {
+    right:32px;
+    background-image:url(../../img/itchio-logo.png);
 }
