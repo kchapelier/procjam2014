@@ -197,10 +197,6 @@ var mapGenerator = {
         if (previous !== this.highlight) {
             previous = this.highlight;
 
-            if (this.highlight !== null) {
-                console.log(this.highlight.type, this.highlight.name, 'superficie', this.highlight.size);
-            }
-
             this.display();
         }
 

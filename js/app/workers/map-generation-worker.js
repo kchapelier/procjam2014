@@ -27,9 +27,9 @@ self.addEventListener('message', function (e) {
     //TODO use erosion simulation to get more grainy details in the continents
     //TODO lake / rivers
 
-    console.log('test');
+    //console.log('test');
 
-    console.time('total');
+    //console.time('total');
 
     var propensityDistortionMaps = getPropensityDistortionMaps(width, height, distortionAmount),
         heightPropensityMap = getHeightPropensityMap(width, height, propensityDistortionMaps),
@@ -39,11 +39,11 @@ self.addEventListener('message', function (e) {
         preprocessedZones = differentiateContinents(continentMap),
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
 
-    console.timeEnd('total');
+    //console.timeEnd('total');
 
     addCitiesToZones(heightMap, zones);
 
-    console.log('cities setted');
+    //console.log('cities setted');
 
     self.postMessage({
         params: {
