@@ -28,13 +28,13 @@
 <script src="js/app/map-generation.js"></script>
 <script>
     $(function () {
-
         var canvas = document.getElementById('canvas');
 
         var app = {
             seed: '0',
             seaLevel: 0.5,
             distortionAmount: 1,
+            displayType: 'heightMap',
             glitch: false,
             cities: false,
             randomSeed: function () {
@@ -46,6 +46,7 @@
                 mapGenerator.seed = parseInt(this.seed, 10) / 1000000000;
                 mapGenerator.width = canvas.width;
                 mapGenerator.height = canvas.height;
+                mapGenerator.displayType = this.displayType;
                 mapGenerator.distortionAmount = this.distortionAmount;
                 mapGenerator.requestMap();
             },
@@ -66,6 +67,12 @@
 
         gui.add(app, "seaLevel").min(0).max(1).step(0.01).name('Sea level');
         gui.add(app, "distortionAmount").min(0.5).max(1.5).step(0.01).name('Distortion');
+        gui.add(app, "displayType", ['heightMap', 'continentMap']).name('Display type').onFinishChange(function (value) {
+            if(value !== mapGenerator.displayType) {
+                mapGenerator.displayType = value;
+                mapGenerator.display();
+            }
+        });
         //gui.add(app, "glitch").name('Glitched out');
         gui.add(app, "cities").name('Display cities').onFinishChange(function (value) {
             if (value) {
@@ -108,7 +115,6 @@
         resize();
 
         app.generate();
-
     });
 </script>
 </body>

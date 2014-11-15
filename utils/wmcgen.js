@@ -1,5 +1,5 @@
 /**
- * Example usage : node utils/wmcgen.js data/names/japanese-feminine-firstnames.txt > file.json
+ * Example usage : node utils/wmcgen.js data/names/japanese-feminine-firstnames.txt > file.js
  */
 
 "use strict";

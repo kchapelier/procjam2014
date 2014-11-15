@@ -391,7 +391,7 @@ t a m a n a
 y a m a g a
 k i k u c h i
 u t o
-k a m i - a m a k u s a
+k a m i a m a k u s a
 u k i
 a s o
 k ou s h i
@@ -504,7 +504,8 @@ j ou e t s u
 s a d o
 a g a n o
 u o n u m a
-m i n a m i - u o n u m a
+m i n a m i
+u o n u m a
 i t o i g a w a
 t ou k a m a c h i
 s a n j ou
@@ -521,7 +522,8 @@ t s u k u m i
 t a k e t a
 b u n g o t a k a d a
 u s a
-b u n g o - ou n o
+b u n g o
+ou n o
 k i t s u k i
 y u f u
 k u n i s a k i
@@ -725,7 +727,6 @@ i n a g i
 h a m u r a
 a k i r u n o
 n i s h i t ou k y ou
-s p e c i a l   w a r d s   o f   t o k y o
 a d a c h i
 a r a k a w a
 b u n k y o
@@ -795,7 +796,8 @@ s h i m o n o s e k i
 y a n a i
 h a g i
 n a g a t o
-s a n y ou - o n o d a
+s a n y ou
+o n o d a
 y a m a g u c h i
 i w a k u n i
 k ou f u
@@ -803,7 +805,7 @@ f u j i y o s h i d a
 t s u r u
 ou t s u k i
 n i r a s a k i
-m i n a m i - a l p s
+m i n a m i
 k a i
 f u e f u k i
 h o k u t o

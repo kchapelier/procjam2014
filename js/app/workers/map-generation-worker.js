@@ -43,13 +43,16 @@ self.addEventListener('message', function (e) {
 
     addCitiesToZones(heightMap, zones);
 
+    console.log('cities setted');
+
     self.postMessage({
         params: {
             seed: seed,
             width: width,
-            height: height
+            height: height,
+            seaLevel: seaLevel,
+            distortionAmount: distortionAmount
         },
-        heightPropensityMap: heightPropensityMap.values,
         heightMap: heightMap.values,
         continentMap: continentMap.values,
         zones: {

@@ -7,6 +7,7 @@ var mapGenerator = {
     height: 0,
     seaLevel: 0.5,
     distortionAmount: 1,
+    displayType: 'heightMap',
     busy: false,
     data: null,
     highlight: null,
@@ -54,7 +55,6 @@ var mapGenerator = {
         return true;
     },
     receiveMap: function (data) {
-        data.heightPropensityMap = Map2D.fromTypedArray(data.heightPropensityMap, data.params.width, data.params.height);
         data.heightMap = Map2D.fromTypedArray(data.heightMap, data.params.width, data.params.height);
         data.continentMap = Map2D.fromTypedArray(data.continentMap, data.params.width, data.params.height);
 
@@ -124,11 +124,10 @@ var mapGenerator = {
         });
     },
     display: function () {
-        var heightMap = this.data.heightMap,
-            continentMap = this.data.continentMap,
-            highlightMap = this.highlight ? this.highlight.map : null;
+        var continentMap = this.data.continentMap,
+            highlightMap = this.highlight ? this.highlight.map : null,
+            map = Map2D.clone(this.data[this.displayType]);
 
-        var map = Map2D.clone(this.data.heightMap);
         map.map(function (value, x, y) {
             value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75));
             //value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0));
