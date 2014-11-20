@@ -9,6 +9,7 @@ var mapGenerator = {
     height: 0,
     seaLevel: 0.5,
     distortionAmount: 1,
+    glitch: false,
     displayType: 'heightMap',
     busy: false,
     data: null,
@@ -55,6 +56,7 @@ var mapGenerator = {
             width: this.width,
             height: this.height,
             seaLevel: this.seaLevel,
+            glitch: this.glitch,
             distortionAmount: this.distortionAmount
         });
 
@@ -144,18 +146,52 @@ var mapGenerator = {
     display: function () {
         var continentMap = this.data.continentMap,
             highlightMap = this.highlight ? this.highlight.map : null,
-            map = Map2D.clone(this.data[this.displayType]);
+            sourceMap = this.displayType;
 
-        map.map(function (value, x, y) {
-            value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75));
-            //value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (10 + value - 125) * (6) : 0));
+        if(!this.data.hasOwnProperty(sourceMap)) {
+            sourceMap = 'heightMap';
+        }
 
-            if (highlightMap && !highlightMap.get(x, y)) {
-                value = value / 1.75;
+        var map = Map2D.clone(this.data[sourceMap]);
+
+        var displays = {
+            arctic: function(value, x ,y) {
+                if (continentMap.get(x, y)) {
+                    value = (value - 30) * 1.5;
+                } else {
+                    value = 255 - (value - 30);
+                }
+
+                if (highlightMap && !highlightMap.get(x, y)) {
+                    value = value / 1.75;
+                } else {
+                    value = value + 50;
+                }
+
+                return value;
+            },
+            blackSea: function(value, x, y) {
+                value = Math.max(0, Math.min(255, continentMap.get(x, y) ? (value - 30) * 1.5 : value / 1.75));
+
+                if (highlightMap && !highlightMap.get(x, y)) {
+                    value = value / 1.75;
+                }
+
+                return value;
+            },
+            continentMap: function(value, x, y) {
+                if (highlightMap && !highlightMap.get(x, y)) {
+                    value = value / 1.75;
+                }
+
+                return value;
+            },
+            heightMap: function(value, x, y) {
+                return value;
             }
+        };
 
-            return value;
-        });
+        map.map(displays[this.displayType]);
 
         if (this.highlightCallback) {
             if(this.highlight) {

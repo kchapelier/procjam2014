@@ -16,6 +16,7 @@ self.addEventListener('message', function (e) {
     var seed = e.data.seed,
         width = e.data.width,
         height = e.data.height,
+        glitch = e.data.glitch,
         seaLevel = e.data.seaLevel,
         distortionAmount = e.data.distortionAmount;
 
@@ -38,6 +39,11 @@ self.addEventListener('message', function (e) {
         continentMap = getContinentMap(heightMap, seaLevel),
         preprocessedZones = differentiateContinents(continentMap),
         zones = postProcessZones(continentMap, heightMap, preprocessedZones);
+
+    if(glitch) {
+        console.log('test');
+        heightMap = getGlitchedErodedMap(heightMap);
+    }
 
     //console.timeEnd('total');
 
@@ -345,10 +351,7 @@ var addCitiesToZones = function (heightMap, zones) {
     });
 };
 
-
-
-/*
-var getErodedMap = function (heightMap) {
+var getGlitchedErodedMap = function (heightMap) {
     //TODO get a false erosion simulator that works
     //traditional droplets algorithm are way too expensive and doesn't seem to work well with grid based terrain
 
@@ -358,7 +361,7 @@ var getErodedMap = function (heightMap) {
 
     for (var i = 0; i < 1; i++) {
         map.map(function (value, x, y) {
-            var mult = 1;
+            var mult = 10;
             var mult2 = 1;
 
             var v = value / 255;
@@ -389,10 +392,7 @@ var getErodedMap = function (heightMap) {
             }
 
             if (score > 1) {
-                value = (
-                    value * (8 - score / 2) +
-                    Math.min(1, Math.max(0, v) * 255 * score / 2)
-                ) / 8;
+                value = Math.min(1, Math.max(0, v)) * 255;
             }
 
             return value;
@@ -403,4 +403,3 @@ var getErodedMap = function (heightMap) {
 
     return map;
 };
- */
